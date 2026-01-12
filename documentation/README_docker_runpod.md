@@ -57,11 +57,5 @@
 - [Start](https://comfyui.rozenlaan.site/ComfyUI_image/)
 - [Tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/)
 
-### Workflows
-
-- Open ComfyUI's interface on the left and select template.
-- Download from [examples](https://comfyui.rozenlaan.site/ComfyUI_image_workflows/)
-
-
 
 

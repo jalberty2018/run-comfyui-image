@@ -1,10 +1,5 @@
 # Pod image
 
-## Workflows
-
-- Open from ComfyUI's interface on the left
-- Download from [workflow examples](https://comfyui.rozenlaan.site/ComfyUI_image_workflows/)
-
 ## Pre-Installed Custom Nodes
 
 - Open ComfyUI manager installed custom nodes.
@@ -19,6 +14,10 @@
 - [Hardware Requirements](docs/ComfyUI_image_hardware.md)
 - [Tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial)
 - [Update](https://comfyui.rozenlaan.site/ComfyUI_image_update)
+
+## Workflows
+
+- Open from ComfyUI's interface on the left
 
 #### **Huggingface**  
 
