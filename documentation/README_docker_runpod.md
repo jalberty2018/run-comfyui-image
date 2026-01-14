@@ -3,7 +3,7 @@
 ## Features
 
 - Automatic model and LoRA provisioning via environment variables.
-- Supports advanced workflows for **video generation** and **enhancement** using pre-installed custom nodes.
+- Supports advanced workflows for **image generation** and **enhancement** using pre-installed custom nodes.
 - Compatible with high-performance NVIDIA GPUs (CUDA 12.8).
 - Compiled attentions and GPU accelerations.
 

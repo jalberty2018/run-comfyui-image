@@ -328,6 +328,42 @@ download_workflow() {
     return 0
 }
 
+download_media() {
+    local url_var="$1"
+
+    # Check if URL variable exists and is not empty
+    if [[ -z "${!url_var}" ]]; then
+        return 0
+    fi
+
+    # Destination directory for ComfyUI input media
+    local dest_dir="/workspace/ComfyUI/input/"
+    mkdir -p "$dest_dir"
+
+    local url="${!url_var}"
+    local filename
+    filename="$(basename "$url")"
+    local filepath="${dest_dir}${filename}"
+
+    # Skip if file already exists
+    if [[ -f "$filepath" ]]; then
+        echo "⏭️  [SKIP] $filename already exists in ComfyUI/input"
+        return 0
+    fi
+
+    # Download file
+    echo "🎞️  [DOWNLOAD] Fetching $filename → ComfyUI/input ..."
+    if wget -q -O "$filepath" "$url"; then
+        echo "✅ [DONE] Downloaded $filename"
+    else
+        echo "⚠️  [ERROR] Failed to download $url"
+        rm -f "$filepath"
+    fi
+
+    sleep 1
+    return 0
+}
+
 # Provisioning if comfyUI is responding running on GPU with CUDA
 if [[ "$HAS_COMFYUI" -eq 1 ]]; then  
     # provisioning workflows
@@ -336,6 +372,14 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
     for i in $(seq 1 50); do
         VAR="WORKFLOW${i}"
         download_workflow "$VAR"
+    done
+	
+	# provisioning input media for test/tutorial purpose
+    echo "📥 Provisioning input media"
+	
+    for i in $(seq 1 50); do
+        VAR="MEDIA${i}"
+        download_media "$VAR"
     done
 	
     # provisioning Models and loras
