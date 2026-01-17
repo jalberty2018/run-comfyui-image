@@ -21,7 +21,7 @@ if [[ -n "${RUNPOD_GPU_COUNT:-}" ]]; then
 fi
 
 # Move necessary files to workspace
-echo "ℹ️ [Moving necessary files to workspace] enabling rebooting pod without data loss"
+echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss"
 for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."

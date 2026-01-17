@@ -13,7 +13,7 @@ HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://comfyui.rozenlaan.site/pod/image/FLUX2-ti2i-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 ```
 
 ### Private
@@ -30,7 +30,7 @@ HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://comfyui.rozenlaan.site/pod/image/FLUX2-ti2i-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 ```
 
 ## Z-Image-Turbo
@@ -48,12 +48,12 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors
-WORKFLOW1=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-euler-pod.json
-WORKFLOW2=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-dpmpp-pod.json
-WORKFLOW3=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-er_sde-pod.json
-WORKFLOW4=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-clownshark-beta-pod.json
-WORKFLOW5=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-clownshark-flowmatch-pod.json
-WORKFLOW6=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-euler-dpmpp-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIT-t2i-dpmpp-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-er_sde-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
 ```
 
 ### Private
@@ -70,18 +70,18 @@ HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image_turbo
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors
-WORKFLOW1=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-euler-pod.json
-WORKFLOW2=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-dpmpp-pod.json
-WORKFLOW3=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-er_sde-pod.json
-WORKFLOW4=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-clownshark-beta-pod.json
-WORKFLOW5=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-clownshark-flowmatch-pod.json
-WORKFLOW6=https://comfyui.rozenlaan.site/pod/image/ZIT-t2i-euler-dpmpp-pod.json
 CIVITAI_MODEL_LORA_URL1=https://civitai.com/api/download/models/2489956?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL2=https://civitai.com/api/download/models/2506996?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL3=https://civitai.com/api/download/models/2491551?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL4=https://civitai.com/api/download/models/2509564?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL5=https://civitai.com/api/download/models/2546755?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL6=https://civitai.com/api/download/models/2549555?type=Model&format=SafeTensor
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIT-t2i-dpmpp-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-er_sde-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
 ```
 
 ## Flux.1 dev Kontext
@@ -137,7 +137,7 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
-WORKFLOW1=https://comfyui.rozenlaan.site/pod/image/QWEN-image-edit-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 ```
 
 #### private
@@ -156,6 +156,7 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 ```
 
 ## Qwen-image-layered
