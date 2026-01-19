@@ -4,12 +4,6 @@ FROM ls250824/comfyui-runtime:16012026
 
 WORKDIR /ComfyUI
 
-# Copy ComfyUI configurations
-COPY --chmod=644 configuration/comfy.settings.json user/default/comfy.settings.json
-
-# Copy ComfyUI ini settings
-COPY --chmod=644 configuration/config.ini user/__manager/config.ini
-
 # Adding requirements internal comfyui-manager
 RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
@@ -63,29 +57,27 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/RamonGuthrie/ComfyUI-RBG-SmartSeedVariance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/willmiao/ComfyUI-Lora-Manager.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/rethink-studios/comfyui-model-linker-desktop.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \ 
 	git clone --depth=1 --filter=blob:none https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/scraed/LanPaint.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeQwenImageEditAdvanced.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git
+	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Flux2Klein-Enhancer.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/Capitan-ConditioningEnhancer.git
 
-# Outputlists-combiner working version
-# RUN cd ComfyUI-outputlists-combiner && git fetch --unshallow && git checkout be17d247db29d555df4bc1c776b2b9289f7f42ba
-
-# triton-windows error
-# RUN cd ComfyUI-RMBG && git fetch --unshallow && git checkout 9ecda2e689d72298b4dca39403a85d13e53ea659
 
 # Rewrite any top-level CPU ORT refs to GPU ORT
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 RUN set -eux; \
   for f in \
-    ComfyUI-RMBG/requirements.txt; do \
+    requirements.txt; do \
       [ -f "$f" ] || continue; \
       sed -i -E 's/^( *| *)(onnxruntime)([<>=].*)?(\s*)$/\1onnxruntime-gpu==1.22.*\4/i' "$f"; \
     done
 
 # Install Dependencies for Cloned Repositories
 WORKDIR /ComfyUI/custom_nodes
-
 RUN --mount=type=cache,target=/root/.cache/pip \
   python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
     diffusers psutil \
@@ -108,6 +100,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Activate SAM3
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-SAM3
+RUN git fetch --unshallow && git checkout a5e2ceb66d95dc74151669ef83f594265ed62caa
 RUN python install.py
 
 # Add settings for lora manager 
@@ -116,6 +109,12 @@ COPY --chmod=644 /configuration/lora-manager-settings.json settings.json.templat
 
 # Set Working Directory
 WORKDIR /
+
+# Copy ComfyUI configurations
+COPY --chmod=644 configuration/comfy.settings.json user/default/comfy.settings.json
+
+# Copy ComfyUI ini settings
+COPY --chmod=644 configuration/config.ini user/__manager/config.ini
 
 # Clone documentation repo from comfyui-docs
 RUN --mount=type=cache,target=/root/.cache/git \
@@ -145,7 +144,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.9.1 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.9.1b for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager  + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"

@@ -151,21 +151,83 @@ else
     echo "❌ ERROR: PyTorch CUDA driver mismatch or unavailable, ComfyUI not started"
 fi
 
-# Function to download models if variables are set
+# Shared anonymous start-up diagnostics.
+
+json_escape() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+startup_diagnostics() {
+    local diag="${1:-}"
+    local result="${2:-}"
+    local model="${3:-}"
+    local file="${4:-}"
+    local target="${5:-}"
+
+    # Check: beide env vars moeten non-empty zijn
+    if [[ -n "${DIAG_ENDPOINT_URL:-}" && -n "${DIAG_ENDPOINT_API_KEY:-}" ]]; then
+        local endpoint="$DIAG_ENDPOINT_URL"
+        local diag_api_key="$DIAG_ENDPOINT_API_KEY"
+        local image="run-comfyui-image"
+
+        local payload
+        payload="$(cat <<EOF
+{
+  "image": "$(json_escape "$image")",
+  "diag": "$(json_escape "$diag")",
+  "result": "$(json_escape "$result")",
+  "model": "$(json_escape "$model")",
+  "file": "$(json_escape "$file")",
+  "target": "$(json_escape "$target")",
+  "timestamp": "$(date -Is)"
+}
+EOF
+)"
+
+        curl -sS --fail \
+          --connect-timeout 2 \
+          --max-time 5 \
+          -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-API-Key: $diag_api_key" \
+          -H "X-Image: $image" \
+          -H "X-Result: $result" \
+          -d "$payload" \
+          "$endpoint"
+        echo " "
+    fi
+}
+
+# Provisioning routines
+
 download_model_HF() {
     local model_var="$1"
     local file_var="$2"
     local dest_dir="$3"
-	
-    if [[ -n "${!model_var}" && -n "${!file_var}" ]]; then		
-        local target="/workspace/ComfyUI/models/$dest_dir"
-        mkdir -p "$target"
-        echo "ℹ️ [DOWNLOAD] Fetching ${!model_var}/${!file_var} → $target"
-        hf download "${!model_var}" "${!file_var}" --local-dir "$target" || \
-            echo "⚠️ Failed to download ${!model_var}/${!file_var}"
-        sleep 1
+
+    if [[ -z "${!model_var}" || -z "${!file_var}" ]]; then
+        return 0
     fi
 
+    local model="${!model_var}"
+    local file="${!file_var}"
+    local target="/workspace/ComfyUI/models/$dest_dir"
+    mkdir -p "$target"
+
+    echo "ℹ️ [DOWNLOAD] Fetching $model/$file → $target"
+
+    if ! hf download "$model" "$file" --local-dir "$target" >/dev/null 2>&1; then
+        echo "⚠️ HF download failed"
+        startup_diagnostics "download_model_HF" "Failed" "$model" "$file" "$target"
+    fi
+
+    sleep 1
     return 0
 }
 
@@ -185,14 +247,19 @@ download_generic_HF() {
     local target="/workspace/ComfyUI/$dest_dir"
     mkdir -p "$target"
 
+    local status="ok"
+
     if [[ -n "$file" ]]; then
         echo "ℹ️ [DOWNLOAD] Fetching $model/$file → $target"
-        hf download "$model" "$file" --local-dir "$target" || \
-            echo "⚠️ Failed to download $model/$file"
+        hf download "$model" "$file" --local-dir "$target" >/dev/null 2>&1 || status="fail"
     else
         echo "ℹ️ [DOWNLOAD] Fetching $model → $target"
-        hf download "$model" --local-dir "$target" || \
-            echo "⚠️ Failed to download $model"
+        hf download "$model" --local-dir "$target" >/dev/null 2>&1 || status="fail"
+    fi
+
+    if [[ "$status" == "fail" ]]; then
+        echo "⚠️ HF download generic failed: $model/$file/$target "
+        startup_diagnostics "download_generic_HF" "Failed" "$model" "$file" "$target"
     fi
 
     sleep 1
@@ -203,15 +270,8 @@ download_model_CIVITAI() {
     local url_var="$1"
     local dest_dir="$2"
 
-    # Geen URL → niets doen
     if [[ -z "${!url_var}" ]]; then
         return 0
-    fi
-
-    # Token check
-    if [[ -z "$CIVITAI_TOKEN" ]]; then
-        echo "⚠️ ERROR: CIVITAI_TOKEN is not set as an environment variable – '${!url_var}' not downloaded"
-        return 1
     fi
 
     local target="/workspace/ComfyUI/models/$dest_dir"
@@ -219,26 +279,29 @@ download_model_CIVITAI() {
 
     local url="${!url_var}"
 
-    # Probeer bestandsnaam te bepalen
+    if [[ -z "$CIVITAI_TOKEN" ]]; then
+        echo "⚠️ ERROR: CIVITAI_TOKEN is not set '$url' not downloaded"
+        return 1
+    fi
+
     local filename
     filename="$(basename "$(printf '%s\n' "$url" | sed 's/[?#].*$//')")"
 
-    # Fallback: onbekende naam (bij API download)
     if [[ "$filename" == "download" || "$filename" == "models" || -z "$filename" ]]; then
         filename=""
     fi
 
-    # Bestaat het bestand al?
     if [[ -n "$filename" ]] && compgen -G "$target/$filename*" > /dev/null; then
         echo "✅ [SKIP] $filename already exists in $target"
         return 0
     fi
 
     echo "ℹ️ [DOWNLOAD] Fetching $url → $target ..."
-    civitai --quit "$url" "$target" || {
-        echo "⚠️ Failed to download $url"
-        return 1
-    }
+
+    if ! civitai --quit "$url" "$target" >/dev/null 2>&1; then
+        echo "⚠️ Download model CIVITAI failed: $url/$target "
+        startup_diagnostics "download_model_CIVITAI" "Failed" "$url" "" "$target"
+    fi
 
     sleep 1
     return 0
@@ -247,77 +310,58 @@ download_model_CIVITAI() {
 download_workflow() {
     local url_var="$1"
 
-    # Check if URL variable is set and not empty
     if [[ -z "${!url_var}" ]]; then
         return 0
     fi
 
-    # Destination directory
+    local url="${!url_var}"
     local dest_dir="/workspace/ComfyUI/user/default/workflows/"
     mkdir -p "$dest_dir"
 
-    # Get filename from URL
-    local url="${!url_var}"
     local filename
-    filename=$(basename "$url")
+    filename="$(basename "$url")"
     local filepath="${dest_dir}${filename}"
 
-    # Skip entire process if file already exists
     if [[ -f "$filepath" ]]; then
-        echo "⏭️  [SKIP] $filename already exists — skipping download and extraction"
+        echo "⏭️  [SKIP] $filename already exists"
         return 0
     fi
 
-    # Download file
     echo "ℹ️ [DOWNLOAD] Fetching $filename ..."
-    if wget -q -P "$dest_dir" "$url"; then
-        echo "[DONE] Downloaded $filename"
-    else
-        echo "⚠️  Failed to download $url"
+
+    if ! wget -q -P "$dest_dir" "$url"; then
+        echo "⚠️ Download model workflow failed: $url"
+        startup_diagnostics "download_workflow" "Failed" "$url" "" "$dest_dir"
         return 0
     fi
 
-    # Automatically extract common archive formats
+    echo "[DONE] Downloaded $filename"
+
     case "$filename" in
         *.zip)
             echo "📦  [EXTRACT] Unzipping $filename ..."
-            if unzip -o "$filepath" -d "$dest_dir" >/dev/null 2>&1; then
-                echo "[DONE] Extracted $filename"
-            else
+            unzip -o "$filepath" -d "$dest_dir" >/dev/null 2>&1 || \
                 echo "⚠️  Failed to unzip $filename"
-            fi
             ;;
         *.tar.gz|*.tgz)
             echo "📦  [EXTRACT] Extracting $filename (tar.gz) ..."
-            if tar -xzf "$filepath" -C "$dest_dir"; then
-                echo "[DONE] Extracted $filename"
-            else
+            tar -xzf "$filepath" -C "$dest_dir" || \
                 echo "⚠️  Failed to extract $filename"
-            fi
             ;;
         *.tar.xz)
             echo "📦  [EXTRACT] Extracting $filename (tar.xz) ..."
-            if tar -xJf "$filepath" -C "$dest_dir"; then
-                echo "[DONE] Extracted $filename"
-            else
+            tar -xJf "$filepath" -C "$dest_dir" || \
                 echo "⚠️  Failed to extract $filename"
-            fi
             ;;
         *.tar.bz2)
             echo "📦  [EXTRACT] Extracting $filename (tar.bz2) ..."
-            if tar -xjf "$filepath" -C "$dest_dir"; then
-                echo "[DONE] Extracted $filename"
-            else
+            tar -xjf "$filepath" -C "$dest_dir" || \
                 echo "⚠️  Failed to extract $filename"
-            fi
             ;;
         *.7z)
             echo "📦  [EXTRACT] Extracting $filename (7z) ..."
-            if 7z x -y -o"$dest_dir" "$filepath" >/dev/null 2>&1; then
-                echo "[DONE] Extracted $filename"
-            else
+            7z x -y -o"$dest_dir" "$filepath" >/dev/null 2>&1 || \
                 echo "⚠️  Failed to extract $filename"
-            fi
             ;;
         *)
             echo "[INFO] No extraction needed for $filename"
@@ -519,49 +563,51 @@ except Exception as e2:
     print("Failed:", e2)
 PY
 
-if [[ "$HAS_PROVISIONING" -eq 1 ]]; then 
+if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
     echo "🎉 Provisioning done, ready to create AI content 🎉"
-		
-	if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
-	  echo "ℹ️ Connect to the following services from console menu or url"
-	
-	  if [[ -z "${RUNPOD_POD_ID:-}" ]]; then
-	    echo "⚠️ RUNPOD_POD_ID not set — service URLs unavailable"
-	  else
-	    declare -A SERVICES=(
-	      ["Code-Server"]=9000
-	      ["ComfyUI"]=8188
-	    )
-	
-	    # Local health checks (inside the pod)
-	    for service in "${!SERVICES[@]}"; do
-	      port="${SERVICES[$service]}"
-	      url="https://${RUNPOD_POD_ID}-${port}.proxy.runpod.net/"
-	      local_url="http://127.0.0.1:${port}/"
-	
-	      echo "👉 🔗 Service ${service} : ${url}"
-	
-	      # Check service locally (no proxy dependency)
-	      http_code="$(curl -sS -o /dev/null -m 2 --connect-timeout 1 -w "%{http_code}" "$local_url" || true)"
-	
-	      # Treat common “service is up but protected/redirect” codes as UP
-	      if [[ "$http_code" =~ ^(200|301|302|401|403|404)$ ]]; then
-	        echo "✅ ${service} is running (local ${local_url}, HTTP ${http_code})"
-	      else
-	        echo "❌ ${service} not responding yet (local ${local_url}, HTTP ${http_code})"
-	      fi
-	    done
-		
-		echo "👉 🔗 Lora-Manager: https://${RUNPOD_POD_ID}-8188.proxy.runpod.net/loras"
-	  fi
-	fi
-	
+
+    if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
+        echo "ℹ️ Connect to the following services from console menu or url"
+
+        if [[ -z "${RUNPOD_POD_ID:-}" ]]; then
+            echo "⚠️ RUNPOD_POD_ID not set — service URLs unavailable"
+        else
+            declare -A SERVICES=(
+              ["Code-Server"]=9000
+              ["ComfyUI"]=8188
+            )
+
+            # Local health checks (inside the pod)
+            for service in "${!SERVICES[@]}"; do
+                port="${SERVICES[$service]}"
+                url="https://${RUNPOD_POD_ID}-${port}.proxy.runpod.net/"
+                local_url="http://127.0.0.1:${port}/"
+
+                echo "👉 🔗 Service ${service} : ${url}"
+
+                # Check service locally (no proxy dependency)
+                http_code="$(curl -sS -o /dev/null -m 2 --connect-timeout 1 -w "%{http_code}" "$local_url" || true)"
+
+                # Treat common “service is up but protected/redirect” codes as UP
+                if [[ "$http_code" =~ ^(200|301|302|401|403|404)$ ]]; then
+                    echo "✅ ${service} is running (local ${local_url}, HTTP ${http_code})"
+                else
+                    echo "❌ ${service} not responding yet (local ${local_url}, HTTP ${http_code})"
+                fi
+            done
+
+            echo "👉 🔗 Lora-Manager: https://${RUNPOD_POD_ID}-8188.proxy.runpod.net/loras"
+            startup_diagnostics "Script executed (user/developer happy)" "OK"
+        fi
+    fi
+
     if [[ -n "$PASSWORD" ]]; then
-		echo "ℹ️ Code-Server login use PASSWORD set as env"
-	else 
-		echo "⚠️ Code-Server login use the logged password"
-		cat /root/.config/code-server/config.yaml        
-    fi	
+        echo "ℹ️ Code-Server login use PASSWORD set as env"
+    else
+        echo "⚠️ Code-Server login use the logged password"
+        cat /root/.config/code-server/config.yaml
+    fi
+
 else
     echo "ℹ️ Running error diagnosis"
 
@@ -572,7 +618,8 @@ else
     if [[ "$HAS_CUDA" -eq 0 ]]; then
         echo "❌ Pytorch CUDA driver error/mismatch/not available"
         if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
-            echo "⚠️ [SOLUTION] Deploy pod on another region then RUNPOD_DC_ID  ⚠️"
+            echo "⚠️ [SOLUTION] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
+            startup_diagnostics "CUDA mismatch on region ${RUNPOD_DC_ID:-unknown}" "Error"
         fi
     fi
 
