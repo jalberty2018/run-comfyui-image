@@ -151,59 +151,6 @@ else
     echo "❌ ERROR: PyTorch CUDA driver mismatch or unavailable, ComfyUI not started"
 fi
 
-# Shared anonymous start-up diagnostics.
-
-json_escape() {
-    local s="$1"
-    s="${s//\\/\\\\}"
-    s="${s//\"/\\\"}"
-    s="${s//$'\n'/\\n}"
-    s="${s//$'\r'/\\r}"
-    s="${s//$'\t'/\\t}"
-    printf '%s' "$s"
-}
-
-startup_diagnostics() {
-    local diag="${1:-}"
-    local result="${2:-}"
-    local model="${3:-}"
-    local file="${4:-}"
-    local target="${5:-}"
-
-    # Check: beide env vars moeten non-empty zijn
-    if [[ -n "${DIAG_ENDPOINT_URL:-}" && -n "${DIAG_ENDPOINT_API_KEY:-}" ]]; then
-        local endpoint="$DIAG_ENDPOINT_URL"
-        local diag_api_key="$DIAG_ENDPOINT_API_KEY"
-        local image="run-comfyui-image"
-
-        local payload
-        payload="$(cat <<EOF
-{
-  "image": "$(json_escape "$image")",
-  "diag": "$(json_escape "$diag")",
-  "result": "$(json_escape "$result")",
-  "model": "$(json_escape "$model")",
-  "file": "$(json_escape "$file")",
-  "target": "$(json_escape "$target")",
-  "timestamp": "$(date -Is)"
-}
-EOF
-)"
-
-        curl -sS --fail \
-          --connect-timeout 2 \
-          --max-time 5 \
-          -X POST \
-          -H "Content-Type: application/json" \
-          -H "X-API-Key: $diag_api_key" \
-          -H "X-Image: $image" \
-          -H "X-Result: $result" \
-          -d "$payload" \
-          "$endpoint"
-        echo " "
-    fi
-}
-
 # Provisioning routines
 
 download_model_HF() {
@@ -220,11 +167,10 @@ download_model_HF() {
     local target="/workspace/ComfyUI/models/$dest_dir"
     mkdir -p "$target"
 
-    echo "ℹ️ [DOWNLOAD] Fetching $model/$file → $target"
+    echo "ℹ️ [DOWNLOAD] Fetching $model + $file → $target"
 
     if ! hf download "$model" "$file" --local-dir "$target" >/dev/null 2>&1; then
         echo "⚠️ HF download failed"
-        startup_diagnostics "download_model_HF" "Failed" "$model" "$file" "$target"
     fi
 
     sleep 1
@@ -259,7 +205,6 @@ download_generic_HF() {
 
     if [[ "$status" == "fail" ]]; then
         echo "⚠️ HF download generic failed: $model/$file/$target "
-        startup_diagnostics "download_generic_HF" "Failed" "$model" "$file" "$target"
     fi
 
     sleep 1
@@ -298,9 +243,8 @@ download_model_CIVITAI() {
 
     echo "ℹ️ [DOWNLOAD] Fetching $url → $target ..."
 
-    if ! civitai --quit "$url" "$target" >/dev/null 2>&1; then
-        echo "⚠️ Download model CIVITAI failed: $url/$target "
-        startup_diagnostics "download_model_CIVITAI" "Failed" "$url" "" "$target"
+    if ! civitai "$url" "$target" >/dev/null 2>&1; then
+        echo "⚠️ Download model CIVITAI failed: $url / $target "
     fi
 
     sleep 1
@@ -331,7 +275,6 @@ download_workflow() {
 
     if ! wget -q -P "$dest_dir" "$url"; then
         echo "⚠️ Download model workflow failed: $url"
-        startup_diagnostics "download_workflow" "Failed" "$url" "" "$dest_dir"
         return 0
     fi
 
@@ -597,7 +540,6 @@ if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
             done
 
             echo "👉 🔗 Lora-Manager: https://${RUNPOD_POD_ID}-8188.proxy.runpod.net/loras"
-            startup_diagnostics "Script executed (user/developer happy)" "OK"
         fi
     fi
 
@@ -619,7 +561,6 @@ else
         echo "❌ Pytorch CUDA driver error/mismatch/not available"
         if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
             echo "⚠️ [SOLUTION] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
-            startup_diagnostics "CUDA mismatch on region ${RUNPOD_DC_ID:-unknown}" "Error"
         fi
     fi
 
