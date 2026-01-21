@@ -1,38 +1,5 @@
 # Environment variables templates
 
-## Flux.2 dev
-
-### Public
-
-```bash
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
-HF_MODEL_VAE1=Comfy-Org/flux2-dev
-HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
-HF_MODEL_UPSCALER1=LS110824/upscale
-HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
-```
-
-### Private
-
-```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
-HF_MODEL_VAE1=wangkanai/flux-dev-fp16
-HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
-HF_MODEL_UPSCALER1=LS110824/upscale
-HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
-```
-
 ## Z-Image-Turbo
 
 ### Public
@@ -83,6 +50,62 @@ WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.
 WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
 WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
 ```
+
+## Flux.2 dev
+
+### Public
+
+```bash
+HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_VAE1=Comfy-Org/flux2-dev
+HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
+HF_MODEL_UPSCALER1=LS110824/upscale
+HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
+```
+
+### Private
+
+```bash
+CIVITAI_TOKEN=“{{ RUNPOD_SECRET_CivitAI_API_KEY }}”
+HF_TOKEN=“{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}”
+PASSWORD=“{{ RUNPOD_SECRET_CODE-SERVER-NEW }}”
+HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_VAE1=wangkanai/flux-dev-fp16
+HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
+HF_MODEL_UPSCALER1=LS110824/upscale
+HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
+```
+
+## Flux.2 Klein (Gated)
+
+### private
+
+```bash
+CIVITAI_TOKEN=“{{ RUNPOD_SECRET_CivitAI_API_KEY }}”
+HF_TOKEN=“{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}”
+PASSWORD=“{{ RUNPOD_SECRET_CODE-SERVER-NEW }}”
+
+HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-4B
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-4b.safetensors
+
+HF_MODEL_VAE1=wangkanai/flux-dev-fp16
+HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
+
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
+
+HF_MODEL_UPSCALER1=LS110824/upscale
+HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+
+``` 
 
 ## Flux.1 dev Kontext
 
