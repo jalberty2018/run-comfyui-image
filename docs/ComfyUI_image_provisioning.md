@@ -15,9 +15,11 @@
 
 - [Turbo](provisioning/hf_Z-image-turbo.md)
 
-## Qwen-Image-Edit
+## Qwen
 
-- [2511](provisioning/hf_qwen-image-edit-2511.md)
+- [Image](provisioning)(hf_qwen_image.md)
+- [Edit](provisioning/hf_qwen-image-edit.md)
+- [Layered](provisioning/hf_qwen-image-layered.md)
 
 ## Qwen-image-layered
 

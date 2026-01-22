@@ -22,7 +22,7 @@
 
 ### Deployment/Usage information
 
-- The templates on runpod are tested on a RTX 6000,5000,4500.
+- The templates on runpod are tested on a RTX 6000,5000,4500,L40S.
 - Avoid using ID's without a region as they are not reliable.
 
 ### Runpod templates
@@ -33,6 +33,7 @@
 
 - 👉 [Runpod Z-Image Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
 - 👉 [Runpod Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
+- 👉 [Runpod Qwen image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o)
 - 👉 [Runpod Qwen image edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o)
 
 ### Hardware requirements
@@ -41,7 +42,7 @@
 |-----------------|---------------------|----------|---------|
 | Z-Image Turbo   | RTX A4500, A5000    | 22 GB    | 50 GB   |
 | Flux.2 Dev      | RTX A6000           | 44 GB    | 50 GB   |
-| Qwen            | RTX A6000           | 44 GB    | 65 GB   |
+| Qwen            | RTX A6000/L40S      | 44 GB    | 70 GB   |
 
 ### Storage requirements
 

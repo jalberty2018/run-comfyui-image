@@ -1,9 +1,9 @@
-# Qwen image
+# Qwen image edit
 
 - [Model](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI)
 - [Lightx2v](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning)
 
-## Diffusion_model
+## Diffusion_model 2511
 
 ### bf16
 
@@ -42,7 +42,7 @@ hf download Comfy-Org/Qwen-Image_ComfyUI split_files/vae/qwen_image_vae.safetens
 --local-dir /workspace/ComfyUI/models/vae/
 ```
 
-## Loras
+## Loras 2511
 
 ### Lighx2v
 

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:xx012026
+FROM ls250824/comfyui-runtime:22012026
 
 WORKDIR /ComfyUI
 
