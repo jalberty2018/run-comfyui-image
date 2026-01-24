@@ -15,20 +15,23 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors
+HF_MODEL_LORA1=Comfy-Org/z_image_turbo
+HF_MODEL_LORA_FILENAME1=split_files/loras/z_image_turbo_distill_patch_lora_bf16.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIT-t2i-dpmpp-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-er_sde-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
 WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
+WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
 ```
 
 ### Private
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/z_image_turbo
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/z_image_turbo_bf16.safetensors
 HF_MODEL_VAE1=wangkanai/flux-dev-fp16
@@ -37,6 +40,8 @@ HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image_turbo
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors
+HF_MODEL_LORA1=Comfy-Org/z_image_turbo
+HF_MODEL_LORA_FILENAME1=split_files/loras/z_image_turbo_distill_patch_lora_bf16.safetensors
 CIVITAI_MODEL_LORA_URL1=https://civitai.com/api/download/models/2489956?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL2=https://civitai.com/api/download/models/2506996?type=Model&format=SafeTensor
 CIVITAI_MODEL_LORA_URL3=https://civitai.com/api/download/models/2491551?type=Model&format=SafeTensor
@@ -49,6 +54,7 @@ WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-er_sde-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
 WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
+WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
 ```
 
 ## Flux.2 dev
@@ -70,9 +76,9 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 ### Private
 
 ```bash
-CIVITAI_TOKEN=“{{ RUNPOD_SECRET_CivitAI_API_KEY }}”
-HF_TOKEN=“{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}”
-PASSWORD=“{{ RUNPOD_SECRET_CODE-SERVER-NEW }}”
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
 HF_MODEL_VAE1=wangkanai/flux-dev-fp16
@@ -84,35 +90,32 @@ HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 ```
 
-## Flux.2 Klein (Gated) (not ready)
+## Flux.2 Klein (Gated)
 
-### private
+### private 9B
 
 ```bash
-CIVITAI_TOKEN=“{{ RUNPOD_SECRET_CivitAI_API_KEY }}”
-HF_TOKEN=“{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}”
-PASSWORD=“{{ RUNPOD_SECRET_CODE-SERVER-NEW }}”
-
-HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-4B
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-4b.safetensors
-
-HF_MODEL_VAE1=wangkanai/flux-dev-fp16
-HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
-
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
-
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-9B
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-9b.safetensors
+HF_MODEL_DIFFUSION_MODELS2=black-forest-labs/FLUX.2-klein-base-9B
+HF_MODEL_DIFFUSION_MODELS_FILENAME2=flux-2-klein-base-9b.safetensors
+HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
+HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-
-``` 
+```
 
 ## Flux.1 dev Kontext
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.1-Kontext-dev
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux1-kontext-dev.safetensors
 HF_MODEL_VAE1=black-forest-labs/FLUX.1-Kontext-dev
@@ -128,9 +131,9 @@ HF_MODEL_TEXT_ENCODERS_FILENAME2=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-H
 ## Flux.1 dev SRPO
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_DIFFUSION_MODELS1=rockerBOO/flux.1-dev-SRPO
@@ -166,9 +169,9 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 #### private
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI
@@ -187,9 +190,9 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 ### private
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Layered_ComfyUI
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_layered_bf16.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image-Layered_ComfyUI
@@ -228,9 +231,9 @@ WORKFLOW2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.
 #### private
 
 ```bash
-CIVITAI_TOKEN="{{ RUNPOD_SECRET_CivitAI_API_KEY }}"
-HF_TOKEN="{{ RUNPOD_SECRET_HF_TOKEN_WRITE }}"
-PASSWORD="{{ RUNPOD_SECRET_CODE-SERVER-NEW }}"
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_bf16.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI

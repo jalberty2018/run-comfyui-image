@@ -10,6 +10,7 @@
 ## Flux.2
 
 - [Dev](provisioning/hf_flux.2_dev.md)
+- [Klein](provisioning/hf_flux.2_Klein.md)
 
 ## Z-Image
 

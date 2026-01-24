@@ -242,10 +242,11 @@ download_model_CIVITAI() {
     fi
 
     echo "ℹ️ [DOWNLOAD] Fetching $url → $target ..."
-
-    if ! civitai "$url" "$target" >/dev/null 2>&1; then
-        echo "⚠️ Download model CIVITAI failed: $url / $target "
-    fi
+    
+    civitai --quit "$url" "$target" || {
+        echo "⚠️ Failed to download $url"
+        return 1
+    }
 
     sleep 1
     return 0
@@ -386,6 +387,7 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
       "VL:VL_FILENAME:VLM"
       "SAMS:SAMS_FILENAME:sams"
       "LATENT_UPSCALE:LATENT_UPSCALE_FILENAME:latent_upscale_models"
+      "VAE_APPROX:VAE_APPROX_FILENAME:vae_approx"
     )
 	
     for cat in "${CATEGORIES_HF[@]}"; do
