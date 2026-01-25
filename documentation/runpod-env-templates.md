@@ -210,12 +210,16 @@ HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 #### public
 
 ```bash
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_bf16.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI
 HF_MODEL_VAE_FILENAME1=split_files/vae/qwen_image_vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+HF_MODEL_HVRAM_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_HVRAM_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+HF_MODEL_LVRAM_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_LORA1=lightx2v/Qwen-Image-Lightning
@@ -224,8 +228,12 @@ HF_MODEL_LORA2=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME2=Qwen-Image-Lightning-4steps-V2.0.safetensors
 HF_MODEL_LORA3=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME3=Qwen-Image-Lightning-8steps-V2.0.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.json
+HF_MODEL_LVRAM_LORA4=lightx2v/Qwen-Image-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME4=Qwen-Image-fp8-e4m3fn-Lightning-4steps-V1.0-fp32.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod-LVRAM.json
 ```
 
 #### private
@@ -234,12 +242,16 @@ WORKFLOW2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_bf16.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI
 HF_MODEL_VAE_FILENAME1=split_files/vae/qwen_image_vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+HF_MODEL_HVRAM_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_HVRAM_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+HF_MODEL_LVRAM_TEXT_ENCODERS1=Comfy-Org/Qwen-Image_ComfyUI
+HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_LORA1=lightx2v/Qwen-Image-Lightning
@@ -248,6 +260,10 @@ HF_MODEL_LORA2=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME2=Qwen-Image-Lightning-4steps-V2.0.safetensors
 HF_MODEL_LORA3=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME3=Qwen-Image-Lightning-8steps-V2.0.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.json
+HF_MODEL_LVRAM_LORA4=lightx2v/Qwen-Image-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME4=Qwen-Image-fp8-e4m3fn-Lightning-4steps-V1.0-fp32.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-res2s-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2v-adv-pod-LVRAM.json
 ```

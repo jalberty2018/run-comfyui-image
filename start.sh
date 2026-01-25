@@ -22,6 +22,7 @@ fi
 
 # Move necessary files to workspace
 echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss"
+echo "ℹ️ This takes some time on slower processors, longer if the volume is encrypted"    
 for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."
@@ -354,22 +355,7 @@ download_media() {
 
 # Provisioning if comfyUI is responding running on GPU with CUDA
 if [[ "$HAS_COMFYUI" -eq 1 ]]; then  
-    # provisioning workflows
-    echo "📥 Provisioning workflows"
-	
-    for i in $(seq 1 50); do
-        VAR="WORKFLOW${i}"
-        download_workflow "$VAR"
-    done
-	
-	# provisioning input media for test/tutorial purpose
-    echo "📥 Provisioning input media"
-	
-    for i in $(seq 1 50); do
-        VAR="MEDIA${i}"
-        download_media "$VAR"
-    done
-	
+    
     # provisioning Models and loras
     echo "📥 Provisioning models HF"
 	
@@ -390,6 +376,41 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
       "VAE_APPROX:VAE_APPROX_FILENAME:vae_approx"
     )
 	
+    # Huggingface download file depending on VRAM available to specified directory
+
+    get_max_vram_gib() {
+      if ! command -v nvidia-smi >/dev/null 2>&1; then
+         echo 0
+         return
+      fi
+
+      nvidia-smi \
+         --query-gpu=memory.total \
+         --format=csv,noheader,nounits \
+        | awk 'BEGIN{m=0} {if($1>m) m=$1} END{print int(m/1024)}'
+    }
+
+    MAX_VRAM_GIB="$(get_max_vram_gib)"
+
+    if (( MAX_VRAM_GIB > 40 )); then
+       HF_PREFIX="HF_MODEL_HVRAM_"
+       echo "🟢 High VRAM detected (${MAX_VRAM_GIB} GB)"
+    else
+       HF_PREFIX="HF_MODEL_LVRAM_"
+       echo "🟡 Low VRAM detected (${MAX_VRAM_GIB} GB)"
+    fi
+
+    for cat in "${CATEGORIES_HF[@]}"; do
+      IFS=":" read -r NAME SUFFIX DIR <<< "$cat"
+
+      for i in $(seq 1 20); do
+        VAR_MODEL="${HF_PREFIX}${NAME}${i}"
+        VAR_FILE="${HF_PREFIX}${SUFFIX}${i}"
+        download_model_HF "$VAR_MODEL" "$VAR_FILE" "$DIR"
+      done
+    done
+
+    # Huggingface download file to specified directory independent on VRAM 
     for cat in "${CATEGORIES_HF[@]}"; do
       IFS=":" read -r NAME SUFFIX DIR <<< "$cat"
 	
@@ -399,8 +420,8 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
         download_model_HF "$VAR1" "$VAR2" "$DIR"
       done
     done
-	
-    # Huggingface download file to specified directory
+
+    # Huggingface download file to specified directory independent on VRAM
     for i in $(seq 1 20); do
         VAR1="HF_MODEL${i}"
         VAR2="HF_MODEL_FILENAME${i}"
@@ -408,7 +429,7 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
         download_generic_HF "${VAR1}" "${VAR2}" "${!DIR_VAR}"
     done
 	
-    # Huggingface download full model to specified directory
+    # Huggingface download full model to specified directory independent on VRAM
     for i in $(seq 1 20); do
         VAR1="HF_FULL_MODEL${i}"
         DIR_VAR="HF_MODEL_DIR${i}"
@@ -431,6 +452,34 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
         VAR1="CIVITAI_MODEL_${NAME}${i}"
         download_model_CIVITAI "$VAR1" "$DIR"
       done
+    done
+
+    echo "📥 Provisioning workflows"
+
+    # provisioning workflows VRAM dependent
+    if (( MAX_VRAM_GIB > 40 )); then
+       WORKFLOW_PREFIX="WORKFLOW_HVRAM"
+    else
+       WORKFLOW_PREFIX="WORKFLOW_LVRAM"
+    fi
+
+    for i in $(seq 1 50); do
+        VAR="${WORKFLOW_PREFIX}${i}"
+        download_workflow "$VAR"
+    done
+
+    # provisioning workflows VRAM independent
+    for i in $(seq 1 50); do
+        VAR="WORKFLOW${i}"
+        download_workflow "$VAR"
+    done
+	
+	# provisioning input media for test/tutorial purpose
+    echo "📥 Provisioning input media"
+	
+    for i in $(seq 1 50); do
+        VAR="MEDIA${i}"
+        download_media "$VAR"
     done
 	
     HAS_PROVISIONING=1

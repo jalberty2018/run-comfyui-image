@@ -6,6 +6,7 @@
 - Supports advanced workflows for **image generation** and **enhancement** using pre-installed custom nodes.
 - Compatible with high-performance NVIDIA GPUs (CUDA 12.8).
 - Compiled attentions and GPU accelerations.
+- Automatic selecting bf16 or fp8 models/workflows if supported, view hardware requirements for possible GPU's
 
 ## Built-in **authentication**
   
@@ -40,9 +41,11 @@
 
 | Model           | Tested GPU          | Min VRAM | Min RAM |
 |-----------------|---------------------|----------|---------|
-| Z-Image Turbo   | RTX A4500, A5000    | 22 GB    | 50 GB   |
+| Z-Image Turbo   | RTX A5000, A4500    | 20 GB    | 50 GB   |
 | Flux.2 Dev      | RTX A6000           | 44 GB    | 50 GB   |
-| Qwen            | RTX A6000/L40S      | 44 GB    | 70 GB   |
+| Qwen image bf16       | RTX A6000/L40S | 44 GB    | 65 GB   |
+| Qwen image fp8        | RTX A4090      | 24 GB    | 50 GB   |
+| Qwen image edit       | RTX A6000/L40S | 44 GB    | 65 GB   |
 
 ### Storage requirements
 
