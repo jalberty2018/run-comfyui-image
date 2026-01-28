@@ -1,4 +1,4 @@
-# Manual provisioning Z-Image
+# Manual provisioning Z-Image Turbo
 
 - [HF ComfyUI](https://huggingface.co/Comfy-Org/z_image_turbo/tree/main)
 - [Fun Control](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0)

@@ -21,8 +21,8 @@ if [[ -n "${RUNPOD_GPU_COUNT:-}" ]]; then
 fi
 
 # Move necessary files to workspace
-echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss"
-echo "ℹ️ This takes some time on slower processors, longer if the volume is encrypted"    
+echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss."
+echo "ℹ️ This takes some time on slower processors, longer if the volume is encrypted."    
 for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."
@@ -391,13 +391,14 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
     }
 
     MAX_VRAM_GIB="$(get_max_vram_gib)"
+    VRAM_THRESHOLD="${VRAM_THRESHOLD:-38}"
 
-    if (( MAX_VRAM_GIB > 40 )); then
-       HF_PREFIX="HF_MODEL_HVRAM_"
-       echo "🟢 High VRAM detected (${MAX_VRAM_GIB} GB)"
+    if (( MAX_VRAM_GIB > VRAM_THRESHOLD )); then
+        HF_PREFIX="HF_MODEL_HVRAM_"
+        echo "🟢 High VRAM detected (${MAX_VRAM_GIB} GB > ${VRAM_THRESHOLD} GB)"
     else
        HF_PREFIX="HF_MODEL_LVRAM_"
-       echo "🟡 Low VRAM detected (${MAX_VRAM_GIB} GB)"
+       echo "🟡 Low VRAM detected (${MAX_VRAM_GIB} GB < ${VRAM_THRESHOLD} GB)"
     fi
 
     for cat in "${CATEGORIES_HF[@]}"; do

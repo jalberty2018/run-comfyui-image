@@ -14,6 +14,7 @@
 
 ## Z-Image
 
+- [Base](provisioning/hf_Z-image.md)
 - [Turbo](provisioning/hf_Z-image-turbo.md)
 
 ## Qwen
