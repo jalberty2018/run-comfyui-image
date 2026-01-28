@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
-# run-comfyui-image
-FROM ls250824/comfyui-runtime:22012026
+# run-comfyui-imag
+FROM ls250824/comfyui-runtime:27012026
 
 WORKDIR /ComfyUI
 
@@ -9,6 +9,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
     matrix-nio \
     -r manager_requirements.txt
+
+# Copy ComfyUI configurations and ini settings
+COPY --chmod=644 configuration/comfy.settings.json user/default/comfy.settings.json
+COPY --chmod=644 configuration/config.ini user/__manager/config.ini
 
 # Clone
 WORKDIR /ComfyUI/custom_nodes
@@ -107,11 +111,6 @@ RUN python install.py
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
 COPY --chmod=644 /configuration/lora-manager-settings.json settings.json.template
 
-# Copy ComfyUI configurations and ini settings
-WORKDIR /ComfyUI
-COPY --chmod=644 configuration/comfy.settings.json user/default/comfy.settings.json
-COPY --chmod=644 configuration/config.ini user/__manager/config.ini
-
 # Set Working Directory
 WORKDIR /
 
@@ -143,7 +142,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.10.0b for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.11.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager  + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"

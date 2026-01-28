@@ -61,6 +61,17 @@ WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.js
 
 ### Public
 
+```bash
+HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/z_image
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/z_image_bf16.safetensors
+HF_MODEL_VAE1=wangkanai/flux-dev-fp16
+HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-euler-flowmatch-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
+```
+
 ### Private
 
 ```bash
@@ -71,8 +82,10 @@ HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/z_image
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/z_image_bf16.safetensors
 HF_MODEL_VAE1=wangkanai/flux-dev-fp16
 HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
-HF_MODEL_TEXT_ENCODERS1=split_files/text_encoders/qwen_3_4b.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-euler-flowmatch-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 ```
 
 ## Flux.2 dev
