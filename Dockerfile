@@ -68,9 +68,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Flux2Klein-Enhancer.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/naku-yh/ComfyUI_Flux2ImageReference.git  && \
-	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git
-
+	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git  && \
+	git clone --depth=1 --filter=blob:none https://github.com/naku-yh/ComfyUI_Flux2ImageReference.git
+	
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 RUN set -eux; \
@@ -101,11 +101,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-JoyCaption/requirements_gguf.txt \
 	-r ComfyUI-outputlists-combiner/requirements.txt \
 	-r ComfyUI-Lora-Manager/requirements.txt
-
-# Activate SAM3
-WORKDIR /ComfyUI/custom_nodes/ComfyUI-SAM3
-RUN git fetch --unshallow && git checkout a5e2ceb66d95dc74151669ef83f594265ed62caa
-RUN python install.py
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager

@@ -31,11 +31,15 @@
 
 - See hardware requirements for GPU
 - Specific models/loras/workflows for the templates are downloaded when the pod starts.
-- See the [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/) for the available features. 
+- See the [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/) for the available features.
+- Flux.2 Klein downloads by default the 4B (none gated) model, see [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_hf_gated) to add the 9B gated model.  
 
 - 👉 [Runpod Z-Image Base](https://console.runpod.io/deploy?template=ka3hvli4kf&ref=se4tkc5o)
 - 👉 [Runpod Z-Image Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
+
 - 👉 [Runpod Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
+- 👉 [Runpod Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)
+
 - 👉 [Runpod Qwen image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o)
 - 👉 [Runpod Qwen image edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o)
 
@@ -45,6 +49,7 @@
 |-----------------|---------------------|----------|---------|
 | Z-Image Turbo   | RTX A5000, A4500    | 20 GB    | 50 GB   |
 | Z-Image Base    | RTX A5000, A4500    | 20 GB    | 50 GB   |
+| Flux.2 Klein    | RTX A5000, A4500    | 20 GB    | 50 GB   |
 | Flux.2 Dev      | RTX A6000           | 44 GB    | 50 GB   |
 | Qwen image bf16       | RTX A6000/L40S | 44 GB    | 65 GB   |
 | Qwen image fp8        | RTX A4090      | 24 GB    | 50 GB   |

@@ -558,6 +558,8 @@ except Exception as e2:
     print("Failed:", e2)
 PY
 
+echo "ℹ️ Connections and/or diagnostics"
+
 if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
     echo "🎉 Provisioning done, ready to create AI content 🎉"
 
@@ -603,8 +605,6 @@ if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
     fi
 
 else
-    echo "ℹ️ Running error diagnosis"
-
     if [[ "$HAS_GPU_RUNPOD" -eq 0 ]]; then
         echo "⚠️ Pod started without a runpod GPU"
     fi

@@ -23,10 +23,6 @@
 - [Edit](provisioning/hf_qwen-image-edit.md)
 - [Layered](provisioning/hf_qwen-image-layered.md)
 
-## Qwen-image-layered
-
-- [layered](provisioning/hf_qwen-image-layered.md)
-
 ## Hunyuan image
 
 - [2.1](provisioning/hf_hunyuan_image21.md)
