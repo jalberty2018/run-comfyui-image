@@ -51,9 +51,10 @@
 | Z-Image Base    | RTX A5000, A4500    | 20 GB    | 50 GB   |
 | Flux.2 Klein    | RTX A5000, A4500    | 20 GB    | 50 GB   |
 | Flux.2 Dev      | RTX A6000           | 44 GB    | 50 GB   |
-| Qwen image bf16       | RTX A6000/L40S | 44 GB    | 65 GB   |
-| Qwen image fp8        | RTX A4090      | 24 GB    | 50 GB   |
-| Qwen image edit       | RTX A6000/L40S | 44 GB    | 65 GB   |
+| Qwen image bf16       | RTX A6000     | 44 GB    | 65 GB   |
+| Qwen image fp8        | RTX A5000      | 24 GB    | 45 GB   |
+| Qwen image edit bf16  | RTX A6000      | 44 GB    | 65 GB   |
+| Qwen image edit fp8   | RTX A5000      | 24 GB    | 45 GB   |
 
 ### Storage requirements
 

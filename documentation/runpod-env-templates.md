@@ -150,6 +150,7 @@ WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-t2i-
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-t2i-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-i2i-pod.json
 ```
 
 ### private 9B
@@ -214,17 +215,26 @@ HF_MODEL_VAE_FILENAME1=ae.safetensors
 #### public
 
 ```bash
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI
 HF_MODEL_VAE_FILENAME1=split_files/vae/qwen_image_vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/HunyuanVideo_1.5_repackaged
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-HF_MODEL_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
-HF_MODEL_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
+HF_MODEL_HVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_HVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-fp32.safetensors
+HF_MODEL_HVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_HVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors
+HF_MODEL_LVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
+HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 ```
 
 #### private
@@ -233,17 +243,26 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Qwen-Image-Edit_ComfyUI
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors
 HF_MODEL_VAE1=Comfy-Org/Qwen-Image_ComfyUI
 HF_MODEL_VAE_FILENAME1=split_files/vae/qwen_image_vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/HunyuanVideo_1.5_repackaged
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-HF_MODEL_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
-HF_MODEL_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
+HF_MODEL_HVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_HVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-fp32.safetensors
+HF_MODEL_HVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_HVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors
+HF_MODEL_LVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
+HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
+HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 ```
 
 ## Qwen-image-layered

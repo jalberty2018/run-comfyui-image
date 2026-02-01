@@ -127,9 +127,9 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
     python3 /workspace/ComfyUI/main.py ${COMFYUI_EXTRA_ARGUMENTS:---listen --enable-manager --preview-method auto} &
 
     # Wait until ComfyUI is ready
-    MAX_TRIES=40
+    MAX_TRIES="${COMFYUI_START_MAX_TRIES:-60}"
     COUNT=0
-		
+	
     until curl -s http://127.0.0.1:8188 > /dev/null; do
         COUNT=$((COUNT+1))
 

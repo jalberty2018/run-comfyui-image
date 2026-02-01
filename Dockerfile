@@ -64,12 +64,11 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \ 
 	git clone --depth=1 --filter=blob:none https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/scraed/LanPaint.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeQwenImageEditAdvanced.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Flux2Klein-Enhancer.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git  && \
-	git clone --depth=1 --filter=blob:none https://github.com/naku-yh/ComfyUI_Flux2ImageReference.git
+    git clone --depth=1 --filter=blob:none https://github.com/naku-yh/ComfyUI_Flux2ImageReference.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git
 	
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
@@ -137,7 +136,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.11.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.11.0 c for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager  + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"

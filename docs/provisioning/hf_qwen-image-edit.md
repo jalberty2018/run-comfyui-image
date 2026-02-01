@@ -46,19 +46,33 @@ hf download Comfy-Org/Qwen-Image_ComfyUI split_files/vae/qwen_image_vae.safetens
 
 ### Lighx2v
 
-#### bf16
+#### bf16 4steps
 
 ```bash
 hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors \
 --local-dir /workspace/ComfyUI/models/loras/
 ```
 
-#### fp32
+#### fp32 4steps
 
 ```bash
 hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-4steps-V1.0-fp32.safetensors \
 --local-dir /workspace/ComfyUI/models/loras/
 ```
+
+#### bf16 8steps
+
+```bash
+hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
+
+#### fp32 8steps
+
+```bash
+hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors \
+--local-dir /workspac
+
 
 ### Lora's 2509
 
