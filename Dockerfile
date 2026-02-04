@@ -71,8 +71,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/facok/comfyui-meancache-z.git && \
     git clone --depth=1 --filter=blob:none https://github.com/remingtonspaz/ComfyUI-ReferenceChain.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/scottmudge/ComfyUI-NAG.git
-	
+	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git
+
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 RUN set -eux; \
