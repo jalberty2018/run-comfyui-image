@@ -22,13 +22,14 @@ fi
 
 # Move necessary files to workspace
 echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss."
-echo "ℹ️ This takes some time on slower processors, longer if the volume is encrypted."    
+echo "ℹ️ This takes some time depending on hardware used, even longer if the volume is encrypted."
+
 for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."
         "/$script"
     else
-        echo "⚠️ WARNING: Skipping $script (not found)"
+        echo "⚠️ BUG: Skipping $script (not found)"
     fi
 done
 
@@ -37,7 +38,6 @@ mkdir -p /workspace/output/
 
 # Set optimizations
 export PYTORCH_ALLOC_CONF=expandable_segments:True,garbage_collection_threshold:0.8
-export COMFYUI_VRAM_MODE=HIGH_VRAM
 
 # GPU detection
 echo "ℹ️ Testing GPU/CUDA provisioning"
@@ -134,7 +134,8 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
         COUNT=$((COUNT+1))
 
         if [[ $COUNT -ge $MAX_TRIES ]]; then
-            echo "⚠️  WARNING: ComfyUI is still not responding after $MAX_TRIES attempts (~1 min)."
+            echo "⚠️  WARNING: ComfyUI is still not responding after $MAX_TRIES attempts (~2 min)."
+            echo "⚠️  SOLUTION: Use another region then $RUNPOD_DC_ID as vCPU speed is slow (normal count is around 20)"
             echo "⚠️  Continuing script anyway..."
             break
         fi
@@ -396,6 +397,7 @@ if [[ "$HAS_COMFYUI" -eq 1 ]]; then
     if (( MAX_VRAM_GIB > VRAM_THRESHOLD )); then
         HF_PREFIX="HF_MODEL_HVRAM_"
         echo "🟢 High VRAM detected (${MAX_VRAM_GIB} GB > ${VRAM_THRESHOLD} GB)"
+        export COMFYUI_VRAM_MODE=HIGH_VRAM
     else
        HF_PREFIX="HF_MODEL_LVRAM_"
        echo "🟡 Low VRAM detected (${MAX_VRAM_GIB} GB < ${VRAM_THRESHOLD} GB)"

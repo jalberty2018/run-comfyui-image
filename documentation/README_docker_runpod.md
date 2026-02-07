@@ -34,8 +34,7 @@
 - See the [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/) for the available features.
 - Flux.2 Klein downloads by default the 4B (none gated) model, see [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_hf_gated) to add the 9B gated model.  
 
-- 👉 [Runpod Z-Image Base](https://console.runpod.io/deploy?template=ka3hvli4kf&ref=se4tkc5o)
-- 👉 [Runpod Z-Image Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
+- 👉 [Runpod Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
 
 - 👉 [Runpod Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
 - 👉 [Runpod Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)

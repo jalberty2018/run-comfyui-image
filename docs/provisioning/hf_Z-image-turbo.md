@@ -4,6 +4,7 @@
 - [Fun Control](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0)
 - [De-Turbo](https://huggingface.co/ostris/Z-Image-De-Turbo)
 - [Vae](https://huggingface.co/wangkanai/flux-dev-fp16)
+- [Clear Vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae)
 
 ## Diffusion_model
 
@@ -43,9 +44,26 @@ hf download wangkanai/flux-dev-fp16 vae/flux/flux-vae-bf16.safetensors \
 --local-dir /workspace/ComfyUI/models/vae
 ```
 
+### Image_clear_vae
+
+#### Natural
+
+```bash
+hf download easygoing0114/Z-Image_clear_vae Z-Image_natural_vae.safetensors \ 
+--local-dir=/workspace/ComfyUI/models/vae
+```
+
+#### Clear
+
+```bash
+hf download easygoing0114/Z-Image_clear_vae Z-Image_clear_vae.safetensors \ 
+--local-dir=/workspace/ComfyUI/models/vae
+```
+
 ## Fun-Control patch
 
 ```bash
 hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0 Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors \
 --local-dir /workspace/ComfyUI/models/model_patches
 ```
+
