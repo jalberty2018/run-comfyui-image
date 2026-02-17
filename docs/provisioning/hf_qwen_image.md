@@ -2,6 +2,7 @@
 
 - [Model](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI)
 - [Lightx2v](https://huggingface.co/lightx2v/Qwen-Image-Lightning/)
+- [Fun ControlNet Union](https://huggingface.co/alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union)
 
 ## Diffusion_model 2512
 
@@ -64,3 +65,16 @@ hf download lightx2v/Qwen-Image-Lightning Qwen-Image-Lightning-4steps-V2.0.safet
 hf download lightx2v/Qwen-Image-Lightning Qwen-Image-Lightning-8steps-V2.0.safetensors \
 --local-dir /workspace/ComfyUI/models/loras/
 ```
+
+## Fun Controlnet Union
+
+```bash
+hf download alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors \
+—local-dir /workspace/ComfyUI/models/model_patches
+```
+
+
+
+
+
+
