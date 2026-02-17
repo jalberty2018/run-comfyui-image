@@ -27,7 +27,7 @@ WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.js
 WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-pod.json
 WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW8=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
-```
+WORKFLOW9=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-euler-flowmatch-pod.json
 
 ### Private
 
@@ -63,6 +63,7 @@ WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.js
 WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-pod.json
 WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW8=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
+WORKFLOW9=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-euler-flowmatch-pod.json
 ```
 
 ## Z-Image Base
@@ -103,8 +104,10 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-dev
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=flux2-dev.safetensors
 HF_MODEL_VAE1=wangkanai/flux-dev-fp16
 HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
@@ -226,8 +229,11 @@ HF_MODEL_LVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
+HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
+HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
 ```
 
 #### private
@@ -254,8 +260,11 @@ HF_MODEL_LVRAM_LORA1=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME1=Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
+HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
+HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
 ```
 
 ## Qwen-image-layered
@@ -303,12 +312,14 @@ HF_MODEL_LORA3=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME3=Qwen-Image-Lightning-8steps-V2.0.safetensors
 HF_MODEL_LVRAM_LORA4=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME4=Qwen-Image-fp8-e4m3fn-Lightning-4steps-V1.0-fp32.safetensors
+HF_MODEL_CONTROLNET1=alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union
+HF_MODEL_CONTROLNET_FILENAME1=Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod.json
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-LVRAM.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-LVRAM.json
 ```
-
 #### private
 
 ```bash
@@ -335,8 +346,11 @@ HF_MODEL_LORA3=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LORA_FILENAME3=Qwen-Image-Lightning-8steps-V2.0.safetensors
 HF_MODEL_LVRAM_LORA4=lightx2v/Qwen-Image-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME4=Qwen-Image-fp8-e4m3fn-Lightning-4steps-V1.0-fp32.safetensors
+HF_MODEL_CONTROLNET1=alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union
+HF_MODEL_CONTROLNET_FILENAME1=Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod.json
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-LVRAM.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-LVRAM.json
 ```

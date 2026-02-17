@@ -8,7 +8,7 @@ A streamlined and automated environment for running **ComfyUI** with **image mod
 
 ![runpod](images/runpod_ZIT.jpg)
 
-![Image](images/ai-generated-ZIT.jpg)
+![Image](images/ai-generated-ZIB-ZIT.jpg)
 
 ## 🔧 Features
 

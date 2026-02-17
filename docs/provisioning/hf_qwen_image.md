@@ -70,7 +70,7 @@ hf download lightx2v/Qwen-Image-Lightning Qwen-Image-Lightning-8steps-V2.0.safet
 
 ```bash
 hf download alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors \
-—local-dir /workspace/ComfyUI/models/model_patches
+--local-dir /workspace/ComfyUI/models/controlnet
 ```
 
 
