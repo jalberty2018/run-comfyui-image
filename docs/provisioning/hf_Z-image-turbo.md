@@ -62,8 +62,21 @@ hf download easygoing0114/Z-Image_clear_vae Z-Image_clear_vae.safetensors \
 
 ## Fun-Control patch
 
+### 2.0
+
 ```bash
 hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0 Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors \
 --local-dir /workspace/ComfyUI/models/model_patches
 ```
 
+### 2.1
+
+```bash
+hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-2601-8steps.safetensors \
+--local-dir /workspace/ComfyUI/models/model_patches
+```
+
+```bash
+hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2601-8steps.safetensors \
+--local-dir /workspace/ComfyUI/models/model_patches
+```

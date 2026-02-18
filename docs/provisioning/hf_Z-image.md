@@ -4,6 +4,7 @@
 - [HF Original](https://huggingface.co/Tongyi-MAI/Z-Image)
 - [Vae](https://huggingface.co/wangkanai/flux-dev-fp16)
 - [Clear Vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae)
+- [Z-Image-Fun-Controlnet-Union](https://huggingface.co/alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1)
 
 
 ## Diffusion_model
@@ -53,3 +54,16 @@ hf download easygoing0114/Z-Image_clear_vae Z-Image_natural_vae.safetensors \
 hf download easygoing0114/Z-Image_clear_vae Z-Image_clear_vae.safetensors \ 
 --local-dir=/workspace/ComfyUI/models/vae
 ```
+
+## Fun-Control patch
+
+```bash
+hf download alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1 Z-Image-Fun-Controlnet-Union-2.1.safetensors \
+--local-dir /workspace/ComfyUI/models/model_patches
+```
+
+```bash
+hf download alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1 Z-Image-Fun-Controlnet-Union-2.1-lite.safetensors \
+--local-dir /workspace/ComfyUI/models/model_patches
+```
+
