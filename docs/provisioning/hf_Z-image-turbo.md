@@ -24,10 +24,20 @@ hf download ostris/Z-Image-De-Turbo z_image_de_turbo_v1_bf16.safetensors \
 
 ## CLIP Text encoder
 
+### Standard
+
 ```bash
-hf download Comfy-Org/z_image_turbo split_files/text_encoders/qwen_3_4b.safetensors \
+hf download Comfy-Org/z_image split_files/text_encoders/qwen_3_4b.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
+
+### Abliturated
+
+```bash
+hf download chinmankokumin/Qwen3-4B-abliterated-v2 qwen_3_4b_abliterated_v2.safetensors \
+--local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
 ## Vae
 
 ### Original

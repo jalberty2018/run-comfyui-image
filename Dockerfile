@@ -72,7 +72,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/facok/comfyui-meancache-z.git && \
     git clone --depth=1 --filter=blob:none https://github.com/remingtonspaz/ComfyUI-ReferenceChain.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git
+	git clone --depth=1 --filter=blob:none https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/huchukato/ComfyUI-QwenVL-Mod.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git
 
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
@@ -108,7 +110,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-JoyCaption/requirements_gguf.txt \
 	-r ComfyUI-outputlists-combiner/requirements.txt \
 	-r ComfyUI-Lora-Manager/requirements.txt \
-	-r ComfyUI-SAM3/requirements.txt 
+	-r ComfyUI-SAM3/requirements.txt \
+	-r ComfyUI-QwenVL-Mod/requirements.txt 
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager

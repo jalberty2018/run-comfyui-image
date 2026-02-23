@@ -5,7 +5,7 @@
 - [Vae](https://huggingface.co/wangkanai/flux-dev-fp16)
 - [Clear Vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae)
 - [Z-Image-Fun-Controlnet-Union](https://huggingface.co/alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1)
-
+- [Clip abliturated](https://huggingface.co/chinmankokumin/Qwen3-4B-abliterated-v2)
 
 ## Diffusion_model
 
@@ -18,8 +18,17 @@ hf download Comfy-Org/z_image split_files/diffusion_models/z_image_bf16.safetens
 
 ## CLIP Text encoder
 
+### Standard
+
 ```bash
 hf download Comfy-Org/z_image split_files/text_encoders/qwen_3_4b.safetensors \
+--local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+### Abliturated
+
+```bash
+hf download chinmankokumin/Qwen3-4B-abliterated-v2 qwen_3_4b_abliterated_v2.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
 
