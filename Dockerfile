@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:17022026
+FROM ls250824/comfyui-runtime:25022026
 
 WORKDIR /ComfyUI
 
@@ -74,7 +74,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/huchukato/ComfyUI-QwenVL-Mod.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git
+	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/Terpentinas/EasyLoRAMerger.git
 
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
@@ -148,7 +149,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.14.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.15.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
