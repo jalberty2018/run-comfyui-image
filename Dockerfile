@@ -94,7 +94,7 @@ RUN sed -i '/^comfy-test/d' /ComfyUI/custom_nodes/ComfyUI-SAM3/requirements.txt
 WORKDIR /ComfyUI/custom_nodes
 RUN --mount=type=cache,target=/root/.cache/pip \
   python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
-    diffusers psutil \
+    diffusers psutil pydantic pydantic-settings \
     -r ComfyUI-Login/requirements.txt \
     -r ComfyUI-KJNodes/requirements.txt \
     -r RES4LYF/requirements.txt \

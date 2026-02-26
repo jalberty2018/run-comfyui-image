@@ -160,23 +160,46 @@ download_model_HF() {
     local file_var="$2"
     local dest_dir="$3"
 
-    if [[ -z "${!model_var}" || -z "${!file_var}" ]]; then
-        return 0
-    fi
+    [[ -z "${!model_var}" || -z "${!file_var}" ]] && return 0
 
     local model="${!model_var}"
     local file="${!file_var}"
     local target="/workspace/ComfyUI/models/$dest_dir"
+    local logfile="/workspace/hf_${file}.log"
+
     mkdir -p "$target"
 
     echo "ℹ️ [DOWNLOAD] Fetching $model + $file → $target"
 
-    if ! hf download "$model" "$file" --local-dir "$target" >/dev/null 2>&1; then
-        echo "⚠️ HF download failed"
+    # ---- SCRIPT SAFE HF MODE ----
+    export HF_HUB_DISABLE_PROGRESS_BARS=1
+    # export HF_HUB_ENABLE_HF_TRANSFER=0
+    # export HF_XET_DISABLE=1
+    export HF_HUB_VERBOSITY=error
+    export TERM=dumb
+    # -----------------------------
+
+    hf download "$model" "$file" --local-dir "$target" >"$logfile" 2>&1
+    local rc=$?
+
+    # ----------- SUCCESS ----------
+    if [[ $rc -eq 0 ]]; then
+        echo "✅ HF download completed"
+        rm -f "$logfile"
+        return 0
     fi
 
-    sleep 1
-    return 0
+    # ---- SEGFAULT AFTER SUCCESS ---
+    if [[ $rc -eq 139 && -f "$target/$file" ]]; then
+        echo "⚠️ HF segfault after download (file exists → OK)"
+        rm -f "$logfile"
+        return 0
+    fi
+
+    # -------- REAL FAILURE --------
+    echo "❌ HF download failed (exit=$rc)"
+    tail -n 40 "$logfile"
+    return $rc
 }
 
 download_generic_HF() {
@@ -195,18 +218,56 @@ download_generic_HF() {
     local target="/workspace/ComfyUI/$dest_dir"
     mkdir -p "$target"
 
+    # ---- SCRIPT SAFE HF MODE ----
+    export HF_HUB_DISABLE_PROGRESS_BARS=1
+    # export HF_HUB_ENABLE_HF_TRANSFER=0
+    # export HF_XET_DISABLE=1
+    export HF_HUB_VERBOSITY=error
+    export TERM=dumb
+    # -----------------------------
+
     local status="ok"
+    local logfile="/workspace/hf_generic_$$.log"
 
     if [[ -n "$file" ]]; then
         echo "ℹ️ [DOWNLOAD] Fetching $model/$file → $target"
-        hf download "$model" "$file" --local-dir "$target" >/dev/null 2>&1 || status="fail"
+
+        hf download "$model" "$file" --local-dir "$target" >"$logfile" 2>&1
+        local rc=$?
+
+        if [[ $rc -ne 0 ]]; then
+            # segfault after download but file exists -> treat as OK
+            if [[ $rc -eq 139 && -f "$target/$file" ]]; then
+                echo "⚠️ HF segfault after download (file exists → OK): $model/$file"
+                rc=0
+            else
+                status="fail"
+            fi
+        fi
     else
         echo "ℹ️ [DOWNLOAD] Fetching $model → $target"
-        hf download "$model" --local-dir "$target" >/dev/null 2>&1 || status="fail"
+
+        hf download "$model" --local-dir "$target" >"$logfile" 2>&1
+        local rc=$?
+
+        if [[ $rc -ne 0 ]]; then
+            # For repo snapshot downloads, segfault might happen after files landed.
+            # Treat as OK if target has at least one file.
+            if [[ $rc -eq 139 ]] && find "$target" -type f -maxdepth 5 | head -n 1 | grep -q .; then
+                echo "⚠️ HF segfault after download (target not empty → OK): $model"
+                rc=0
+            else
+                status="fail"
+            fi
+        fi
     fi
 
     if [[ "$status" == "fail" ]]; then
-        echo "⚠️ HF download generic failed: $model/$file/$target "
+        echo "❌ HF download generic failed: model=$model file=${file:-"(repo)"} target=$target"
+        tail -n 60 "$logfile"
+    else
+        # keep logs clean
+        rm -f "$logfile"
     fi
 
     sleep 1
