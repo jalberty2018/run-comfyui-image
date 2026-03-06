@@ -77,6 +77,10 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/Terpentinas/EasyLoRAMerger.git
 
+# Use working version
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
+RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
+
 # Rewrite any top-level CPU ORT refs to GPU ORT
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 RUN set -eux; \
