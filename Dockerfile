@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:06032026
+FROM ls250824/comfyui-runtime:13032026
 
 WORKDIR /ComfyUI
 
@@ -61,7 +61,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/RamonGuthrie/ComfyUI-RBG-SmartSeedVariance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/willmiao/ComfyUI-Lora-Manager.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/rethink-studios/comfyui-model-linker-desktop.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \ 
+	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/scraed/LanPaint.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
@@ -77,12 +77,11 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/Terpentinas/EasyLoRAMerger.git
 
-# Use working version
-WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
-RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
+# triton-windows error
+# RUN cd ComfyUI-RMBG && git fetch --unshallow && git checkout 9ecda2e689d72298b4dca39403a85d13e53ea659
 
 # Rewrite any top-level CPU ORT refs to GPU ORT
-WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 RUN set -eux; \
   for f in \
     requirements.txt; do \
@@ -90,9 +89,18 @@ RUN set -eux; \
       sed -i -E 's/^( *| *)(onnxruntime)([<>=].*)?(\s*)$/\1onnxruntime-gpu==1.22.*\4/i' "$f"; \
     done
 
+RUN set -eux; \
+  grep -RniE '^[[:space:]]*onnxruntime([[:space:]]*[<>=!~].*)?[[:space:]]*$|^[[:space:]]*onnxruntime-gpu([[:space:]]*[<>=!~].*)?[[:space:]]*$' \
+    /ComfyUI/custom_nodes || true
+
 # Pixi problem SAM3
-RUN sed -i '/^comfy-env/d' /ComfyUI/custom_nodes/ComfyUI-SAM3/requirements.txt
-RUN sed -i '/^comfy-test/d' /ComfyUI/custom_nodes/ComfyUI-SAM3/requirements.txt
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-SAM3
+RUN sed -i '/^comfy-env/d' requirements.txt
+RUN sed -i '/^comfy-test/d' requirements.txt
+
+# Use working version
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
+RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
 
 # Install Dependencies for Cloned Repositories
 WORKDIR /ComfyUI/custom_nodes
@@ -153,7 +161,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.16.3 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.17.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
