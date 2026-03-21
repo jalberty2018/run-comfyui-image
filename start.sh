@@ -20,19 +20,6 @@ if [[ -n "${RUNPOD_GPU_COUNT:-}" ]]; then
    echo 'source /etc/rp_environment' >> ~/.bashrc
 fi
 
-# Move necessary files to workspace
-echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss."
-echo "ℹ️ This takes some time depending on hardware used, even longer if the volume is encrypted."
-
-for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
-    if [ -f "/$script" ]; then
-        echo "Executing $script..."
-        "/$script"
-    else
-        echo "⚠️ BUG: Skipping $script (not found)"
-    fi
-done
-
 # Create output directory for cloud transfer
 mkdir -p /workspace/output/
 
@@ -63,6 +50,21 @@ if command -v nvidia-smi >/dev/null 2>&1; then
   fi
 else
   echo "⚠️ [NO GPU] No GPU found via nvidia-smi"
+fi
+
+# Move necessary files to workspace
+if [[ "$HAS_GPU" -eq 1 || "$HAS_GPU_RUNPOD" -eq 1 ]]; then  
+	echo "ℹ️ [Moving necessary files to workspace] enabling Start/Stop/Restart pod without data loss."
+	echo "ℹ️ This takes some time depending on hardware used, even longer if the volume is encrypted."
+	
+	for script in comfyui-on-workspace.sh files-on-workspace.sh test-on-workspace.sh docs-on-workspace.sh; do
+	    if [ -f "/$script" ]; then
+	        echo "Executing $script..."
+	        "/$script"
+	    else
+	        echo "⚠️ BUG: Skipping $script (not found)"
+	    fi
+	done
 fi
 
 # Start code-server (HTTP port 9000) 
