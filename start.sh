@@ -646,13 +646,15 @@ else
     if [[ "$HAS_CUDA" -eq 0 ]]; then
         echo "❌ Pytorch CUDA driver error/mismatch/not available"
         if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
-            echo "⚠️ [SOLUTION] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
+            echo "⚠️ [SOLUTION 1] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
+			echo "⚠️ [SOLUTION 2] Specify CUDA 12.8 using the runpod console filter. ⚠️"
         fi
     fi
 
     if [[ "$HAS_CUDA" -eq 1 && "$HAS_COMFYUI" -eq 0 ]]; then
-        echo "❌ ComfyUI is not online"
-        echo "⚠️ [SOLUTION] restart pod ⚠️"
+        echo "❌ ComfyUI is not online (extreme slow vCPU's)"
+        echo "⚠️ [SOLUTION 1] restart pod ⚠️"
+		echo "⚠️ [SOLUTION 2] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
     fi
 fi
 
