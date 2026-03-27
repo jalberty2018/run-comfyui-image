@@ -240,6 +240,7 @@ HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-LVRAM.json
 ```
 
 #### private
@@ -271,6 +272,7 @@ HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-LVRAM.json
 ```
 
 ## Qwen-image-layered
