@@ -13,8 +13,8 @@ HF_MODEL_VAE1=wangkanai/flux-dev-fp16
 HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
 HF_MODEL_VAE2=easygoing0114/Z-Image_clear_vae
 HF_MODEL_VAE_FILENAME2=Z-Image_natural_vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image_turbo
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
+HF_MODEL_TEXT_ENCODERS1=chinmankokumin/Qwen3-4B-abliterated-v2
+HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_4b_abliterated_v2.safetensors
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.1-2601-8steps.safetensors
 HF_MODEL_PATCHES2=alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1
@@ -23,17 +23,11 @@ HF_MODEL_LORA1=Comfy-Org/z_image_turbo
 HF_MODEL_LORA_FILENAME1=split_files/loras/z_image_turbo_distill_patch_lora_bf16.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIT-t2i-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
-WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-pod.json
-WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
-WORKFLOW8=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
-WORKFLOW9=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-euler-flowmatch-pod.json
-WORKFLOW10=https://provisioning.rozenlaan.site/image/ZIB-ZIT-i2i-controlnet-pod.json
-WORKFLOW11=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
 ```
 
 ### Private
@@ -56,17 +50,11 @@ HF_MODEL_PATCHES2=alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME2=Z-Image-Fun-Controlnet-Union-2.1.safetensors
 HF_FULL_MODEL1=huihui-ai/Huihui-Qwen3-VL-4B-Instruct-abliterated
 HF_MODEL_DIR1=models/LLM/Qwen-VL/Qwen3-VL-4B-Instruct
-WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIT-t2i-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-beta-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIT-t2i-clownshark-flowmatch-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-t2i-euler-dpmpp-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
-WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-pod.json
-WORKFLOW7=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
-WORKFLOW8=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
-WORKFLOW9=https://provisioning.rozenlaan.site/image/ZIB-ZIT-t2i-euler-flowmatch-pod.json
-WORKFLOW10=https://provisioning.rozenlaan.site/image/ZIB-ZIT-i2i-controlnet-pod.json
-WORKFLOW11=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
 ```
 
 ## Z-Image Base
@@ -78,13 +66,12 @@ HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/z_image
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/z_image_bf16.safetensors
 HF_MODEL_VAE1=wangkanai/flux-dev-fp16
 HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/z_image
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_4b.safetensors
+HF_MODEL_TEXT_ENCODERS1=chinmankokumin/Qwen3-4B-abliterated-v2
+HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_4b_abliterated_v2.safetensors
 HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Fun-Controlnet-Union-2.1.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-euler-flowmatch-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 ```
 
 ## Flux.2 dev
