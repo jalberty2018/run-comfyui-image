@@ -102,6 +102,10 @@ WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
 # Use working version
 RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
 
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-Flux2Klein-Enhancer
+# Use working version
+RUN git fetch --unshallow && git checkout 2240173c9ea7e5709334c4d96460ebf39ab17e38
+
 # Install Dependencies for Cloned Repositories
 WORKDIR /ComfyUI/custom_nodes
 RUN --mount=type=cache,target=/root/.cache/pip \
