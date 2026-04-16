@@ -19,7 +19,7 @@
 
 ## Qwen
 
-- [Image](provisioning)(hf_qwen_image.md)
+- [Image](provisioning/hf_qwen_image.md)
 - [Edit](provisioning/hf_qwen-image-edit.md)
 - [Layered](provisioning/hf_qwen-image-layered.md)
 
@@ -29,7 +29,7 @@
 
 ## Baidu
 
-- [ERNIE Image](provisioning/hf_baidu_ERNIE_image.md)
+- [ERNIE Image](provisioning/hf_baidu_ernie_image.md)
 
 ## Chroma1
 
