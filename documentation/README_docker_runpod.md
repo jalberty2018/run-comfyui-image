@@ -25,7 +25,6 @@
 ### Deployment/Usage information
 
 - The templates on runpod are tested on RTX GPU's.
-- Avoid using ID's without a region as they are not reliable.
 
 ### Runpod templates
 
@@ -35,6 +34,8 @@
 - Flux.2 Klein downloads by default the 4B (none gated) model, see [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_hf_gated) to add the 9B gated model.  
 
 - 👉 [Runpod Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
+
+- 👉 [Runpod ERNIE-Image Base and Turbo](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o)
 
 - 👉 [Runpod Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
 - 👉 [Runpod Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)
@@ -46,11 +47,10 @@
 
 | Model           | Tested GPU          | Min VRAM | Min RAM |
 |-----------------|---------------------|----------|---------|
-| Z-Image Turbo   | RTX A4500    | 20 GB    | 50 GB   |
-| Z-Image Base    | RTX A5000, RTX 3090    | 24 GB    | 50 GB   |
-| Z-Image Base    | RTX A4500    | 20 GB    | 50 GB   |
+| Z-Image Turbo   | RTX A4500, RTX A5000 | 20 GB    | 50 GB   |
+| ERNIE-Image     | RTX A4500 | 20 GB    | 50 GB   |
 | Flux.2 Klein    | RTX A4500    | 20 GB    | 50 GB   |
-| Flux.2 Dev      | RTX A6000           | 44 GB    | 50 GB   |
+| Flux.2 Dev      | RTX A6000    | 44 GB    | 50 GB   |
 | Qwen image bf16       | RTX A6000  | 44 GB    | 65 GB   |
 | Qwen image fp8        | RTX A5000 , RTX 3090 | 24 GB    | 45 GB   |
 | Qwen image edit bf16  | RTX A6000 | 44 GB    | 65 GB   |
@@ -61,6 +61,7 @@
 | Component       | Model | Minimum                    |
 |-----------------|-------|----------------------------|
 | Volume Storage  | ZI    | 50 GB (`/workspace`)       |
+| Volume Storage  | ERNIE | 50 GB (`/workspace`)       |
 | Volume Storage  | Flux  | 90 GB (`/workspace`)       |
 | Volume Storage  | Qwen  | 70 GB (`/workspace`)       |
 | Pod Storage     | —     | 15 GB                      |

@@ -354,19 +354,39 @@ WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-co
 
 ### ERNIE-Image
 
-#### private
+#### public
 
 ```bash
 HF_MODEL_DIFFUSION_MODELS1= Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=diffusion_models/ernie-image-turbo.safetensors
 HF_MODEL_DIFFUSION_MODELS2= Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME2=diffusion_models/ernie-image.safetensors
-HF_MODEL_VAE1=wangkanai/flux-dev-fp16
-HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
-HF_MODEL_VAE2=Comfy-Org/ERNIE-Image
-HF_MODEL_VAE_FILENAME2=vae/flux2-vae.safetensors
+HF_MODEL_VAE1=Comfy-Org/ERNIE-Image
+HF_MODEL_VAE_FILENAME1=vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/ERNIE-Image
 HF_MODEL_TEXT_ENCODERS_FILENAME1=text_encoders/ministral-3-3b.safetensors
 HF_MODEL_TEXT_ENCODERS2=Comfy-Org/ERNIE-Image
 HF_MODEL_TEXT_ENCODERS_FILENAME2=text_encoders/ernie-image-prompt-enhancer.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ERNIE-Image-Turbo-t2i-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ERNIE-Image-t2i-pod.json
+```
+
+#### private
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_DIFFUSION_MODELS1= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=diffusion_models/ernie-image-turbo.safetensors
+HF_MODEL_DIFFUSION_MODELS2= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS_FILENAME2=diffusion_models/ernie-image.safetensors
+HF_MODEL_VAE1=Comfy-Org/ERNIE-Image
+HF_MODEL_VAE_FILENAME1=vae/flux2-vae.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/ERNIE-Image
+HF_MODEL_TEXT_ENCODERS_FILENAME1=text_encoders/ministral-3-3b.safetensors
+HF_MODEL_TEXT_ENCODERS2=Comfy-Org/ERNIE-Image
+HF_MODEL_TEXT_ENCODERS_FILENAME2=text_encoders/ernie-image-prompt-enhancer.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/ERNIE-Image-Turbo-t2i-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/ERNIE-Image-t2i-pod.json
 ```
