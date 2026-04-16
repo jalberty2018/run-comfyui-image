@@ -23,9 +23,13 @@
 - [Edit](provisioning/hf_qwen-image-edit.md)
 - [Layered](provisioning/hf_qwen-image-layered.md)
 
-## Hunyuan image
+## Hunyuan
 
 - [2.1](provisioning/hf_hunyuan_image21.md)
+
+## Baidu
+
+- [ERNIE Image](provisioning/hf_baidu_ERNIE_image.md)
 
 ## Chroma1
 
