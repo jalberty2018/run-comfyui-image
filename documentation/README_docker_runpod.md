@@ -6,7 +6,7 @@
 - Supports advanced workflows for **image generation** and **enhancement** using pre-installed custom nodes.
 - Compatible with high-performance NVIDIA GPUs (CUDA 12.8).
 - Compiled attentions and GPU accelerations.
-- Automatic selecting bf16 or fp8 models/workflows if supported, view hardware requirements for possible GPU's
+- Automatic selecting bf16 or fp8 models/workflows.
 
 ## Built-in **authentication**
   
@@ -20,28 +20,31 @@
 
 - If the image is **less then one day old** it is possible that it is not stable and will be updated.
 
-## Template Deployment
+## Template Deployment on Runpod
 
 ### Deployment/Usage information
 
 - The templates on runpod are tested on RTX GPU's.
 
-### Runpod templates
+### Templates
 
-- See hardware requirements for GPU
 - Specific models/loras/workflows for the templates are downloaded when the pod starts.
-- See the [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/) for the available features.
 - Flux.2 Klein downloads by default the 4B (none gated) model, see [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_hf_gated) to add the 9B gated model.  
 
-- 👉 [Runpod Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
+- 👉 [Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
 
-- 👉 [Runpod ERNIE-Image Base and Turbo](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o)
+- 👉 [ERNIE-Image Base and Turbo](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o)
 
-- 👉 [Runpod Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
-- 👉 [Runpod Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)
+- 👉 [Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
+- 👉 [Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)
 
-- 👉 [Runpod Qwen image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o)
-- 👉 [Runpod Qwen image edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o)
+- 👉 [Qwen image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o)
+- 👉 [Qwen image edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o)
+
+### Pod documentation
+
+- [Start](https://comfyui.rozenlaan.site/ComfyUI_image/)
+- [Tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/)
 
 ### Hardware requirements
 
@@ -66,10 +69,10 @@
 | Volume Storage  | Qwen  | 70 GB (`/workspace`)       |
 | Pod Storage     | —     | 15 GB                      |
 
-## Image documentation
+### Other available pods
 
-- [Start](https://comfyui.rozenlaan.site/ComfyUI_image/)
-- [Tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/)
+- [WAN 2.2](https://comfyui.rozenlaan.site/ComfyUI_WAN/)
+- [LTX 2.3](https://comfyui.rozenlaan.site/ComfyUI_LTX/)
 
 
 

@@ -660,6 +660,8 @@ else
     fi
 fi
 
+echo "📘 Tutorial: https://comfyui.rozenlaan.site/ComfyUI_image_tutorial/"
+
 # Keep the container running
 echo "ℹ️ End script"
 exec sleep infinity
