@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:16042026
+FROM ls250824/comfyui-runtime:25042026
 
 WORKDIR /ComfyUI
 
@@ -43,7 +43,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/liusida/ComfyUI-AutoCropFaces.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/GizmoR13/PG-Nodes.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Scale-Image-to-Total-Pixels-Advanced && \
+	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Scale-Image-to-Total-Pixels-Advanced.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/bradsec/ComfyUI_StringEssentials.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/x3bits/ComfyUI-Power-Flow.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/9nate-drake/Comfyui-SecNodes.git && \
@@ -78,8 +78,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
     git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit
-	
+	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/IAMCCS/IAMCCS-nodes.git
+
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
 RUN set -eux; \
@@ -104,11 +105,16 @@ WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
 # Use working version
 RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
 
+WORKDIR /
+# Install Dependencies global
+RUN --mount=type=cache,target=/root/.cache/pip \
+  python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
+  diffusers psutil pydantic pydantic-settings
+
 # Install Dependencies for Cloned Repositories
 WORKDIR /ComfyUI/custom_nodes
 RUN --mount=type=cache,target=/root/.cache/pip \
   python -m pip install --no-cache-dir --root-user-action ignore -c /constraints.txt \
-    diffusers psutil pydantic pydantic-settings \
     -r ComfyUI-Login/requirements.txt \
     -r ComfyUI-KJNodes/requirements.txt \
     -r RES4LYF/requirements.txt \
@@ -163,7 +169,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.19.1 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.19.3 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"

@@ -50,7 +50,7 @@
 
 | Model           | Tested GPU          | Min VRAM | Min RAM |
 |-----------------|---------------------|----------|---------|
-| Z-Image Turbo   | RTX A4500, RTX A5000 | 20 GB    | 50 GB   |
+| Z-Image | RTX A4500, RTX A5000 | 20 GB    | 50 GB   |
 | ERNIE-Image     | RTX A4500 | 20 GB    | 50 GB   |
 | Flux.2 Klein    | RTX A4500    | 20 GB    | 50 GB   |
 | Flux.2 Dev      | RTX A6000    | 44 GB    | 50 GB   |
