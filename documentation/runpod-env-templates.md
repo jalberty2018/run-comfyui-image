@@ -79,12 +79,16 @@ WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 ### Public
 
 ```bash
-HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-dev
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=flux2-dev.safetensors
 HF_MODEL_VAE1=Comfy-Org/flux2-dev
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
+HF_MODEL_LORA1=lovis93/Flux-2-Multi-Angles-LoRA-v2
+HF_MODEL_LORA_FILENAME1=flux-multi-angles-v2-72poses-comfy.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
@@ -106,6 +110,8 @@ HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+HF_MODEL_LORA1=lovis93/Flux-2-Multi-Angles-LoRA-v2
+HF_MODEL_LORA_FILENAME1=flux-multi-angles-v2-72poses-comfy.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
 ```
 
@@ -224,6 +230,8 @@ HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
 HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
 HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
+HF_MODEL_LORA2=lovis93/next-scene-qwen-image-lora-2509
+HF_MODEL_LORA_FILENAME2=next-scene_lora-v2-3000.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
@@ -256,6 +264,8 @@ HF_MODEL_LVRAM_LORA2=lightx2v/Qwen-Image-Edit-2511-Lightning
 HF_MODEL_LVRAM_LORA_FILENAME2=Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors
 HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
 HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
+HF_MODEL_LORA2=lovis93/next-scene-qwen-image-lora-2509
+HF_MODEL_LORA_FILENAME2=next-scene_lora-v2-3000.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json

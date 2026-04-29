@@ -1,7 +1,8 @@
-# Manual provisioning Flux.2
+# Manual provisioning Flux.2 Dev
 
-- [HF Black-forest-labs](https://huggingface.co/black-forest-labs/FLUX.2-dev)
-- [HF ComfyUI](https://huggingface.co/Comfy-Org/flux2-dev)
+- [Black-forest-labs](https://huggingface.co/black-forest-labs/FLUX.2-dev)
+- [ComfyUI](https://huggingface.co/Comfy-Org/flux2-dev)
+- [Multi angles lora]https://huggingface.co/lovis93/Flux-2-Multi-Angles-LoRA-v2
 
 ## Diffusion_model
 
@@ -58,9 +59,16 @@ hf download Comfy-Org/flux2-dev split_files/vae/flux2-vae.safetensors \
 --local-dir /workspace/ComfyUI/models/vae/
 ```
 
-#### bf16
+### bf16
 
 ```bash
 hf download wangkanai/flux-dev-fp16 vae/flux/flux-vae-bf16.safetensors \
 —local-dir /workspace/ComfyUI/models/vae
+```
+
+## Loras
+
+```bash
+hf download lovis93/Flux-2-Multi-Angles-LoRA-v2 flux-multi-angles-v2-72poses-comfy.safetensors \
+—local-dir /workspace/ComfyUI/models/loras
 ```

@@ -2,6 +2,7 @@
 
 - [Model](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI)
 - [Lightx2v](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning)
+- [Next scene](https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509)
 
 ## Diffusion_model 2511
 
@@ -71,10 +72,10 @@ hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightni
 
 ```bash
 hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors \
---local-dir /workspac
+--local-dir /workspace
+```
 
-
-### Lora's 2509
+## Lora's 2509
 
 ```bash
 hf download Comfy-Org/Qwen-Image-Edit_ComfyUI split_files/loras/Qwen-Image-Edit-2509-Anything2RealAlpha.safetensors \
@@ -101,11 +102,10 @@ hf download Comfy-Org/Qwen-Image-Edit_ComfyUI split_files/loras/Qwen-Edit-2509-M
 --local-dir /workspace/ComfyUI/models/loras/
 ```
 
-
-
-
-
-
+```bash
+hf download lovis93/next-scene-qwen-image-lora-2509 next-scene_lora-v2-3000.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
 
 
 
