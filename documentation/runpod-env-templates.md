@@ -87,11 +87,16 @@ HF_MODEL_VAE1=Comfy-Org/flux2-dev
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
-HF_MODEL_LORA1=lovis93/Flux-2-Multi-Angles-LoRA-v2
-HF_MODEL_LORA_FILENAME1=flux-multi-angles-v2-72poses-comfy.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
+HF_MODEL_LORA1=lovis93/Flux-2-Multi-Angles-LoRA-v2
+HF_MODEL_LORA_FILENAME1=flux-multi-angles-v2-72poses-comfy.safetensors
+HF_MODEL_LORA2=fal/FLUX.2-dev-Turbo
+HF_MODEL_LORA_FILENAME2=flux.2-turbo-lora.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-HVRAM.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-HVRAM.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-LVRAM.json
 ```
 
 ### Private
@@ -104,15 +109,20 @@ HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/flux2-dev
 HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/flux2_dev_fp8mixed.safetensors
 HF_MODEL_HVRAM_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-dev
 HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=flux2-dev.safetensors
-HF_MODEL_VAE1=wangkanai/flux-dev-fp16
-HF_MODEL_VAE_FILENAME1=vae/flux/flux-vae-bf16.safetensors
+HF_MODEL_VAE1=Comfy-Org/flux2-dev
+HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/flux2-dev
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 HF_MODEL_LORA1=lovis93/Flux-2-Multi-Angles-LoRA-v2
 HF_MODEL_LORA_FILENAME1=flux-multi-angles-v2-72poses-comfy.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod.json
+HF_MODEL_LORA2=fal/FLUX.2-dev-Turbo
+HF_MODEL_LORA_FILENAME2=flux.2-turbo-lora.safetensors
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-HVRAM.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-HVRAM.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-LVRAM.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-LVRAM.json
 ```
 
 ## Flux.2 Klein

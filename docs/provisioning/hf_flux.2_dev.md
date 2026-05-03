@@ -63,12 +63,19 @@ hf download Comfy-Org/flux2-dev split_files/vae/flux2-vae.safetensors \
 
 ```bash
 hf download wangkanai/flux-dev-fp16 vae/flux/flux-vae-bf16.safetensors \
-—local-dir /workspace/ComfyUI/models/vae
+--local-dir /workspace/ComfyUI/models/vae
+```
+
+## Turbo lora
+
+```bash
+hf download fal/FLUX.2-dev-Turbo flux.2-turbo-lora.safetensors \ 
+--local-dir /workspace/ComfyUI/models/loras
 ```
 
 ## Loras
 
 ```bash
 hf download lovis93/Flux-2-Multi-Angles-LoRA-v2 flux-multi-angles-v2-72poses-comfy.safetensors \
-—local-dir /workspace/ComfyUI/models/loras
+--local-dir /workspace/ComfyUI/models/loras
 ```
