@@ -103,63 +103,32 @@ else
   echo "⚠️ Python not found – assuming no CUDA"
 fi
 
-download_model_CIVITAI() {
-    local url_var="$1"
-    local dest_dir="$2"
-
-    if [[ -z "${!url_var}" ]]; then
-        return 0
-    fi
-
-    local target="/workspace/ComfyUI/models/$dest_dir"
-    mkdir -p "$target"
-
-    local url="${!url_var}"
-
-    if [[ -z "$CIVITAI_TOKEN" ]]; then
-        echo "⚠️ ERROR: CIVITAI_TOKEN is not set '$url' not downloaded"
-        return 1
-    fi
-
-    local filename
-    filename="$(basename "$(printf '%s\n' "$url" | sed 's/[?#].*$//')")"
-
-    if [[ "$filename" == "download" || "$filename" == "models" || -z "$filename" ]]; then
-        filename=""
-    fi
-
-    if [[ -n "$filename" ]] && compgen -G "$target/$filename*" > /dev/null; then
-        echo "✅ [SKIP] $filename already exists in $target"
-        return 0
-    fi
-
-    echo "ℹ️ [DOWNLOAD] Fetching $url → $target ..."
-    
-    civitai --quit "$url" "$target" || {
-        echo "⚠️ Failed to download $url"
-        return 1
-    }
-
-    sleep 1
-    return 0
-}
-
+# provisioning Models and loras CIVITAI
 if [[ "$HAS_CUDA" -eq 1 ]]; then
-	# provisioning Models and loras CIVITAI
-    echo "📥 Provisioning models CIVITAI"
 	
-    # categorie: NAME:MAP	
+	# categorie: NAME:MAP	
     CATEGORIES_CIVITAI=(
        "LORA_URL:loras"
 	   "UNET_URL:diffusion_models"
     )
-
+	
+    echo "📥 Provisioning models civitai.com"
     for cat in "${CATEGORIES_CIVITAI[@]}"; do
       IFS=":" read -r NAME DIR <<< "$cat"
 	
       for i in $(seq 1 50); do
-        VAR1="CIVITAI_MODEL_${NAME}${i}"
-        download_model_CIVITAI "$VAR1" "$DIR"
+        VAR1="CIVITAI_COM_MODEL_${NAME}${i}"
+        civitai_com "$VAR1" "$DIR"
+      done
+    done
+	
+	echo "📥 Provisioning models civitai.red"
+    for cat in "${CATEGORIES_CIVITAI[@]}"; do
+      IFS=":" read -r NAME DIR <<< "$cat"
+	
+      for i in $(seq 1 50); do
+        VAR1="CIVITAI_RED_MODEL_${NAME}${i}"
+        civitai_red "$VAR1" "$DIR"
       done
     done
 fi
