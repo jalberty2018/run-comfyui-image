@@ -111,6 +111,8 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
        "UNET_ID:diffusion_models"
     )
 
+    target="/workspace/ComfyUI/models"
+
     echo "📥 Provisioning models civitai.com"
     for cat in "${CATEGORIES_CIVITAI[@]}"; do
         IFS=":" read -r NAME DIR <<< "$cat"
@@ -119,7 +121,7 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
             VAR1="CIVITAI_COM_MODEL_${NAME}${i}"
 
             if [[ -n "${!VAR1}" ]]; then
-                civitai_com "${!VAR1}" "$DIR"
+                civitai_com "${!VAR1}" "$target/$DIR" --quiet
             fi
         done
     done
@@ -132,7 +134,7 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
             VAR1="CIVITAI_RED_MODEL_${NAME}${i}"
 
             if [[ -n "${!VAR1}" ]]; then
-                civitai_red "${!VAR1}" "$DIR"
+                civitai_red "${!VAR1}" "$target/$DIR" --quiet
             fi
         done
     done
