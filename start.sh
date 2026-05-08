@@ -106,7 +106,6 @@ fi
 # provisioning Models and loras CIVITAI
 if [[ "$HAS_CUDA" -eq 1 ]]; then
 
-    # categorie: NAME:MAP
     CATEGORIES_CIVITAI=(
        "LORA_ID:loras"
        "UNET_ID:diffusion_models"
@@ -118,7 +117,10 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
 
         for i in $(seq 1 50); do
             VAR1="CIVITAI_COM_MODEL_${NAME}${i}"
-            civitai_com "$VAR1" "$DIR"
+
+            if [[ -n "${!VAR1}" ]]; then
+                civitai_com "${!VAR1}" "$DIR"
+            fi
         done
     done
 
@@ -128,7 +130,10 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
 
         for i in $(seq 1 50); do
             VAR1="CIVITAI_RED_MODEL_${NAME}${i}"
-            civitai_red "$VAR1" "$DIR"
+
+            if [[ -n "${!VAR1}" ]]; then
+                civitai_red "${!VAR1}" "$DIR"
+            fi
         done
     done
 fi
