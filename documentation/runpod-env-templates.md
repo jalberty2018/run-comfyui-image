@@ -50,6 +50,7 @@ HF_MODEL_PATCHES2=alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME2=Z-Image-Fun-Controlnet-Union-2.1.safetensors
 HF_FULL_MODEL1=huihui-ai/Huihui-Qwen3-VL-4B-Instruct-abliterated
 HF_MODEL_DIR1=models/LLM/Qwen-VL/Qwen3-VL-4B-Instruct
+CIVITAI_RED_MODEL_LORA_ID1=2922880
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json

@@ -105,31 +105,31 @@ fi
 
 # provisioning Models and loras CIVITAI
 if [[ "$HAS_CUDA" -eq 1 ]]; then
-	
-	# categorie: NAME:MAP	
+
+    # categorie: NAME:MAP
     CATEGORIES_CIVITAI=(
-       "LORA_URL:loras"
-	   "UNET_URL:diffusion_models"
+       "LORA_ID:loras"
+       "UNET_ID:diffusion_models"
     )
-	
+
     echo "📥 Provisioning models civitai.com"
     for cat in "${CATEGORIES_CIVITAI[@]}"; do
-      IFS=":" read -r NAME DIR <<< "$cat"
-	
-      for i in $(seq 1 50); do
-        VAR1="CIVITAI_COM_MODEL_${NAME}${i}"
-        civitai_com "$VAR1" "$DIR"
-      done
+        IFS=":" read -r NAME DIR <<< "$cat"
+
+        for i in $(seq 1 50); do
+            VAR1="CIVITAI_COM_MODEL_${NAME}${i}"
+            civitai_com "$VAR1" "$DIR"
+        done
     done
-	
-	echo "📥 Provisioning models civitai.red"
+
+    echo "📥 Provisioning models civitai.red"
     for cat in "${CATEGORIES_CIVITAI[@]}"; do
-      IFS=":" read -r NAME DIR <<< "$cat"
-	
-      for i in $(seq 1 50); do
-        VAR1="CIVITAI_RED_MODEL_${NAME}${i}"
-        civitai_red "$VAR1" "$DIR"
-      done
+        IFS=":" read -r NAME DIR <<< "$cat"
+
+        for i in $(seq 1 50); do
+            VAR1="CIVITAI_RED_MODEL_${NAME}${i}"
+            civitai_red "$VAR1" "$DIR"
+        done
     done
 fi
 
