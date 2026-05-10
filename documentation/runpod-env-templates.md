@@ -150,11 +150,11 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-t2i-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-ti2i-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Base-t2i-pod.json
 WORKFLOW6=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-i2i-pod.json
-WORKFLOW7=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-t2i-pod.json
+WORKFLOW7=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-ti2i-pod.json
 WORKFLOW8=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-mi2i-pod.json
 ```
 
@@ -172,10 +172,9 @@ HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-t2i-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-ti2i-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 ```
 
 ## Flux.1 dev Kontext
