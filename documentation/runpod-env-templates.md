@@ -242,10 +242,12 @@ HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
 HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 HF_MODEL_LORA2=lovis93/next-scene-qwen-image-lora-2509
 HF_MODEL_LORA_FILENAME2=next-scene_lora-v2-3000.safetensors
-WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
-WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
-WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
-WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-LVRAM.json
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-hvram.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-lvram.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-hvram.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-lvram.json
+WORKFLOW_HVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-hvram.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-lvram.json
 ```
 
 #### private
@@ -276,10 +278,12 @@ HF_MODEL_LORA1=fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
 HF_MODEL_LORA_FILENAME1=qwen-image-edit-2511-multiple-angles-lora.safetensors
 HF_MODEL_LORA2=lovis93/next-scene-qwen-image-lora-2509
 HF_MODEL_LORA_FILENAME2=next-scene_lora-v2-3000.safetensors
-WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod.json
-WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-LVRAM.json
-WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-LVRAM.json
-WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-LVRAM.json
+WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-hvram.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-edit-pod-lvram.json
+WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-hvram.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-lvram.json
+WORKFLOW_HVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-hvram.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-lvram.json
 ```
 
 ## Qwen-image-layered
