@@ -6,7 +6,6 @@
   "dismissed_banners": [
     "civitai-extension"
   ],
-  "blur_mature_content": false,
   "show_folder_sidebar": false,
   "use_portable_settings": false,
   "auto_organize_exclusions": []
