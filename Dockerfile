@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:11052026
+FROM ls250824/comfyui-runtime:15052026
 
 WORKDIR /ComfyUI
 
@@ -81,7 +81,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	
 	git clone --depth=1 --filter=blob:none https://github.com/IAMCCS/IAMCCS-nodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git && \	
-	git clone --depth=1 --filter=blob:none https://github.com/Nekodificador/ComfyUI-NKD-Klein-Tools.git
+	git clone --depth=1 --filter=blob:none https://github.com/Nekodificador/ComfyUI-NKD-Klein-Tools.git && \
+    git clone --depth=1 --filter=blob:none https://github.com/yolain/ComfyUI-Easy-Use.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/orpheus-gaze/ComfyUI-S2Guidance.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -106,6 +108,10 @@ RUN sed -i '/^comfy-test/d' requirements.txt
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
 # Use working version
 RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
+
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-Easy-Use
+# remove onnxruntime
+RUN sed -i '/^onnxruntime/d' requirements.txt
 
 WORKDIR /ComfyUI/custom_nodes/IAMCCS-nodes
 # Use version without errors
@@ -138,7 +144,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-outputlists-combiner/requirements.txt \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
-	-r ComfyUI-QwenVL-Mod/requirements.txt 
+	-r ComfyUI-QwenVL-Mod/requirements.txt \
+    -r ComfyUI-Easy-Use/requirements.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
@@ -175,7 +182,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.20.1 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.21.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
