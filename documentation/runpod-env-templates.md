@@ -26,8 +26,9 @@ HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
-WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-ClownShark-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
 ```
 
 ### Private
@@ -54,8 +55,9 @@ CIVITAI_RED_MODEL_LORA_ID1=2922880
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
-WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-ClownShark-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/ZIT-i2i-controlnet-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/ZIT-t2i-ZSamplerTurbo-pod.json
 ```
 
 ## Z-Image Base
@@ -142,8 +144,8 @@ HF_MODEL_DIFFUSION_MODELS4=Comfy-Org/vae-text-encorder-for-flux-klein-4b
 HF_MODEL_DIFFUSION_MODELS_FILENAME4=split_files/diffusion_models/flux-2-klein-base-4b.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
+HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
+HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
 HF_MODEL_TEXT_ENCODERS2=Comfy-Org/vae-text-encorder-for-flux-klein-4b
 HF_MODEL_TEXT_ENCODERS_FILENAME2=split_files/text_encoders/qwen_3_4b.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
@@ -158,7 +160,22 @@ WORKFLOW7=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-ti2i
 WORKFLOW8=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-mi2i-pod.json
 ```
 
-### private 9B
+### private 9B base
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-base-9B
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-base-9b.safetensors
+HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
+HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
+HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
+```
+
+### private 9B Distill
 
 ```bash
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
@@ -166,12 +183,10 @@ HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-9B
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-9b.safetensors
-HF_MODEL_DIFFUSION_MODELS2=black-forest-labs/FLUX.2-klein-base-9B
-HF_MODEL_DIFFUSION_MODELS_FILENAME2=flux-2-klein-base-9b.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
+HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
+HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-ti2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json

@@ -5,6 +5,7 @@
 - [HF 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-9B)
 - [HF base 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B)
 - [HF ComfyUI 9B](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b)
+- [HF Uncensored clip encoder](https://huggingface.co/ponpoke/flux2-klein-9b-uncensored-text-encoder)
 
 ## 4B
 
@@ -53,6 +54,13 @@ hf download Comfy-Org/vae-text-encorder-for-flux-klein-9b split_files/text_encod
 
 ```bash
 hf download Comfy-Org/flux2-devComfy-Org/vae-text-encorder-for-flux-klein-9b split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors \
+--local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+### Uncensored 9B 
+
+```bash
+hf download ponpoke/flux2-klein-9b-uncensored-text-encoder model.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
 
