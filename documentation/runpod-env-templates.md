@@ -350,9 +350,9 @@ HF_MODEL_CONTROLNET1=alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union
 HF_MODEL_CONTROLNET_FILENAME1=Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod.json
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod.json
-WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-LVRAM.json
-WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-LVRAM.json
-WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-LVRAM.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-lvram.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-lvram.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-lvram.json
 ```
 #### private
 
@@ -384,9 +384,9 @@ HF_MODEL_CONTROLNET1=alibaba-pai/Qwen-Image-2512-Fun-Controlnet-Union
 HF_MODEL_CONTROLNET_FILENAME1=Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors
 WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod.json
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod.json
-WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-LVRAM.json
-WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-LVRAM.json
-WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-LVRAM.json
+WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-res2s-pod-lvram.json
+WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-2512-t2i-adv-pod-lvram.json
+WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-controlnet-pod-lvram.json
 ```
 
 ## Baidu 
