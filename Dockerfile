@@ -86,7 +86,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/xb1n0ry/ComfyUI-KleinRefGrid.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/orpheus-gaze/ComfyUI-S2Guidance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/comfyui-ReferenceLatentPlus.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git
+	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/cozymantis/human-parser-comfyui-node.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -148,7 +149,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
 	-r ComfyUI-QwenVL-Mod/requirements.txt \
-    -r ComfyUI-Easy-Use/requirements.txt
+    -r ComfyUI-Easy-Use/requirements.txt \
+	-r human-parser-comfyui-node/requirements.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
