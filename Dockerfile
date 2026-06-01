@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:21052026
+FROM ls250824/comfyui-runtime:01062026
 
 WORKDIR /ComfyUI
 
@@ -77,8 +77,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/huchukato/ComfyUI-QwenVL-Mod.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
     git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \
-	
+	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \	
 	git clone --depth=1 --filter=blob:none https://github.com/IAMCCS/IAMCCS-nodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git && \	
 	git clone --depth=1 --filter=blob:none https://github.com/Nekodificador/ComfyUI-NKD-Klein-Tools.git && \
@@ -87,7 +86,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/orpheus-gaze/ComfyUI-S2Guidance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/comfyui-ReferenceLatentPlus.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/cozymantis/human-parser-comfyui-node.git
+	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -149,8 +148,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
 	-r ComfyUI-QwenVL-Mod/requirements.txt \
-    -r ComfyUI-Easy-Use/requirements.txt \
-	-r human-parser-comfyui-node/requirements.txt
+    -r ComfyUI-Easy-Use/requirements.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
@@ -187,7 +185,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.22.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.23.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
