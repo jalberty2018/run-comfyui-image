@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:01062026
+FROM ls250824/comfyui-runtime:04062026
 
 WORKDIR /ComfyUI
 
@@ -86,7 +86,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/orpheus-gaze/ComfyUI-S2Guidance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/comfyui-ReferenceLatentPlus.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git
+	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -185,7 +186,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.23.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.24.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
