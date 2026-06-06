@@ -129,7 +129,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     -r ComfyUI-GGUF/requirements.txt \
     -r ComfyUI-RMBG/requirements.txt \
     -r comfyui_controlnet_aux/requirements.txt \
-	-r Comfyui-SecNodes/requirements.txt \
 	-r ComfyUI-EasyColorCorrector/requirements.txt \
 	-r ComfyUI-Image-Saver/requirements.txt \
 	-r comfyui-vrgamedevgirl/requirements.txt \
