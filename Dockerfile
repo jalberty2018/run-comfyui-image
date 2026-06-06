@@ -21,8 +21,6 @@ RUN --mount=type=cache,target=/root/.cache/git \
     git clone --depth=1 --filter=blob:none https://github.com/rgthree/rgthree-comfy.git && \
     git clone --depth=1 --filter=blob:none https://github.com/liusida/ComfyUI-Login.git && \
     git clone --depth=1 --filter=blob:none https://github.com/kijai/ComfyUI-KJNodes.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/StartHua/Comfyui_joytag.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/1038lab/ComfyUI-JoyCaption.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/alessandrozonta/Comfyui-LoopLoader.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/quasiblob/ComfyUI-EsesImageAdjustments.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/quasiblob/ComfyUI-EsesImageEffectCurves.git && \
@@ -46,9 +44,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Scale-Image-to-Total-Pixels-Advanced.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/bradsec/ComfyUI_StringEssentials.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/x3bits/ComfyUI-Power-Flow.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/9nate-drake/Comfyui-SecNodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/PozzettiAndrea/ComfyUI-SAM3.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/heyburns/image-chooser-classic.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/neonr-0/ComfyUI-PixelConstrainedScaler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/vrgamegirl19/comfyui-vrgamedevgirl.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/ChangeTheConstants/SeedVarianceEnhancer.git && \
@@ -74,7 +70,6 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/jtydhr88/ComfyUI-qwenmultiangle.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/huchukato/ComfyUI-QwenVL-Mod.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
     git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \	
@@ -87,7 +82,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/comfyui-ReferenceLatentPlus.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git
+	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -108,10 +104,6 @@ RUN git fetch --unshallow && git checkout 5c0474e292e3658645f46e46378d58935a8269
 # Pixi problem SAM3
 RUN sed -i '/^comfy-env/d' requirements.txt
 RUN sed -i '/^comfy-test/d' requirements.txt
-
-WORKDIR /ComfyUI/custom_nodes/ComfyUI-QwenVL-Mod
-# Use working version
-RUN git fetch --unshallow && git checkout 9cd567191c606a51e14fd5f612c6974a262eb04a
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Easy-Use
 # remove onnxruntime
@@ -143,12 +135,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r comfyui-vrgamedevgirl/requirements.txt \
     -r ComfyUI-Detail-Daemon/requirements.txt \
     -r ComfyUI-SeedVR2_VideoUpscaler/requirements.txt \
-	-r ComfyUI-JoyCaption/requirements.txt \
-	-r ComfyUI-JoyCaption/requirements_gguf.txt \
 	-r ComfyUI-outputlists-combiner/requirements.txt \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
-	-r ComfyUI-QwenVL-Mod/requirements.txt \
     -r ComfyUI-Easy-Use/requirements.txt
 
 # Add settings for lora manager 

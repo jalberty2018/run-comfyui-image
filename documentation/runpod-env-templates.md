@@ -49,9 +49,6 @@ HF_MODEL_PATCHES1=alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME1=Z-Image-Turbo-Fun-Controlnet-Union-2.1-2601-8steps.safetensors
 HF_MODEL_PATCHES2=alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1
 HF_MODEL_PATCHES_FILENAME2=Z-Image-Fun-Controlnet-Union-2.1.safetensors
-HF_FULL_MODEL1=huihui-ai/Huihui-Qwen3-VL-4B-Instruct-abliterated
-HF_MODEL_DIR1=models/LLM/Qwen-VL/Qwen3-VL-4B-Instruct
-CIVITAI_RED_MODEL_LORA_ID1=2922880
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ZIB-t2i-clownshark-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ZIB-t2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/ZIB-ZIT-ZIT-t2i-pod.json
@@ -192,42 +189,6 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-ti2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
-```
-
-## Flux.1 dev Kontext
-
-```bash
-CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
-HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
-PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.1-Kontext-dev
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux1-kontext-dev.safetensors
-HF_MODEL_VAE1=black-forest-labs/FLUX.1-Kontext-dev
-HF_MODEL_VAE_FILENAME1=ae.safetensors
-HF_MODEL_TEXT_ENCODERS1=comfyanonymous/flux_text_encoders
-HF_MODEL_TEXT_ENCODERS_FILENAME1=t5xxl_fp16.safetensors
-HF_MODEL_UPSCALER1=LS110824/upscale
-HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-HF_MODEL_TEXT_ENCODERS2=zer0int/CLIP-GmP-ViT-L-14
-HF_MODEL_TEXT_ENCODERS_FILENAME2=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
-```
-
-## Flux.1 dev SRPO
-
-```bash
-CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
-HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
-PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_UPSCALER1=LS110824/upscale
-HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-HF_MODEL_DIFFUSION_MODELS1=rockerBOO/flux.1-dev-SRPO
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux.1-dev-SRPO-bf16.safetensors
-HF_MODEL_TEXT_ENCODERS1=comfyanonymous/flux_text_encoders
-HF_MODEL_TEXT_ENCODERS_FILENAME1=t5xxl_fp16.safetensors
-HF_MODEL_TEXT_ENCODERS2=zer0int/CLIP-GmP-ViT-L-14
-HF_MODEL_TEXT_ENCODERS_FILENAME2=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
-HF_MODEL_VAE1=black-forest-labs/FLUX.1-Kontext-dev
-HF_MODEL_VAE_FILENAME1=ae.safetensors
 ```
 
 ## Qwen-image-edit
@@ -430,4 +391,40 @@ HF_MODEL_TEXT_ENCODERS2=Comfy-Org/ERNIE-Image
 HF_MODEL_TEXT_ENCODERS_FILENAME2=text_encoders/ernie-image-prompt-enhancer.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/ERNIE-Image-Turbo-t2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/ERNIE-Image-t2i-pod.json
+```
+
+## Flux.1 dev Kontext
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.1-Kontext-dev
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux1-kontext-dev.safetensors
+HF_MODEL_VAE1=black-forest-labs/FLUX.1-Kontext-dev
+HF_MODEL_VAE_FILENAME1=ae.safetensors
+HF_MODEL_TEXT_ENCODERS1=comfyanonymous/flux_text_encoders
+HF_MODEL_TEXT_ENCODERS_FILENAME1=t5xxl_fp16.safetensors
+HF_MODEL_UPSCALER1=LS110824/upscale
+HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+HF_MODEL_TEXT_ENCODERS2=zer0int/CLIP-GmP-ViT-L-14
+HF_MODEL_TEXT_ENCODERS_FILENAME2=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+```
+
+## Flux.1 dev SRPO
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_UPSCALER1=LS110824/upscale
+HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+HF_MODEL_DIFFUSION_MODELS1=rockerBOO/flux.1-dev-SRPO
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux.1-dev-SRPO-bf16.safetensors
+HF_MODEL_TEXT_ENCODERS1=comfyanonymous/flux_text_encoders
+HF_MODEL_TEXT_ENCODERS_FILENAME1=t5xxl_fp16.safetensors
+HF_MODEL_TEXT_ENCODERS2=zer0int/CLIP-GmP-ViT-L-14
+HF_MODEL_TEXT_ENCODERS_FILENAME2=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+HF_MODEL_VAE1=black-forest-labs/FLUX.1-Kontext-dev
+HF_MODEL_VAE_FILENAME1=ae.safetensors
 ```

@@ -1,12 +1,5 @@
 # 📦 Manual setup guide
 
-## Flux.1
-
-- [Dev](provisioning/hf_flux.1_dev.md)
-- [Kontext](provisioning/hf_flux.1_kontext.md)
-- [SRPO](provisioning/hf_flux.1_SRPO.md)
-- [USO](provisioning/hf_flux.1_USO.md)
-
 ## Flux.2
 
 - [Dev](provisioning/hf_flux.2_dev.md)
@@ -39,8 +32,14 @@
 
 - [Ovis](provisioning/hf_ovis.md)
 
+## Flux.1
+
+- [Dev](provisioning/hf_flux.1_dev.md)
+- [Kontext](provisioning/hf_flux.1_kontext.md)
+- [SRPO](provisioning/hf_flux.1_SRPO.md)
+- [USO](provisioning/hf_flux.1_USO.md)
+
 ## Others
 
 - [Segmentation](provisioning/hf_segmentation.md)
 - [Upscale](provisioning/hf_upscale.md)
-- [Tagging & Caption](provisioning/hf_vlm.md)
