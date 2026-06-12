@@ -59,7 +59,7 @@ docker pull ls250824/run-comfyui-image:<[![Docker Image Version](https://img.shi
 
 Use none docker setup to build the image using the included Python script.
 
-### Build Script: `build-docker.py`
+### Build Script: `build_docker.py`
 
 | Argument       | Description                        | Default          |
 |----------------|------------------------------------|------------------|
@@ -71,10 +71,10 @@ Use none docker setup to build the image using the included Python script.
 
 ```bash
 git clone https://github.com/jalberty2018/run-comfyui-image.git
-cp ./run-comfyui-image/build-docker.py ..
+cp ./run-comfyui-image/build_docker.py ..
 
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
-python3 build-docker.py   --username=<your_dockerhub_username>   --tag=<custom_tag>   --latest   run-comfyui-wan
+python3 build_docker.py   --username=<your_dockerhub_username>   --tag=<custom_tag>   --latest   run-comfyui-image
 ```

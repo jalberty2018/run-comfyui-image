@@ -72,9 +72,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
     git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \	
+	git clone --depth=1 --filter=blob:none https://github.com/facok/ComfyUI-DiversityBoost.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/IAMCCS/IAMCCS-nodes.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git && \	
+	git clone --depth=1 --filter=blob:none https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/Nekodificador/ComfyUI-NKD-Klein-Tools.git && \
     git clone --depth=1 --filter=blob:none https://github.com/yolain/ComfyUI-Easy-Use.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/xb1n0ry/ComfyUI-KleinRefGrid.git && \
