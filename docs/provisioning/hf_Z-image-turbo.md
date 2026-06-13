@@ -1,7 +1,7 @@
 # Manual provisioning Z-Image Turbo
 
 - [HF ComfyUI](https://huggingface.co/Comfy-Org/z_image_turbo/tree/main)
-- [Fun Control](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0)
+- [Fun Control](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1)
 - [De-Turbo](https://huggingface.co/ostris/Z-Image-De-Turbo)
 - [Vae](https://huggingface.co/wangkanai/flux-dev-fp16)
 - [Clear Vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae)
@@ -72,21 +72,14 @@ hf download easygoing0114/Z-Image_clear_vae Z-Image_clear_vae.safetensors \
 
 ## Fun-Control patch
 
-### 2.0
-
-```bash
-hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0 Z-Image-Turbo-Fun-Controlnet-Union-2.0.safetensors \
---local-dir /workspace/ComfyUI/models/model_patches
-```
-
 ### 2.1
 
 ```bash
-hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-2601-8steps.safetensors \
+hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-2602-8steps.safetensors \
 --local-dir /workspace/ComfyUI/models/model_patches
 ```
 
 ```bash
-hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2601-8steps.safetensors \
+hf download alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors \
 --local-dir /workspace/ComfyUI/models/model_patches
 ```
