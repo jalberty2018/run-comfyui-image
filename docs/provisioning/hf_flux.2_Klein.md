@@ -53,7 +53,7 @@ hf download Comfy-Org/vae-text-encorder-for-flux-klein-9b split_files/text_encod
 ### ComfyUI fp8 9B
 
 ```bash
-hf download Comfy-Org/flux2-devComfy-Org/vae-text-encorder-for-flux-klein-9b split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors \
+hf download Comfy-Org/vae-text-encorder-for-flux-klein-9b split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
 
