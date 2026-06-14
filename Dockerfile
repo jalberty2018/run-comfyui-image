@@ -83,7 +83,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git
+	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
