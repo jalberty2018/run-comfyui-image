@@ -356,9 +356,9 @@ WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-2512-i2i-co
 #### public
 
 ```bash
-HF_MODEL_DIFFUSION_MODELS1= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=diffusion_models/ernie-image-turbo.safetensors
-HF_MODEL_DIFFUSION_MODELS2= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS2=Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME2=diffusion_models/ernie-image.safetensors
 HF_MODEL_VAE1=Comfy-Org/ERNIE-Image
 HF_MODEL_VAE_FILENAME1=vae/flux2-vae.safetensors
@@ -376,9 +376,9 @@ WORKFLOW2=https://provisioning.rozenlaan.site/image/ERNIE-Image-t2i-pod.json
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS1=Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=diffusion_models/ernie-image-turbo.safetensors
-HF_MODEL_DIFFUSION_MODELS2= Comfy-Org/ERNIE-Image
+HF_MODEL_DIFFUSION_MODELS2=Comfy-Org/ERNIE-Image
 HF_MODEL_DIFFUSION_MODELS_FILENAME2=diffusion_models/ernie-image.safetensors
 HF_MODEL_VAE1=Comfy-Org/ERNIE-Image
 HF_MODEL_VAE_FILENAME1=vae/flux2-vae.safetensors

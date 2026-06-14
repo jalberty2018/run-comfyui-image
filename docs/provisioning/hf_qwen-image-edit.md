@@ -72,7 +72,7 @@ hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightni
 
 ```bash
 hf download lightx2v/Qwen-Image-Edit-2511-Lightning Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors \
---local-dir /workspace
+--local-dir /workspace/ComfyUI/models/loras/
 ```
 
 ## Lora's 2509

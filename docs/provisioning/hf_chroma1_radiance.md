@@ -5,7 +5,7 @@
 ## Diffusion model
 
 ```bash
-hf download lodestones/Chroma1-Radiance Chroma1-Radiance-v0.2.safetensors \
+hf download lodestones/Chroma1-Radiance latest_x0.safetensors \
   --local-dir ComfyUI/models/diffusion_models
 ```
 
