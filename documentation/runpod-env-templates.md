@@ -97,8 +97,8 @@ WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-HVRAM.j
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-HVRAM.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-LVRAM.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
-
 ### Private
 
 ```bash
@@ -123,6 +123,7 @@ WORKFLOW_HVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-HVRAM.j
 WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-HVRAM.json
 WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-LVRAM.json
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-LVRAM.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
 
 ## Flux.2 Klein
@@ -154,6 +155,7 @@ WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Base-t2i-pod.j
 WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-i2i-pod.json
 WORKFLOW6=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-mi2i-pod.json
 WORKFLOW7=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
+WORKFLOW8=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
 
 ### private 9B base
@@ -186,6 +188,7 @@ HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
 
 ## Qwen-image-edit
@@ -223,6 +226,7 @@ WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-p
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-lvram.json
 WORKFLOW_HVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-hvram.json
 WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-lvram.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
 
 #### private
@@ -259,6 +263,7 @@ WORKFLOW_HVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-p
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/QWEN-image-edit-loop-pod-lvram.json
 WORKFLOW_HVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-hvram.json
 WORKFLOW_LVRAM3=https://provisioning.rozenlaan.site/image/QWEN-image-edit-multiangle-pod-lvram.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
 
 ## Qwen-image-layered
