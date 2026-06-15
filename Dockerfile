@@ -84,7 +84,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git
+	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/1038lab/ComfyUI-JoyCaption.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -138,7 +139,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-outputlists-combiner/requirements.txt \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
-    -r ComfyUI-Easy-Use/requirements.txt
+    -r ComfyUI-Easy-Use/requirements.txt \
+	-r ComfyUI-JoyCaption/requirements.txt \
+	-r ComfyUI-JoyCaption/requirements_gguf.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
