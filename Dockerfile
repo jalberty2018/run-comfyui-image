@@ -87,6 +87,18 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git
 
+# ComfyUI-ZImagePowerNodes uses Python 3.12 type-alias syntax on master.
+# This image runs Python 3.11, so convert those aliases before ComfyUI imports the node.
+WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
+# Pin to the 2026-06-13 version so later upstream changes do not break this image.
+RUN git fetch --depth=1 origin 840b6ab693e2682c3df69afb6ddae720533bd96e && \
+    git checkout 840b6ab693e2682c3df69afb6ddae720533bd96e && \
+    sed -i -E 's/^type ([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=/\1 =/' \
+    nodes/core/palette.py \
+    nodes/core/style.py \
+    nodes/data/predefined_palettes.py \
+    nodes/data/predefined_styles.py
+
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
 RUN set -eux; \
