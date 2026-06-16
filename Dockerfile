@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:04062026
+FROM ls250824/comfyui-runtime:16062026
 
 WORKDIR /ComfyUI
 
@@ -102,6 +102,7 @@ RUN set -eux; \
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-SAM3
 # Working version for SAM3 (comfy-env problems)
+# Commit date: 2026-03-16
 RUN git fetch --unshallow && git checkout 5c0474e292e3658645f46e46378d58935a82692f
 # Pixi problem SAM3
 RUN sed -i '/^comfy-env/d' requirements.txt
@@ -177,7 +178,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.24.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.25.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
