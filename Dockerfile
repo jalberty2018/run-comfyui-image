@@ -18,18 +18,18 @@ COPY --chmod=644 configuration/config.ini user/__manager/config.ini
 WORKDIR /ComfyUI/custom_nodes
 
 RUN --mount=type=cache,target=/root/.cache/git \
-    git clone --depth=1 --filter=blob:none --branch v.1.0.0 https://github.com/rgthree/rgthree-comfy.git && \
-	git clone --depth=1 --filter=blob:none --branch v1.2.5 https://github.com/regiellis/ComfyUI-EasyColorCorrector.git && \
-	git clone --depth=1 --filter=blob:none --branch v1.23.0 https://github.com/alexopus/ComfyUI-Image-Saver.git && \
-    git clone --depth=1 --filter=blob:none --branch v1.6.0 https://github.com/Azornes/Comfyui-Resolution-Master.git && \
-	git clone --depth=1 --filter=blob:none --branch v2.0.0 https://github.com/GizmoR13/PG-Nodes.git && \
-	git clone --depth=1 --filter=blob:none --branch v2.2 https://github.com/ChangeTheConstants/SeedVarianceEnhancer.git && \
-	git clone --depth=1 --filter=blob:none --branch 1.0.8 https://github.com/erosDiffusion/ComfyUI-EulerDiscreteScheduler.git && \
-	git clone --depth=1 --filter=blob:none --branch v2.5.23 https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git && \
-	git clone --depth=1 --filter=blob:none --branch v1.1.1 https://github.com/willmiao/ComfyUI-Lora-Manager.git && \
-	git clone --depth=1 --filter=blob:none --branch 1.5.3 https://github.com/scraed/LanPaint.git && \
-	git clone --depth=1 --filter=blob:none --branch v0.1.0 https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
-    git clone --depth=1 --filter=blob:none --branch v1.3.6 https://github.com/yolain/ComfyUI-Easy-Use.git && \
+    git clone --depth=1 --filter=blob:none https://github.com/rgthree/rgthree-comfy.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/regiellis/ComfyUI-EasyColorCorrector.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/alexopus/ComfyUI-Image-Saver.git && \
+    git clone --depth=1 --filter=blob:none https://github.com/Azornes/Comfyui-Resolution-Master.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/GizmoR13/PG-Nodes.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/ChangeTheConstants/SeedVarianceEnhancer.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/erosDiffusion/ComfyUI-EulerDiscreteScheduler.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/willmiao/ComfyUI-Lora-Manager.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/scraed/LanPaint.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git && \
+    git clone --depth=1 --filter=blob:none https://github.com/yolain/ComfyUI-Easy-Use.git && \
     git clone --depth=1 --filter=blob:none https://github.com/liusida/ComfyUI-Login.git && \
     git clone --depth=1 --filter=blob:none https://github.com/kijai/ComfyUI-KJNodes.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/alessandrozonta/Comfyui-LoopLoader.git && \
