@@ -85,7 +85,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git
+	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-SequentialImageLoader.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
 # Pin to the v2.0.0 release, verified to parse under Python 3.11.
