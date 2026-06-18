@@ -3,6 +3,7 @@
 ## 9B
 
 - [HF 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-9B)
+- [HF 9B alternative](https://huggingface.co/kp-forks/FLUX.2-klein-9B)
 - [HF base 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B)
 - [HF ComfyUI 9B](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b)
 - [HF Uncensored clip encoder](https://huggingface.co/ponpoke/flux2-klein-9b-uncensored-text-encoder)
@@ -13,12 +14,24 @@
 
 ## Diffusion_model
 
-### Official 9b (distilled)
+### Official 9b (distilled/gated)
 
 ```bash
 hf download black-forest-labs/FLUX.2-klein-9B flux-2-klein-9b.safetensors \
 --local-dir /workspace/ComfyUI/models/diffusion_models/
 ``` 
+
+### Backup 9b (distilled)
+
+```bash
+hf download kp-forks/FLUX.2-klein-9B flux-2-klein-9b.safetensors \
+--local-dir /workspace/ComfyUI/models/diffusion_models/
+```
+
+```bash
+hf download LS110824/Flux2 flux-2-klein.safetensors \
+--local-dir /workspace/ComfyUI/models/diffusion_models/
+```
 
 ### Official 9b base (gated)
 

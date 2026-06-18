@@ -203,16 +203,20 @@ fi
 
 run_hf_download() {
     local timeout_value="${HF_DOWNLOAD_TIMEOUT:-10m}"
+    local hf_command
 
     echo "ℹ️ [DOWNLOAD] Timeout: $timeout_value"
 
-    # Convert hf's terminal progress bar into compact RunPod log lines while
-    # leaving regular download messages, warnings and errors unchanged.
+    # hf suppresses progress when stdout is a pipe. Run it in a pseudo-terminal
+    # and then convert its terminal progress into compact RunPod log lines.
+    printf -v hf_command '%q ' hf download "$@"
+
     timeout --foreground --signal=TERM --kill-after=30s "$timeout_value" \
-        hf download "$@" 2>&1 \
+        script --quiet --return --flush --command "$hf_command" /dev/null 2>&1 \
         | stdbuf -oL tr '\r' '\n' \
         | sed -u -E \
             -e '/^[[:space:]]*$/d' \
+            -e $'s/\033\\[[0-9;?]*[ -\\/]*[@-~]//g' \
             -e 's/^([^:]+):[[:space:]]*([0-9]+)%\|[^|]*\|[[:space:]]*([^[:space:]]+).*/Downloading \1 \2% \3/'
 
     return "${PIPESTATUS[0]}"

@@ -128,11 +128,11 @@ WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 
 ## Flux.2 Klein
 
-### Public 4B (free download) & 9B (gated download needs HF_TOKEN to be set)
+### Public 4B & 9B
 
 ```bash
 HF_TOKEN=place-hugginface-token-secret-here
-HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-9B
+HF_MODEL_DIFFUSION_MODELS1=kp-forks/FLUX.2-klein-9B
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-9b.safetensors
 HF_MODEL_DIFFUSION_MODELS2=black-forest-labs/FLUX.2-klein-base-9B
 HF_MODEL_DIFFUSION_MODELS_FILENAME2=flux-2-klein-base-9b.safetensors
@@ -179,8 +179,8 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.j
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-9B
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-9b.safetensors
+HF_MODEL_DIFFUSION_MODELS1=LS110824/Flux2
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders

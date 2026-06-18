@@ -80,6 +80,3 @@
 
 - [WAN 2.2](https://comfyui.rozenlaan.site/ComfyUI_WAN/)
 - [LTX 2.3](https://comfyui.rozenlaan.site/ComfyUI_LTX/)
-
-
-
