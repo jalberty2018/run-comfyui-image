@@ -199,6 +199,59 @@ else
     echo "❌ ERROR: PyTorch CUDA driver mismatch or unavailable, ComfyUI not started"
 fi
 
+show_runpod_services() {
+    if [[ "$HAS_GPU_RUNPOD" -ne 1 ]]; then
+        return 0
+    fi
+
+    echo "ℹ️ Connect to the following services from console menu or url"
+
+    if [[ -z "${RUNPOD_POD_ID:-}" ]]; then
+        echo "⚠️ RUNPOD_POD_ID not set — service URLs unavailable"
+        return 0
+    fi
+
+    local service
+    local port
+    local url
+    local local_url
+    local http_code
+    local -A services=(
+      ["Code-Server"]=9000
+      ["ComfyUI"]=8188
+    )
+
+    # Local health checks (inside the pod)
+    for service in "${!services[@]}"; do
+        port="${services[$service]}"
+        url="https://${RUNPOD_POD_ID}-${port}.proxy.runpod.net/login"
+        local_url="http://127.0.0.1:${port}/"
+
+        echo "👉 🔗 Service ${service} : ${url}"
+
+        # Check service locally (no proxy dependency)
+        http_code="$(curl -sS -o /dev/null -m 2 --connect-timeout 1 -w "%{http_code}" "$local_url" || true)"
+
+        # Treat common “service is up but protected/redirect” codes as UP
+        if [[ "$http_code" =~ ^(200|301|302|401|403|404)$ ]]; then
+            echo "✅ ${service} is running (local ${local_url}, HTTP ${http_code})"
+        else
+            echo "❌ ${service} not responding yet (local ${local_url}, HTTP ${http_code})"
+        fi
+    done
+
+    echo "👉 🔗 Lora-Manager: https://${RUNPOD_POD_ID}-8188.proxy.runpod.net/loras"
+}
+
+show_code_server_login() {
+    if [[ -n "$PASSWORD" ]]; then
+        echo "ℹ️ Code-Server login use PASSWORD set as env"
+    else
+        echo "⚠️ Code-Server login use the logged password"
+        cat /root/.config/code-server/config.yaml
+    fi
+}
+
 # Provisioning routines
 
 run_hf_download() {
@@ -437,6 +490,9 @@ download_media() {
 # Provisioning if comfyUI is responding running on GPU with CUDA
 if [[ "$HAS_COMFYUI" -eq 1 ]]; then  
     
+    show_runpod_services
+    show_code_server_login
+
     # provisioning Models and loras
     echo "📥 Provisioning models HF"
 	
@@ -630,46 +686,8 @@ echo "ℹ️ Connections and/or diagnostics"
 if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
     echo "🎉 Provisioning done, ready to create AI content 🎉"
 
-    if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
-        echo "ℹ️ Connect to the following services from console menu or url"
-
-        if [[ -z "${RUNPOD_POD_ID:-}" ]]; then
-            echo "⚠️ RUNPOD_POD_ID not set — service URLs unavailable"
-        else
-            declare -A SERVICES=(
-              ["Code-Server"]=9000
-              ["ComfyUI"]=8188
-            )
-
-            # Local health checks (inside the pod)
-            for service in "${!SERVICES[@]}"; do
-                port="${SERVICES[$service]}"
-                url="https://${RUNPOD_POD_ID}-${port}.proxy.runpod.net/login"
-                local_url="http://127.0.0.1:${port}/"
-
-                echo "👉 🔗 Service ${service} : ${url}"
-
-                # Check service locally (no proxy dependency)
-                http_code="$(curl -sS -o /dev/null -m 2 --connect-timeout 1 -w "%{http_code}" "$local_url" || true)"
-
-                # Treat common “service is up but protected/redirect” codes as UP
-                if [[ "$http_code" =~ ^(200|301|302|401|403|404)$ ]]; then
-                    echo "✅ ${service} is running (local ${local_url}, HTTP ${http_code})"
-                else
-                    echo "❌ ${service} not responding yet (local ${local_url}, HTTP ${http_code})"
-                fi
-            done
-
-            echo "👉 🔗 Lora-Manager: https://${RUNPOD_POD_ID}-8188.proxy.runpod.net/loras"
-        fi
-    fi
-
-    if [[ -n "$PASSWORD" ]]; then
-        echo "ℹ️ Code-Server login use PASSWORD set as env"
-    else
-        echo "⚠️ Code-Server login use the logged password"
-        cat /root/.config/code-server/config.yaml
-    fi
+    show_runpod_services
+    show_code_server_login
 
 else
     if [[ "$HAS_GPU_RUNPOD" -eq 0 ]]; then

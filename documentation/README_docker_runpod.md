@@ -29,7 +29,6 @@
 ### Templates
 
 - Specific models/loras/workflows for the templates are downloaded when the pod starts.
-- Flux.2 Klein downloads by default the 4B (none gated) model, see [tutorial](https://comfyui.rozenlaan.site/ComfyUI_image_hf_gated) to add the 9B gated model.  
 
 - 👉 [Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
 

@@ -128,34 +128,25 @@ WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 
 ## Flux.2 Klein
 
-### Public 4B & 9B
+### Public 9B
 
 ```bash
 HF_TOKEN=place-hugginface-token-secret-here
-HF_MODEL_DIFFUSION_MODELS1=kp-forks/FLUX.2-klein-9B
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-9b.safetensors
+HF_MODEL_DIFFUSION_MODELS1=LS110824/Flux2
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein.safetensors
 HF_MODEL_DIFFUSION_MODELS2=black-forest-labs/FLUX.2-klein-base-9B
 HF_MODEL_DIFFUSION_MODELS_FILENAME2=flux-2-klein-base-9b.safetensors
-HF_MODEL_DIFFUSION_MODELS3=Comfy-Org/vae-text-encorder-for-flux-klein-4b
-HF_MODEL_DIFFUSION_MODELS_FILENAME3=split_files/diffusion_models/flux-2-klein-4b.safetensors
-HF_MODEL_DIFFUSION_MODELS4=Comfy-Org/vae-text-encorder-for-flux-klein-4b
-HF_MODEL_DIFFUSION_MODELS_FILENAME4=split_files/diffusion_models/flux-2-klein-base-4b.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
 HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
-HF_MODEL_TEXT_ENCODERS2=Comfy-Org/vae-text-encorder-for-flux-klein-4b
-HF_MODEL_TEXT_ENCODERS_FILENAME2=split_files/text_encoders/qwen_3_4b.safetensors
 HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
-WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
-WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
-WORKFLOW4=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Base-t2i-pod.json
-WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-i2i-pod.json
-WORKFLOW6=https://provisioning.rozenlaan.site/image/FLUX-Klein-4B-Distilled-mi2i-pod.json
-WORKFLOW7=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
-WORKFLOW8=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
 ```
 
 ### private 9B base
