@@ -5,10 +5,9 @@ echo "ℹ️ Wait until the message 🎉 Provisioning done, ready to create AI c
 # Hugging Face CLI output tuned for RunPod plain logs.
 export NO_COLOR=1
 export HF_HUB_VERBOSITY=warning
-export HF_HUB_DISABLE_PROGRESS_BARS=1
-export HF_HUB_DISABLE_TELEMETRY=1
-export DO_NOT_TRACK=1
+export HF_HUB_DISABLE_PROGRESS_BARS=0
 export HF_HUB_DISABLE_UPDATE_CHECK=1
+export HF_DOWNLOAD_TIMEOUT="${HF_DOWNLOAD_TIMEOUT:-10m}"
 
 # Enable SSH if PUBLIC_KEY is set
 if [[ -n "$PUBLIC_KEY" ]]; then
@@ -202,6 +201,23 @@ fi
 
 # Provisioning routines
 
+run_hf_download() {
+    local timeout_value="${HF_DOWNLOAD_TIMEOUT:-10m}"
+
+    echo "ℹ️ [DOWNLOAD] Timeout: $timeout_value"
+
+    # Convert hf's terminal progress bar into compact RunPod log lines while
+    # leaving regular download messages, warnings and errors unchanged.
+    timeout --foreground --signal=TERM --kill-after=30s "$timeout_value" \
+        hf download "$@" 2>&1 \
+        | stdbuf -oL tr '\r' '\n' \
+        | sed -u -E \
+            -e '/^[[:space:]]*$/d' \
+            -e 's/^([^:]+):[[:space:]]*([0-9]+)%\|[^|]*\|[[:space:]]*([^[:space:]]+).*/Downloading \1 \2% \3/'
+
+    return "${PIPESTATUS[0]}"
+}
+
 download_model_HF() {
     local model_var="$1"
     local file_var="$2"
@@ -218,7 +234,7 @@ download_model_HF() {
 
     echo "ℹ️ [DOWNLOAD] Fetching $model + $file → $target"
 
-    hf download "$model" "$file" --local-dir "$target" 
+    run_hf_download "$model" "$file" --local-dir "$target"
     local rc=$?
 
     # ----------- SUCCESS ----------
@@ -231,6 +247,13 @@ download_model_HF() {
     # ---- SEGFAULT AFTER SUCCESS ---
     if [[ $rc -eq 139 && -f "$target/$file" ]]; then
         echo "⚠️ HF segfault after download (file exists → OK)"
+        sleep 1
+        return 0
+    fi
+
+    # ------------ TIMEOUT ----------
+    if [[ $rc -eq 124 ]]; then
+        echo "⚠️ HF download timed out after ${HF_DOWNLOAD_TIMEOUT}"
         sleep 1
         return 0
     fi
@@ -272,11 +295,11 @@ download_generic_HF() {
 
     if [[ -n "$file" ]]; then
         echo "ℹ️ [DOWNLOAD] Fetching $model/$file → $target"
-        hf download "$model" "$file" "${hf_args[@]}" --local-dir "$target"
+        run_hf_download "$model" "$file" "${hf_args[@]}" --local-dir "$target"
         local rc=$?
     else
         echo "ℹ️ [DOWNLOAD] Fetching $model → $target"
-        hf download "$model" "${hf_args[@]}" --local-dir "$target"
+        run_hf_download "$model" "${hf_args[@]}" --local-dir "$target"
         local rc=$?
     fi
 
@@ -290,6 +313,13 @@ download_generic_HF() {
     # ---- SEGFAULT AFTER SUCCESS ---
     if [[ $rc -eq 139 && -f "$target/$file" ]]; then
         echo "⚠️ HF segfault after download (file exists → OK)"
+        sleep 1
+        return 0
+    fi
+
+    # ------------ TIMEOUT ----------
+    if [[ $rc -eq 124 ]]; then
+        echo "⚠️ HF download timed out after ${HF_DOWNLOAD_TIMEOUT}"
         sleep 1
         return 0
     fi
