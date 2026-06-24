@@ -5,6 +5,10 @@
 - [Dev](provisioning/hf_flux.2_dev.md)
 - [Klein](provisioning/hf_flux.2_Klein.md)
 
+## Krea
+
+- [Krea-2](provisioning/hf_krea-2.md)
+
 ## Z-Image
 
 - [Base](provisioning/hf_Z-image.md)

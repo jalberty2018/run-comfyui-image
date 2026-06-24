@@ -1,5 +1,26 @@
 # Environment variables templates
 
+## Krea-2
+
+### Public
+
+```bash
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_fp8_scaled.safetensors
+HF_MODEL_HVRAM_DIFFUSION_MODELS2=Comfy-Org/Krea-2
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME2=diffusion_models/krea2_turbo_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS2=Comfy-Org/Krea-2
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME2=diffusion_models/krea2_turbo_fp8_scaled.safetensors
+HF_MODEL_HVRAM_TEXT_ENCODERS1=Comfy-Org/Krea-2
+HF_MODEL_HVRAM_TEXT_ENCODERS_FILENAME1=text_encoders/qwen3vl_4b_bf16.safetensors
+HF_MODEL_LVRAM_TEXT_ENCODERS1=Comfy-Org/Krea-2
+HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=text_encoders/qwen3vl_4b_fp8_scaled.safetensors
+HF_MODEL_VAE1=Comfy-Org/Krea-2
+HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
+```
+
 ## ZIB-ZIT
 
 ### Public
