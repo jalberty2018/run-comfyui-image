@@ -3,6 +3,7 @@
 ## Websites
 
 - [ComfyUI](https://huggingface.co/Comfy-Org/Krea-2)
+- [Huihui Qwen3 VL text encoder](https://huggingface.co/ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy)
 
 ## Diffusion_model
 
@@ -36,17 +37,31 @@ hf download Comfy-Org/Krea-2 diffusion_models/krea2_turbo_fp8_scaled.safetensors
 
 ## CLIP Text encoder
 
-### bf16
+### Original bf16
 
 ```bash
 hf download Comfy-Org/Krea-2 text_encoders/qwen3vl_4b_bf16.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
 
-### fp8
+### Original fp8
 
 ```bash
 hf download Comfy-Org/Krea-2 text_encoders/qwen3vl_4b_fp8_scaled.safetensors \
+--local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+### Abliterated bf16
+
+```bash
+hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3-VL-4B-Instruct-abliterated.safetensors \
+--local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+### Abliterated fp8
+
+```bash
+hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
 ```
 
