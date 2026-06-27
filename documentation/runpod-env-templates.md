@@ -19,7 +19,8 @@ HF_MODEL_LVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-
 HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors
 HF_MODEL_VAE1=Comfy-Org/Krea-2
 HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 ```
 
 ### Private
@@ -42,9 +43,9 @@ HF_MODEL_LVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-
 HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors
 HF_MODEL_VAE1=Comfy-Org/Krea-2
 HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-pod.json
+WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 ```
-
 
 ## ZIB-ZIT
 
