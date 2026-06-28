@@ -322,6 +322,33 @@ HF_MODEL_UPSCALER1=LS110824/upscale
 HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 ```
 
+## JoyAI-Image-Edit
+
+### public
+
+```bash
+HF_MODEL_DIFFUSION_MODELS1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/joyai_image_edit_bf16.safetensors
+HF_MODEL_TEXT_ENCODERS1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3vl_8b_joyimage_bf16.safetensors
+HF_MODEL_VAE1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_VAE_FILENAME1=split_files/vae/wan_2.1_vae.safetensors
+```
+
+### private
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_MODEL_DIFFUSION_MODELS1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/joyai_image_edit_bf16.safetensors
+HF_MODEL_TEXT_ENCODERS1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3vl_8b_joyimage_bf16.safetensors
+HF_MODEL_VAE1=jdopensource/JoyAI-Image-Edit-ComfyUI
+HF_MODEL_VAE_FILENAME1=split_files/vae/wan_2.1_vae.safetensors
+```
+
 ## Qwen-image
 
 ### 2512

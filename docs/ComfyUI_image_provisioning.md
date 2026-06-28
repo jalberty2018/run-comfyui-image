@@ -20,6 +20,10 @@
 - [Edit](provisioning/hf_qwen-image-edit.md)
 - [Layered](provisioning/hf_qwen-image-layered.md)
 
+## JoyAI
+
+- [Image Edit](provisioning/hf_joyai.md)
+
 ## Hunyuan
 
 - [2.1](provisioning/hf_hunyuan_image21.md)
