@@ -5,6 +5,7 @@
 ### Public
 
 ```bash
+VRAM_THRESHOLD=21
 HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
 HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
 HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
@@ -21,14 +22,57 @@ HF_MODEL_VAE1=Comfy-Org/Krea-2
 HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
 ```
 
-### Private
+### Private Turbo
 
 ```bash
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+VRAM_THRESHOLD=21
+HF_MODEL_HVRAM_DIFFUSION_MODELS2=Comfy-Org/Krea-2
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME2=diffusion_models/krea2_turbo_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS2=Comfy-Org/Krea-2
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME2=diffusion_models/krea2_turbo_fp8_scaled.safetensors
+HF_MODEL_HVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy
+HF_MODEL_HVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated.safetensors
+HF_MODEL_LVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy
+HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors
+HF_MODEL_VAE1=Comfy-Org/Krea-2
+HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
+WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
+```
+
+### Private Raw
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+VRAM_THRESHOLD=21
+HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
+HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
+HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
+HF_MODEL_LVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_fp8_scaled.safetensors
+HF_MODEL_HVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy
+HF_MODEL_HVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated.safetensors
+HF_MODEL_LVRAM_TEXT_ENCODERS1=ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy
+HF_MODEL_LVRAM_TEXT_ENCODERS_FILENAME1=Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors
+HF_MODEL_VAE1=Comfy-Org/Krea-2
+HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
+```
+
+### Private Turbo-Raw
+
+```bash
+CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
+HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
+PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+VRAM_THRESHOLD=21
 HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
 HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
 HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
@@ -45,6 +89,7 @@ HF_MODEL_VAE1=Comfy-Org/Krea-2
 HF_MODEL_VAE_FILENAME1=vae/qwen_image_vae.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
+WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
 ```
 
 ## ZIB-ZIT
@@ -324,17 +369,6 @@ HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
 
 ## JoyAI-Image-Edit
 
-### public
-
-```bash
-HF_MODEL_DIFFUSION_MODELS1=jdopensource/JoyAI-Image-Edit-ComfyUI
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=split_files/diffusion_models/joyai_image_edit_bf16.safetensors
-HF_MODEL_TEXT_ENCODERS1=jdopensource/JoyAI-Image-Edit-ComfyUI
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3vl_8b_joyimage_bf16.safetensors
-HF_MODEL_VAE1=jdopensource/JoyAI-Image-Edit-ComfyUI
-HF_MODEL_VAE_FILENAME1=split_files/vae/wan_2.1_vae.safetensors
-```
-
 ### private
 
 ```bash
@@ -347,6 +381,7 @@ HF_MODEL_TEXT_ENCODERS1=jdopensource/JoyAI-Image-Edit-ComfyUI
 HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3vl_8b_joyimage_bf16.safetensors
 HF_MODEL_VAE1=jdopensource/JoyAI-Image-Edit-ComfyUI
 HF_MODEL_VAE_FILENAME1=split_files/vae/wan_2.1_vae.safetensors
+WORKFLOW1=https://provisioning.rozenlaan.site/image/JoyAI-Image-Edit-i2i-single-pod.json
 ```
 
 ## Qwen-image
