@@ -92,8 +92,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/nova452/ComfyUI-Conditioning-Rebalance.git && \ 
 	git clone --depth=1 --filter=blob:none https://github.com/Nynxz/ComfyUI-JoyAI.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Krea2T-Enhancer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/judian17/ComfyUI-JoyAI-Image-Edit.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/Andro-Meta/ComfyUI-Krea-Moodboards.git
+	git clone --depth=1 --filter=blob:none https://github.com/judian17/ComfyUI-JoyAI-Image-Edit.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
 # Pin to the v2.0.0 release, verified to parse under Python 3.11.
