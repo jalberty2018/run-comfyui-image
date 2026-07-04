@@ -4,6 +4,7 @@
 
 - [ComfyUI](https://huggingface.co/Comfy-Org/Krea-2)
 - [Huihui Qwen3 VL text encoder](https://huggingface.co/ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy)
+- [wangkanai Qwen3 VL text encoder](https://huggingface.co/wangkanai/qwen3-vl-4b-instruct)
 
 ## Diffusion_model
 
@@ -56,6 +57,11 @@ hf download Comfy-Org/Krea-2 text_encoders/qwen3vl_4b_fp8_scaled.safetensors \
 ```bash
 hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3-VL-4B-Instruct-abliterated.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+```bash
+hf download wangkanai/qwen3-vl-4b-instruct qwen3-vl-4b-instruct-abliterated.safetensors \
+--local-dir=/workspace/ComfyUI/models/text_encoders/
 ```
 
 ### Abliterated fp8
