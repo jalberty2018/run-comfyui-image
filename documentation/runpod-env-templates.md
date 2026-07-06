@@ -29,6 +29,7 @@ HF_MODEL_LORA_FILENAME2=krea2filterbypass3.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-artist-pod.json
 ```
 
 ### Private Turbo
@@ -59,6 +60,7 @@ HF_MODEL_LORA_FILENAME3=PornMaster_Detail_Slider_Krea2_V1_000000225.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-artist-pod.json
 ```
 
 ### Private Turbo-Raw
@@ -88,9 +90,12 @@ HF_MODEL_LORA1=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME1=krea2filterbypass.safetensors
 HF_MODEL_LORA2=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME2=krea2filterbypass3.safetensors
+HF_MODEL_LORA3=LS110824/krea2_lora
+HF_MODEL_LORA_FILENAME3=PornMaster_Detail_Slider_Krea2_V1_000000225.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
+WORKFLOW4=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-artist-pod.json
 ```
 
 ## ZIB-ZIT
