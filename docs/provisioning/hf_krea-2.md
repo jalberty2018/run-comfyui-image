@@ -77,6 +77,14 @@ hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3
 hf download Comfy-Org/Krea-2 vae/qwen_image_vae.safetensors \
 --local-dir /workspace/ComfyUI/models/vae/
 ```
+## Distilled Lora
+
+### Turbo rank 64 bf16
+
+```bash
+hf download Comfy-Org/Krea-2 loras/krea2_turbo_lora_rank_64_bf16.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
 
 ## Loras
 
@@ -147,13 +155,6 @@ hf download Comfy-Org/Krea-2 loras/krea2_softwatercolor.safetensors \
 
 ```bash
 hf download Comfy-Org/Krea-2 loras/krea2_sunsetblur.safetensors \
---local-dir /workspace/ComfyUI/models/loras/
-```
-
-### Turbo rank 64 bf16
-
-```bash
-hf download Comfy-Org/Krea-2 loras/krea2_turbo_lora_rank_64_bf16.safetensors \
 --local-dir /workspace/ComfyUI/models/loras/
 ```
 
