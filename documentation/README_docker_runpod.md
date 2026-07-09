@@ -53,7 +53,7 @@
 |-----------------|---------------------|----------|---------|
 | Z-Image Turbo   | RTX 3090, RTX A5000 | 20 GB    | 50 GB   |
 | ERNIE-Image     | RTX A4500 | 20 GB    | 50 GB   |
-| Krea-2  bf16   | RTX A5000 |  24 GB    | 65  GB   |
+| Krea-2  bf16   | RTX 3090 |  24 GB    | 65  GB   |
 | Krea-2  fp8   | RTX A4500 |  20 GB    | 65  GB   |
 | FLUX.2 Klein    | RTX A4500    | 20 GB    | 50 GB   |
 | FLUX.2 Dev bf16 | RTX 6000 Ada | 44 GB    | 80 GB   |
@@ -69,8 +69,8 @@
 |-------|----------------------------|
 | Z-Image | 50 GB (`/workspace`)       |
 | ERNIE | 50 GB (`/workspace`)       |
-| Krea-2 bf16 | 90 GB (`/workspace`)       |
-| Krea-2 fp8 | 60 GB (`/workspace`)       |
+| Krea-2 bf16 | 60 GB (`/workspace`)       |
+| Krea-2 fp8 | 50 GB (`/workspace`)       |
 | FLUX bf16 | 90 GB (`/workspace`)       |
 | FLUX fp8 | 75 GB (`/workspace`)       |
 | Qwen Image | 70 GB (`/workspace`)       |
