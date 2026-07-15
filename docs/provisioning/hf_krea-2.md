@@ -5,6 +5,7 @@
 - [ComfyUI](https://huggingface.co/Comfy-Org/Krea-2)
 - [Huihui Qwen3 VL text encoder](https://huggingface.co/ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy)
 - [wangkanai Qwen3 VL text encoder](https://huggingface.co/wangkanai/qwen3-vl-4b-instruct)
+- [Vae Upscale 2x](https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x)
 
 ## Diffusion_model
 
@@ -77,6 +78,12 @@ hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3
 hf download Comfy-Org/Krea-2 vae/qwen_image_vae.safetensors \
 --local-dir /workspace/ComfyUI/models/vae/
 ```
+
+```bash
+hf download LS110824/vae krea2RealVae_v10.safetensors \
+--local-dir /workspace/ComfyUI/models/vae/
+```
+
 ## Distilled Lora
 
 ### Turbo rank 64 bf16

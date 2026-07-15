@@ -9,7 +9,3 @@ hf download LS110824/upscale RealESRGAN_x2plus.pth \
 hf download LS110824/upscale 4x_foolhardy_Remacri.pth \
 --local-dir /workspace/ComfyUI/models/upscale_models/
 ```
-
-## SeedVR2
-
-- [Huggingface](https://huggingface.co/numz/SeedVR2_comfyUI/tree/main)

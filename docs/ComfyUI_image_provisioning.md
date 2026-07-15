@@ -50,4 +50,5 @@
 ## Others
 
 - [Segmentation](provisioning/hf_segmentation.md)
+- [SeedVR2](provisioning/hf_seedvr2.md)
 - [Upscale](provisioning/hf_upscale.md)
