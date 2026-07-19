@@ -4,8 +4,9 @@
 
 - [ComfyUI](https://huggingface.co/Comfy-Org/Krea-2)
 - [Huihui Qwen3 VL text encoder](https://huggingface.co/ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy)
-- [wangkanai Qwen3 VL text encoder](https://huggingface.co/wangkanai/qwen3-vl-4b-instruct)
+- [Wangkanai Qwen3 VL text encoder](https://huggingface.co/wangkanai/qwen3-vl-4b-instruct)
 - [Vae Upscale 2x](https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x)
+- [identity-edit](https://huggingface.co/conradlocke/krea2-identity-edit)
 
 ## Diffusion_model
 
@@ -94,6 +95,20 @@ hf download Comfy-Org/Krea-2 loras/krea2_turbo_lora_rank_64_bf16.safetensors \
 ```
 
 ## Loras
+
+### krea2-identity-edit
+
+```bash
+hf download conradlocke/krea2-identity-edit krea2_identity_edit_v1_2_r128.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
+
+### Krea-2-Turbo-Projector-Scale-LoRA-Diffusers
+
+```bash
+hf download Beinsezii/Krea-2-Turbo-Projector-Scale-LoRA-Diffusers pytorch_lora_weights.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
 
 ### Coolblue
 

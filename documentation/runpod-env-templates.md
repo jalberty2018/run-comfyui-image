@@ -169,6 +169,7 @@ WORKFLOW_LVRAM1=https://provisioning.rozenlaan.site/image/FLUX2-ti2i-pod-LVRAM.j
 WORKFLOW_LVRAM2=https://provisioning.rozenlaan.site/image/FLUX2-i2i-CAMERA-pod-LVRAM.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ```
+
 ### Private
 
 ```bash
@@ -209,9 +210,7 @@ HF_MODEL_DIFFUSION_MODELS_FILENAME2=flux-2-klein-base-9b.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
-HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
-HF_MODEL_UPSCALER1=LS110824/upscale
-HF_MODEL_UPSCALER_PTH1=4x_foolhardy_Remacri.pth
+HF_MODEL_TEXT_ENCODERS_FILENAME1=flux2-klein-9b-uncensored-text-encoder.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
@@ -245,7 +244,7 @@ HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
-HF_MODEL_TEXT_ENCODERS_FILENAME1=qwen_3_8b.safetensors
+HF_MODEL_TEXT_ENCODERS_FILENAME1=flux2-klein-9b-uncensored-text-encoder.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json

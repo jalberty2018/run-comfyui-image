@@ -7,6 +7,8 @@
 - [HF base 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B)
 - [HF ComfyUI 9B](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b)
 - [HF Uncensored clip encoder](https://huggingface.co/ponpoke/flux2-klein-9b-uncensored-text-encoder)
+- [BFS-Best-Face-Swap](https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap)
+- [9B-reference-pose-lora](https://huggingface.co/thedeoxen/refcontrol-FLUX.2-klein-9B-reference-pose-lora)
 
 ## 4B
 
@@ -105,4 +107,20 @@ hf download Comfy-Org/vae-text-encorder-for-flux-klein-9b split_files/vae/flux2-
 ```bash
 hf download Comfy-Org/vae-text-encorder-for-flux-klein-4b  split_files/vae/flux2-vae.safetensors \
 --local-dir /workspace/ComfyUI/models/vae/
+```
+
+## Loras
+
+### Best Face Swap 9B
+
+```bash
+hf download Alissonerdx/BFS-Best-Face-Swap  bfs_head_v1_flux-klein_9b_step3500_rank128.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
+
+## refcontrol-FLUX.2-klein-9B-reference-pose-lora
+
+```bash
+hf download thedeoxen/refcontrol-FLUX.2-klein-9B-reference-pose-lora  refcontrol_v2_poses.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
 ```

@@ -94,7 +94,12 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/Auryg/Krea-2-Two-Stage-Sampler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/kgilper/krea-reference.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/jieg9341-lab/ComfyUI-Krea2-StyleTransfer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-KreaReason.git
+	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-KreaReason.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/yanokusnir-ai/one-node-flux-2-klein.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/lbouaraba/comfyui-krea2edit.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/blue-pen5805/ComfyUI-krea2-negpip.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/BlackSnowSkill/ComfyUI-Krea2-Projector-Tuner && \
+	git clone --depth=1 --filter=blob:none https://github.com/Extraltodeus/ComfyUI-Krea2-attention-tweak.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
 # Pin to the v2.0.0 release, verified to parse under Python 3.11.
