@@ -6,6 +6,7 @@
 
 ```bash
 VRAM_THRESHOLD=21
+HF_DOWNLOAD_TIMEOUT=5m
 HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
 HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
 HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
@@ -28,11 +29,16 @@ HF_MODEL_LORA4=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME4=fedor_bypass.safetensors
 HF_MODEL_LORA5=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME5=PornMaster_Detail_Slider_Krea2_V1_000000225.safetensors
+HF_MODEL_LORA6=conradlocke/krea2-identity-edit
+HF_MODEL_LORA_FILENAME6=krea2_identity_edit_v1_2_r128.safetensors
+HF_MODEL_LORA7=LS110824/krea2_lora
+HF_MODEL_LORA_FILENAME7=Krea2_TextFusion_Refusal_Reduction.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-artist-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/Krea-2-turbo-i2i-style-transfer-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/Krea-2-turbo-i2i-edit-pod.json
 ```
 
 ### Private Raw + turbo-lora
@@ -42,6 +48,7 @@ CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
 VRAM_THRESHOLD=21
+HF_DOWNLOAD_TIMEOUT=5m
 HF_MODEL_HVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
 HF_MODEL_HVRAM_DIFFUSION_MODELS_FILENAME1=diffusion_models/krea2_raw_bf16.safetensors
 HF_MODEL_LVRAM_DIFFUSION_MODELS1=Comfy-Org/Krea-2
@@ -63,11 +70,16 @@ HF_MODEL_LORA4=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME4=fedor_bypass.safetensors
 HF_MODEL_LORA5=LS110824/krea2_lora
 HF_MODEL_LORA_FILENAME5=PornMaster_Detail_Slider_Krea2_V1_000000225.safetensors
+HF_MODEL_LORA6=conradlocke/krea2-identity-edit
+HF_MODEL_LORA_FILENAME6=krea2_identity_edit_v1_2_r128.safetensors
+HF_MODEL_LORA7=LS110824/krea2_lora
+HF_MODEL_LORA_FILENAME7=Krea2_TextFusion_Refusal_Reduction.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-prompt-enhance-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-2-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/Krea-2-turbo-t2i-vlm-artist-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/Krea-2-turbo-i2i-style-transfer-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/Krea-2-turbo-i2i-edit-pod.json
 ```
 
 ## ZIB-ZIT
@@ -202,6 +214,7 @@ WORKFLOW3=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 ### Public 9B
 
 ```bash
+HF_DOWNLOAD_TIMEOUT=5m
 HF_TOKEN=place-hugginface-token-secret-here
 HF_MODEL_DIFFUSION_MODELS1=LS110824/Flux2
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein.safetensors
@@ -211,26 +224,14 @@ HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
 HF_MODEL_TEXT_ENCODERS_FILENAME1=flux2-klein-9b-uncensored-text-encoder.safetensors
+HF_MODEL_LORA1=thedeoxen/refcontrol-FLUX.2-klein-9B-reference-pose-lora
+HF_MODEL_LORA_FILENAME1=refcontrol_v2_poses.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
 WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
-```
-
-### private 9B base
-
-```bash
-CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
-HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
-PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
-HF_MODEL_DIFFUSION_MODELS1=black-forest-labs/FLUX.2-klein-base-9B
-HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein-base-9b.safetensors
-HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
-HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
-HF_MODEL_TEXT_ENCODERS1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
-HF_MODEL_TEXT_ENCODERS_FILENAME1=split_files/text_encoders/qwen_3_8b.safetensors
-WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.json
+WORKFLOW6=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-RefControl-i2i-pod.json
 ```
 
 ### private 9B Distill
@@ -239,16 +240,20 @@ WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Base-t2i-pod.j
 CIVITAI_TOKEN={{ RUNPOD_SECRET_CivitAI_API_KEY }}
 HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN_WRITE }}
 PASSWORD={{ RUNPOD_SECRET_CODE-SERVER-NEW }}
+HF_DOWNLOAD_TIMEOUT=5m
 HF_MODEL_DIFFUSION_MODELS1=LS110824/Flux2
 HF_MODEL_DIFFUSION_MODELS_FILENAME1=flux-2-klein.safetensors
 HF_MODEL_VAE1=Comfy-Org/vae-text-encorder-for-flux-klein-9b
 HF_MODEL_VAE_FILENAME1=split_files/vae/flux2-vae.safetensors
 HF_MODEL_TEXT_ENCODERS1=LS110824/text_encoders
 HF_MODEL_TEXT_ENCODERS_FILENAME1=flux2-klein-9b-uncensored-text-encoder.safetensors
+HF_MODEL_LORA1=thedeoxen/refcontrol-FLUX.2-klein-9B-reference-pose-lora
+HF_MODEL_LORA_FILENAME1=refcontrol_v2_poses.safetensors
 WORKFLOW1=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-pod.json
 WORKFLOW2=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-mi2i-pod.json
 WORKFLOW3=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-i2i-control-target-pod.json
 WORKFLOW4=https://provisioning.rozenlaan.site/image/JoyCaption-i2t-pod.json
+WORKFLOW5=https://provisioning.rozenlaan.site/image/FLUX-Klein-9B-Distilled-RefControl-i2i-pod.json
 ```
 
 ## Qwen-image-edit

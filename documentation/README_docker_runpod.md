@@ -42,6 +42,10 @@
 - 👉 [Qwen image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o)
 - 👉 [Qwen image edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o)
 
+## License note on FLUX.2 [klein] 9B
+
+- The 9B model is released under the FLUX Non-Commercial License by Black Forest Labs. This means you can use it for personal and research purposes, but commercial use is not permitted. If you use the 9B model, you are responsible for complying with that license.
+
 ### Pod documentation
 
 - [Start](https://comfyui.rozenlaan.site/ComfyUI_image/)
