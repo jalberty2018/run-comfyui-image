@@ -88,8 +88,8 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-SequentialImageLoader.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/jalberty2018/comfyui-krea2-conditioning.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-Krea2TextEncoder.git && \ 
-	git clone --depth=1 --filter=blob:none https://github.com/nova452/ComfyUI-Conditioning-Rebalance.git && \ 
+	git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-Krea2TextEncoder.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/nova452/ComfyUI-Conditioning-Rebalance.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Krea2T-Enhancer.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/kgilper/krea-reference.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/jieg9341-lab/ComfyUI-Krea2-StyleTransfer.git && \
