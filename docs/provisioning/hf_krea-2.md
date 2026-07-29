@@ -24,6 +24,13 @@ hf download Comfy-Org/Krea-2 diffusion_models/krea2_raw_fp8_scaled.safetensors \
 --local-dir /workspace/ComfyUI/models/diffusion_models/
 ```
 
+### Raw INT8 convrot
+
+```bash
+hf download Comfy-Org/Krea-2 diffusion_models/krea2_raw_int8_convrot.safetensors \
+--local-dir=/workspace/ComfyUI/models/diffusion_models/
+```
+
 ### Turbo bf16
 
 ```bash
@@ -71,6 +78,13 @@ hf download wangkanai/qwen3-vl-4b-instruct qwen3-vl-4b-instruct-abliterated.safe
 ```bash
 hf download ahmed22xa/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors \
 --local-dir /workspace/ComfyUI/models/text_encoders/
+```
+
+### Heretic bf16
+
+```bash
+hf download DreamFast/Qwen3-VL-4b-Heretic-ComfyUI qwen3-vl-4b-heretic.safetensors \
+--local-dir=/workspace/ComfyUI/models/text_encoders/
 ```
 
 ## Vae

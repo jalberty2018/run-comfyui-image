@@ -47,6 +47,10 @@
 - [SRPO](provisioning/hf_flux.1_SRPO.md)
 - [USO](provisioning/hf_flux.1_USO.md)
 
+## Mage-flow
+
+- [raw & edit](hf_mage-flow.md)
+
 ## Others
 
 - [Segmentation](provisioning/hf_segmentation.md)
