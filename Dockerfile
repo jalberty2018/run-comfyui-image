@@ -59,7 +59,6 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-LatentUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/geroldmeisinger/ComfyUI-outputlists-combiner.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/RamonGuthrie/ComfyUI-RBG-SmartSeedVariance.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/rethink-studios/comfyui-model-linker-desktop.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
@@ -99,8 +98,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/blue-pen5805/ComfyUI-krea2-negpip.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/BlackSnowSkill/ComfyUI-Krea2-Projector-Tuner && \
 	git clone --depth=1 --filter=blob:none https://github.com/Extraltodeus/ComfyUI-Krea2-attention-tweak.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git
-
+	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/Azornes/Comfyui-Model-Resolver.git
+	
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
 # Pin to the v2.0.0 release, verified to parse under Python 3.11.
 RUN git fetch --depth=1 origin refs/tags/v2.0.0 && \
@@ -160,7 +160,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-Lora-Manager/requirements.txt \
 	-r ComfyUI-SAM3/requirements.txt \
     -r ComfyUI-Easy-Use/requirements.txt \
-	-r joycaption_comfyui/requirements.txt
+	-r joycaption_comfyui/requirements.txt \
+	-r Comfyui-Model-Resolver/requirements.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
