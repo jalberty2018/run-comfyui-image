@@ -99,7 +99,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/BlackSnowSkill/ComfyUI-Krea2-Projector-Tuner && \
 	git clone --depth=1 --filter=blob:none https://github.com/Extraltodeus/ComfyUI-Krea2-attention-tweak.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/Azornes/Comfyui-Model-Resolver.git
+	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git
 	
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
 # Pin to the v2.0.0 release, verified to parse under Python 3.11.
@@ -161,7 +161,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 	-r ComfyUI-SAM3/requirements.txt \
     -r ComfyUI-Easy-Use/requirements.txt \
 	-r joycaption_comfyui/requirements.txt \
-	-r Comfyui-Model-Resolver/requirements.txt
+	-r comfyui-model-linker/requirements.txt
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
