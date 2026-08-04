@@ -63,7 +63,6 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Flux2Klein-Enhancer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes.git && \
     git clone --depth=1 --filter=blob:none https://github.com/naku-yh/ComfyUI_Flux2ImageReference.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/aledelpho/Arthemy_Live-Tuner-ZIT-ComfyUI.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/facok/comfyui-meancache-z.git && \
@@ -101,11 +100,6 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git
 	
-WORKDIR /ComfyUI/custom_nodes/ComfyUI-ZImagePowerNodes
-# Pin to the v2.0.0 release, verified to parse under Python 3.11.
-RUN git fetch --depth=1 origin refs/tags/v2.0.0 && \
-    git checkout c57ec08954de852375913d9cfc21650e942dbace
-
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
 RUN set -eux; \
