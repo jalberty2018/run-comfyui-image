@@ -85,8 +85,8 @@
 |-------|----------------------------|
 | —     | 15 GB                      |
 
-
-## Other available pods
+## Other available video pods and templates
 
 - [WAN 2.2](https://comfyui.rozenlaan.site/ComfyUI_WAN/)
 - [LTX 2.3](https://comfyui.rozenlaan.site/ComfyUI_LTX/)
+- [Minimax H3](https://comfyui.rozenlaan.site/ComfyUI_MiniMax/)
