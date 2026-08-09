@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:03082026
+FROM ls250824/comfyui-runtime:08082026
 
 WORKDIR /ComfyUI
 
@@ -98,7 +98,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/BlackSnowSkill/ComfyUI-Krea2-Projector-Tuner && \
 	git clone --depth=1 --filter=blob:none https://github.com/Extraltodeus/ComfyUI-Krea2-attention-tweak.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git
+	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/alexw5702-afk/krea2-anypaint.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/Andro-Meta/ComfyUI-Krea-Moodboards.git
 	
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -192,7 +194,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.30.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.31.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"

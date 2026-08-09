@@ -7,6 +7,7 @@
 - [Wangkanai Qwen3 VL text encoder](https://huggingface.co/wangkanai/qwen3-vl-4b-instruct)
 - [Vae Upscale 2x](https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x)
 - [identity-edit](https://huggingface.co/conradlocke/krea2-identity-edit)
+- [Krea2 AnyPaint](https://huggingface.co/yijunwang2/krea2-anypaint)
 
 ## Diffusion_model
 
@@ -109,6 +110,13 @@ hf download Comfy-Org/Krea-2 loras/krea2_turbo_lora_rank_64_bf16.safetensors \
 ```
 
 ## Loras
+
+### Krea2 AnyPaint rank 32
+
+```bash
+hf download yijunwang2/krea2-anypaint krea2_anypaint_rank32.safetensors \
+--local-dir /workspace/ComfyUI/models/loras/
+```
 
 ### krea2-identity-edit
 
