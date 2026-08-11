@@ -85,22 +85,9 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-SequentialImageLoader.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/jalberty2018/comfyui-krea2-conditioning.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/ethanfel/ComfyUI-Krea2TextEncoder.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/nova452/ComfyUI-Conditioning-Rebalance.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/capitan01R/ComfyUI-Krea2T-Enhancer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/kgilper/krea-reference.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/jieg9341-lab/ComfyUI-Krea2-StyleTransfer.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-KreaReason.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/yanokusnir-ai/one-node-flux-2-klein.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/lbouaraba/comfyui-krea2edit.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/blue-pen5805/ComfyUI-krea2-negpip.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/BlackSnowSkill/ComfyUI-Krea2-Projector-Tuner && \
-	git clone --depth=1 --filter=blob:none https://github.com/Extraltodeus/ComfyUI-Krea2-attention-tweak.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/ostris/ComfyUI-Krea2-Ostris-Edit.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/alexw5702-afk/krea2-anypaint.git && \
-	git clone --depth=1 --filter=blob:none https://github.com/Andro-Meta/ComfyUI-Krea-Moodboards.git
+	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git
 	
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -166,20 +153,18 @@ COPY --chmod=644 /configuration/lora-manager-settings.json settings.json.templat
 # Set Working Directory
 WORKDIR /
 
-# Clone documentation repo from comfyui-docs
+# Clone the documentation repo and copy the required files in one layer.
+# Keeping these operations together prevents a stale clone layer from being reused
+# when a documentation filename changes upstream.
 RUN --mount=type=cache,target=/root/.cache/git \
-    git clone --depth=1 --filter=blob:none https://github.com/jalberty2018/comfyui-docs.git /comfyui-docs
-
-# Copy docs *inside* the image
-RUN mkdir -p /docs && \
-    cp /comfyui-docs/ComfyUI_image_configuration.md /docs/ComfyUI_image_configuration.md && \
+    git clone --depth=1 --filter=blob:none https://github.com/jalberty2018/comfyui-docs.git /comfyui-docs && \
+    mkdir -p /docs && \
+    cp /comfyui-docs/RunPod_configuration.md /docs/ComfyUI_image_configuration.md && \
     cp /comfyui-docs/ComfyUI_image_custom_nodes.md /docs/ComfyUI_image_custom_nodes.md && \
     cp /comfyui-docs/ComfyUI_image_hardware.md /docs/ComfyUI_image_hardware.md && \
     cp /comfyui-docs/ComfyUI_image_image_setup.md /docs/ComfyUI_image_image_setup.md && \
-    cp /comfyui-docs/ComfyUI_image_resources.md /docs/ComfyUI_image_resources.md
-
-# Cleanup
-RUN rm -rf /comfyui-docs
+    cp /comfyui-docs/ComfyUI_image_resources.md /docs/ComfyUI_image_resources.md && \
+    rm -rf /comfyui-docs
 
 # Copy Scripts and documentation
 COPY --chmod=755 start.sh onworkspace/comfyui-on-workspace.sh onworkspace/files-on-workspace.sh onworkspace/test-on-workspace.sh onworkspace/docs-on-workspace.sh / 

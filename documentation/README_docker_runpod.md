@@ -29,12 +29,11 @@
 ### Templates
 
 - Specific models/loras/workflows for the templates are downloaded when the pod starts.
+- [Deployment help](https://comfyui.rozenlaan.site/Runpod_pod_deployment/)
 
 - 👉 [Z-Image Base and Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o)
 
 - 👉 [ERNIE-Image Base and Turbo](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o)
-
-- 👉 [Krea-2 Base and Turbo](https://console.runpod.io/deploy?template=e2hlyrm22l&ref=se4tkc5o)
 
 - 👉 [Flux.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o)
 - 👉 [Flux.2 Klein](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o)
@@ -57,8 +56,6 @@
 |-----------------|---------------------|----------|---------|
 | Z-Image Turbo   | RTX 3090, RTX A5000 | 20 GB    | 50 GB   |
 | ERNIE-Image     | RTX A4500 | 20 GB    | 50 GB   |
-| Krea-2  bf16   | RTX 3090 |  24 GB    | 65  GB   |
-| Krea-2  fp8   | RTX A4500 |  20 GB    | 65  GB   |
 | FLUX.2 Klein    | RTX A4500    | 20 GB    | 50 GB   |
 | FLUX.2 Dev bf16 | RTX 6000 Ada | 44 GB    | 80 GB   |
 | FLUX.2 Dev fp8  | RTX 3090    | 24 GB    | 50 GB   |
@@ -73,8 +70,6 @@
 |-------|----------------------------|
 | Z-Image | 50 GB (`/workspace`)       |
 | ERNIE | 50 GB (`/workspace`)       |
-| Krea-2 bf16 | 60 GB (`/workspace`)       |
-| Krea-2 fp8 | 50 GB (`/workspace`)       |
 | FLUX bf16 | 90 GB (`/workspace`)       |
 | FLUX fp8 | 75 GB (`/workspace`)       |
 | Qwen Image | 70 GB (`/workspace`)       |
