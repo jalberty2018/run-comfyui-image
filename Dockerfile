@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:08082026
+FROM ls250824/comfyui-runtime:26082026
 
 WORKDIR /ComfyUI
 
@@ -86,6 +86,7 @@ RUN --mount=type=cache,target=/root/.cache/git \
 	git clone --depth=1 --filter=blob:none https://github.com/fpgaminer/joycaption_comfyui.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/shootthesound/ComfyUI-SequentialImageLoader.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/nova452/ComfyUI-Conditioning-Rebalance.git && \
+	git clone --depth=1 --filter=blob:none https://github.com/obvpm/comfyui-obvpm.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/yanokusnir-ai/one-node-flux-2-klein.git && \
 	git clone --depth=1 --filter=blob:none https://github.com/kianxyzw/comfyui-model-linker.git
 	
@@ -179,7 +180,7 @@ WORKDIR /workspace
 EXPOSE 8188 9000
 
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.31.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.34.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses="MIT"
