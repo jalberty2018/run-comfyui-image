@@ -1,4 +1,4 @@
-# One Click - Qwen Image Edit 2511 with Lightning and multi-angle control
+# Qwen Image Edit 2511 with Lightning and multi-angle control
 
 Edit and extend images with Qwen Image Edit 2511 in ComfyUI. The selected BF16 or FP8 model, Qwen2.5-VL encoder, VAE, Lightning and camera LoRAs, upscaler, custom nodes and workflows are provisioned automatically.
 
@@ -23,10 +23,9 @@ Only Qwen Image Edit components are downloaded, not the Qwen Image 2512 generato
 2. Select a GPU with at least 24 GB VRAM.
 3. Use 65 GB Pod RAM for BF16 or 45 GB for FP8.
 4. Allocate at least 70 GB persistent storage.
-5. Set `PASSWORD` and any required download tokens.
-6. Deploy and follow the container logs.
-7. Wait for `Provisioning done, ready to create AI content`.
-8. Open ComfyUI and load the matching edit workflow.
+5. Deploy and follow the container logs.
+6. Wait for `Provisioning done, ready to create AI content`.
+7. Open ComfyUI and load the matching edit workflow.
 
 ## Included workflows and components
 

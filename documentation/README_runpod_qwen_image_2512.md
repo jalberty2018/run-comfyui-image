@@ -1,4 +1,4 @@
-# One Click - Qwen Image 2512 with Lightning and ControlNet
+# Qwen Image 2512 with Lightning and ControlNet
 
 Generate images with Qwen Image 2512 in ComfyUI. The selected BF16 or FP8 model and encoder, VAE, Lightning LoRAs, ControlNet, upscaler, custom nodes and workflows are provisioned automatically.
 

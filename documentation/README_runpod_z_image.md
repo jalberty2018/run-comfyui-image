@@ -1,4 +1,4 @@
-# One Click - Z-Image Base and Turbo with uncensored Qwen
+# Z-Image Base and Turbo with uncensored Qwen
 
 Generate images with Z-Image Base or the faster Turbo model in ComfyUI. Models, VAEs, ControlNet patches, LoRA, upscaler, custom nodes and workflows are provisioned automatically.
 
@@ -24,10 +24,9 @@ Only Z-Image components are downloaded, not the other image-model families. This
 1. [Deploy Z-Image Base + Turbo](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o).
 2. Select a supported NVIDIA GPU and at least 50 GB Pod RAM.
 3. Use at least 50 GB persistent volume storage.
-4. Set `PASSWORD` and any required download tokens.
-5. Deploy and follow the container logs.
-6. Wait for `Provisioning done, ready to create AI content`.
-7. Open ComfyUI and load a supplied Z-Image workflow.
+4. Deploy and follow the container logs.
+5. Wait for `Provisioning done, ready to create AI content`.
+6. Open ComfyUI and load a supplied Z-Image workflow.
 
 ## Included workflows and components
 

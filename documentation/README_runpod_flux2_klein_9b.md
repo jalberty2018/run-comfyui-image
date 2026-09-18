@@ -1,4 +1,4 @@
-# One Click - FLUX.2 Klein 9B with uncensored text encoder
+# FLUX.2 Klein 9B with uncensored text encoder
 
 Generate, edit and control images with FLUX.2 Klein 9B in ComfyUI. Distilled and Base models, VAE, uncensored encoder, reference-control LoRA, custom nodes and workflows are provisioned automatically.
 
@@ -26,10 +26,9 @@ Only FLUX.2 Klein components are downloaded, not FLUX.2 Dev or other image model
 1. [Deploy FLUX.2 Klein 9B](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o).
 2. Select a GPU with at least 20 GB VRAM and 50 GB Pod RAM.
 3. Use sufficient persistent volume storage for both supplied model variants.
-4. Set `PASSWORD` and an authorized `HF_TOKEN` when required.
-5. Deploy and follow the container logs.
-6. Wait for `Provisioning done, ready to create AI content`.
-7. Open ComfyUI and load a supplied Klein workflow.
+4. Deploy and follow the container logs.
+5. Wait for `Provisioning done, ready to create AI content`.
+6. Open ComfyUI and load a supplied Klein workflow.
 
 ## Included workflows and components
 

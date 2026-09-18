@@ -165,21 +165,42 @@ HAS_COMFYUI=0
 
 if [[ "$HAS_CUDA" -eq 1 ]]; then 
 	
-	SETTINGS_DIR="/workspace/ComfyUI/custom_nodes/ComfyUI-Lora-Manager"
-	SETTINGS_FILE="$SETTINGS_DIR/settings.json"
-	TEMPLATE_FILE="$SETTINGS_DIR/settings.json.template"
-	
-	mkdir -p "$SETTINGS_DIR"
-	
-	if [[ -n "${CIVITAI_TOKEN:-}" ]]; then
-	    echo "ℹ️ Injecting CIVITAI_TOKEN into ComfyUI-Lora-Manager"
-	
-	    jq --arg token "$CIVITAI_TOKEN" \
-	       '.civitai_api_key = $token' \
-	       "$TEMPLATE_FILE" > "$SETTINGS_FILE"
-	else
-	    echo "⚠️ CIVITAI_TOKEN not set – Insert your token manually in ComfyUI-Lora-Manager"
-	fi
+	 # Use the template bundled with the image, including on persistent workspaces.
+    if ! python3 - <<'PY_SETTINGS'
+import json
+import os
+from pathlib import Path
+import tempfile
+
+template = Path("/lora-manager-settings.json")
+settings = Path("/workspace/ComfyUI/custom_nodes/ComfyUI-Lora-Manager/settings.json")
+with template.open(encoding="utf-8") as source:
+    config = json.load(source)
+if not isinstance(config, dict):
+    raise ValueError("Lora-Manager settings template must contain a JSON object")
+
+token = os.environ.get("CIVITAI_TOKEN")
+if token:
+    config["civitai_api_key"] = token
+
+settings.parent.mkdir(parents=True, exist_ok=True)
+temporary = None
+try:
+    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=settings.parent,
+                                     prefix=".settings-", suffix=".json", delete=False) as target:
+        temporary = Path(target.name)
+        json.dump(config, target, ensure_ascii=False, indent=2)
+        target.write("\n")
+    temporary.replace(settings)
+finally:
+    if temporary is not None:
+        temporary.unlink(missing_ok=True)
+print("✅ Lora-Manager settings loaded from template" +
+      (" with CIVITAI_TOKEN" if token else ""))
+PY_SETTINGS
+    then
+        echo "❌ Failed to initialize Lora-Manager settings" >&2
+    fi
 	
 	echo "▶️ ComfyUI service starting (CUDA available)"
 	    
@@ -832,36 +853,6 @@ else
     echo "⚠️ Skipped Provisioning: No workflows or models downloaded as ComfyUI is not online"
 fi
 
-echo "ℹ️ Connections and/or diagnostics"
-
-if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
-    echo "🎉 Provisioning done, ready to create AI content 🎉"
-
-    show_runpod_services
-    show_code_server_login
-
-else
-    if [[ "$HAS_GPU_RUNPOD" -eq 0 ]]; then
-        echo "⚠️ Pod started without a runpod GPU"
-    fi
-
-    if [[ "$HAS_CUDA" -eq 0 ]]; then
-        echo "❌ Pytorch CUDA driver error/mismatch/not available"
-        if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
-            echo "⚠️ [SOLUTION 1] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
-			echo "⚠️ [SOLUTION 2] Specify CUDA 12.8 using the runpod console filter. ⚠️"
-        fi
-    fi
-
-    if [[ "$HAS_CUDA" -eq 1 && "$HAS_COMFYUI" -eq 0 ]]; then
-        echo "❌ ComfyUI is not online (extreme slow vCPU's)"
-        echo "⚠️ [SOLUTION 1] restart pod ⚠️"
-		echo "⚠️ [SOLUTION 2] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
-    fi
-fi
-
-echo "📘 Tutorial: https://comfyui.rozenlaan.site/ComfyUI_tutorial/"
-
 # Environment
 echo "ℹ️ Running environment"
 
@@ -919,6 +910,40 @@ if ort is not None:
 else:
     print("ONNX Runtime: not available")
 PY
+
+echo "ℹ️ Connections and/or diagnostics"
+
+if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
+    echo "🎉 Provisioning done, ready to create AI content 🎉"
+
+    show_runpod_services
+    show_code_server_login
+
+    echo "🎉 Provisioning done, ready to create AI content 🎉"
+
+else
+    if [[ "$HAS_GPU_RUNPOD" -eq 0 ]]; then
+        echo "⚠️ Pod started without a runpod GPU"
+    fi
+
+    if [[ "$HAS_CUDA" -eq 0 ]]; then
+        echo "❌ Pytorch CUDA driver error/mismatch/not available"
+        if [[ "$HAS_GPU_RUNPOD" -eq 1 ]]; then
+            echo "⚠️ [SOLUTION 1] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
+			echo "⚠️ [SOLUTION 2] Specify CUDA 12.8 using the runpod console filter. ⚠️"
+        fi
+    fi
+
+    if [[ "$HAS_CUDA" -eq 1 && "$HAS_COMFYUI" -eq 0 ]]; then
+        echo "❌ ComfyUI is not online (extreme slow vCPU's)"
+        echo "⚠️ [SOLUTION 1] restart pod ⚠️"
+		echo "⚠️ [SOLUTION 2] Deploy pod on another region then ${RUNPOD_DC_ID:-unknown} ⚠️"
+    fi
+fi
+
+echo "📘 Tutorial: https://comfyui.rozenlaan.site/ComfyUI_tutorial/"
+
+echo "ℹ️ llama-cpp-python environment"
 
 python - <<'PY'
 import llama_cpp

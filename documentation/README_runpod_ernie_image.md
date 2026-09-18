@@ -1,4 +1,4 @@
-# One Click - ERNIE-Image Base and Turbo with prompt enhancement
+# ERNIE-Image Base and Turbo with prompt enhancement
 
 Generate images with ERNIE-Image Base or Turbo in ComfyUI. Both diffusion models, VAE, text encoder, dedicated prompt enhancer, custom nodes and workflows are provisioned automatically.
 
@@ -31,10 +31,9 @@ Prompt enhancement is optional; both modes use the same ERNIE diffusion model se
 1. [Deploy ERNIE-Image Base + Turbo](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o).
 2. Select a supported NVIDIA GPU and at least 50 GB Pod RAM.
 3. Use at least 50 GB persistent volume storage.
-4. Set `PASSWORD` and any required download tokens.
-5. Deploy and follow the container logs.
-6. Wait for `Provisioning done, ready to create AI content`.
-7. Open ComfyUI and load the Base or Turbo workflow.
+4. Deploy and follow the container logs.
+5. Wait for `Provisioning done, ready to create AI content`.
+6. Open ComfyUI and load the Base or Turbo workflow.
 
 ## Included components
 

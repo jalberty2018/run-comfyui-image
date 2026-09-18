@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # run-comfyui-image
-FROM ls250824/comfyui-runtime:09092026
+FROM ls250824/comfyui-runtime:16092026
 
 WORKDIR /ComfyUI
 
@@ -14,6 +14,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 COPY --chmod=644 configuration/comfy.settings.json user/default/comfy.settings.json
 COPY --chmod=644 configuration/config.ini user/__manager/config.ini
 
+# Reclone if NODEREBUILD is set
+ARG NODEREBUILD
+RUN echo "Rebuilding custom nodes: ${NODEREBUILD}"
+
 # Clone
 WORKDIR /ComfyUI/custom_nodes
 
@@ -21,7 +25,6 @@ WORKDIR /ComfyUI/custom_nodes
 # Override with --build-arg GIT_HTTP_VERSION=HTTP/2 when appropriate.
 ARG GIT_HTTP_VERSION=HTTP/1.1
 # Separate layers retain successful clones when a later repository fails.
-# Shallow full checkouts avoid the extra lazy blob fetch of --filter=blob:none.
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/rgthree/rgthree-comfy.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/regiellis/ComfyUI-EasyColorCorrector.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/alexopus/ComfyUI-Image-Saver.git
@@ -30,8 +33,26 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/ChangeTheConstants/SeedVarianceEnhancer.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/erosDiffusion/ComfyUI-EulerDiscreteScheduler.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/willmiao/ComfyUI-Lora-Manager.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/scraed/LanPaint.git
+# Exclude only the README screenshot; other media, refs and workflows serve the UI.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/willmiao/ComfyUI-Lora-Manager.git; \
+    git -C ComfyUI-Lora-Manager -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/static/images/screenshot.png'; \
+    git -C ComfyUI-Lora-Manager -c http.version="$GIT_HTTP_VERSION" checkout
+# Skip example media in both the working tree and Git object downloads.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/scraed/LanPaint.git; \
+    git -C LanPaint -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/examples/' '!/example_workflows/'; \
+    git -C LanPaint -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/yolain/ComfyUI-Easy-Use.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/liusida/ComfyUI-Login.git
@@ -43,7 +64,16 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/Jonseed/ComfyUI-Detail-Daemon.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/chrisgoringe/cg-image-filter.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/KY-2000/comfyui-save-image-enhanced.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/ClownsharkBatwing/RES4LYF.git
+# Keep runtime files and Git metadata, without bundled example workflows/media.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/ClownsharkBatwing/RES4LYF.git; \
+    git -C RES4LYF -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/example_workflows/' '!/workflows/'; \
+    git -C RES4LYF -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BlenderNeko/ComfyUI_Noise.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/evanspearman/ComfyMath.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/city96/ComfyUI-GGUF.git
@@ -57,7 +87,6 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/x3bits/ComfyUI-Power-Flow.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/PozzettiAndrea/ComfyUI-SAM3.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/neonr-0/ComfyUI-PixelConstrainedScaler.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/vrgamegirl19/comfyui-vrgamedevgirl.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-ConditioningNoiseInjection.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-ConditioningTimestepSwitch.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/lrzjason/Comfyui-LatentUtils.git
@@ -141,7 +170,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     -r comfyui_controlnet_aux/requirements.txt \
     -r ComfyUI-EasyColorCorrector/requirements.txt \
     -r ComfyUI-Image-Saver/requirements.txt \
-    -r comfyui-vrgamedevgirl/requirements.txt \
     -r ComfyUI-Detail-Daemon/requirements.txt \
     -r ComfyUI-SeedVR2_VideoUpscaler/requirements.txt \
     -r ComfyUI-outputlists-combiner/requirements.txt \
@@ -154,6 +182,12 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
 COPY --chmod=644 /configuration/lora-manager-settings.json settings.json.template
+COPY --chmod=644 configuration/lora-manager-settings.json /lora-manager-settings.json
+
+# Rebuild docs if DOCREBUILD is set
+# Reclone if clonebust is set
+ARG DOCREBUILD
+RUN echo "Rebuilding documentation: ${DOCREBUILD}"
 
 # Set Working Directory
 WORKDIR /
@@ -186,7 +220,7 @@ EXPOSE 8188 9000
 # Licenses differ by component; see THIRD_PARTY_NOTICES.md.
 # Clear any inherited blanket license label for the assembled image.
 # Labels
-LABEL org.opencontainers.image.title="ComfyUI 0.35.0 for image inference" \
+LABEL org.opencontainers.image.title="ComfyUI 0.36.0 for image inference" \
       org.opencontainers.image.description="ComfyUI + internal manager + flash-attn + sageattention + onnxruntime-gpu + torch_generic_nms + code-server + civitai downloader + huggingface_hub + custom_nodes" \
       org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-comfyui-image" \
       org.opencontainers.image.licenses=""
