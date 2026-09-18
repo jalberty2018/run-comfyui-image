@@ -165,7 +165,6 @@ HAS_COMFYUI=0
 
 if [[ "$HAS_CUDA" -eq 1 ]]; then 
 	
-	 # Use the template bundled with the image, including on persistent workspaces.
     if ! python3 - <<'PY_SETTINGS'
 import json
 import os
