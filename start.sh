@@ -93,7 +93,6 @@ if [[ "$HAS_GPU" -eq 1 || "$HAS_GPU_RUNPOD" -eq 1 ]]; then
 	        echo "⚠️ BUG: Skipping $script (not found)"
 	    fi
 	done
-    wget -q --timeout=5 --tries=1 -O /dev/null "https://provisioning.rozenlaan.site/image/--finished_onworkspace.json" || true
 fi
 
 # Start code-server (HTTP port 9000) 
