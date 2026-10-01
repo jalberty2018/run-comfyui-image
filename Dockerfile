@@ -32,7 +32,16 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/GizmoR13/PG-Nodes.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/ChangeTheConstants/SeedVarianceEnhancer.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/erosDiffusion/ComfyUI-EulerDiscreteScheduler.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git
+# Skip documentation media and sample workflows; keep configs and embeddings.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git; \
+    git -C ComfyUI-SeedVR2_VideoUpscaler -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/example_workflows/' '!/docs/'; \
+    git -C ComfyUI-SeedVR2_VideoUpscaler -c http.version="$GIT_HTTP_VERSION" checkout
 # Exclude only the README screenshot; other media, refs and workflows serve the UI.
 RUN set -eux; \
     export GIT_TERMINAL_PROMPT=0; \
@@ -54,6 +63,7 @@ RUN set -eux; \
       '/*' '!/examples/' '!/example_workflows/'; \
     git -C LanPaint -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/marduk191/ComfyUI-ZImageTurboHQNodes.git
+# Keep Easy-Use resources: its font, styles and presets are runtime assets.
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/yolain/ComfyUI-Easy-Use.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/liusida/ComfyUI-Login.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/kijai/ComfyUI-KJNodes.git
@@ -77,9 +87,29 @@ RUN set -eux; \
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BlenderNeko/ComfyUI_Noise.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/evanspearman/ComfyMath.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/city96/ComfyUI-GGUF.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git --recursive
+# Skip sample workflows and fetch only the pinned submodule revision.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git; \
+    git -C ComfyUI_UltimateSDUpscale -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/example_workflows/'; \
+    git -C ComfyUI_UltimateSDUpscale -c http.version="$GIT_HTTP_VERSION" checkout; \
+    git -C ComfyUI_UltimateSDUpscale -c http.version="$GIT_HTTP_VERSION" \
+      submodule update --init --recursive --depth=1
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/kijai/ComfyUI-segment-anything-2.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/1038lab/ComfyUI-RMBG.git
+# Skip sample workflows; keep bundled model code and tokenizer assets.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/1038lab/ComfyUI-RMBG.git; \
+    git -C ComfyUI-RMBG -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/example_workflows/'; \
+    git -C ComfyUI-RMBG -c http.version="$GIT_HTTP_VERSION" checkout
 # Skip README media and example workflows; retain preprocessor code and assets.
 RUN set -eux; \
     export GIT_TERMINAL_PROMPT=0; \
@@ -94,7 +124,22 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-Scale-Image-to-Total-Pixels-Advanced.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/bradsec/ComfyUI_StringEssentials.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/x3bits/ComfyUI-Power-Flow.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/PozzettiAndrea/ComfyUI-SAM3.git
+# Fetch only the working SAM3 revision (2026-03-16; comfy-env problems).
+# Exclude demo inputs/docs/workflows before checkout, including from Git objects.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git init ComfyUI-SAM3; \
+    git -C ComfyUI-SAM3 remote add origin https://github.com/PozzettiAndrea/ComfyUI-SAM3.git; \
+    git -C ComfyUI-SAM3 config remote.origin.promisor true; \
+    git -C ComfyUI-SAM3 config remote.origin.partialclonefilter blob:none; \
+    git -C ComfyUI-SAM3 -c http.version="$GIT_HTTP_VERSION" \
+      fetch --depth=1 --filter=blob:none origin 5c0474e292e3658645f46e46378d58935a82692f; \
+    git -C ComfyUI-SAM3 sparse-checkout set --no-cone \
+      '/*' '!/assets/' '!/docs/' '!/workflows/'; \
+    git -C ComfyUI-SAM3 -c http.version="$GIT_HTTP_VERSION" \
+      checkout --detach 5c0474e292e3658645f46e46378d58935a82692f; \
+    mkdir -p ComfyUI-SAM3/assets
+# The empty assets directory preserves the prestartup demo-copy source path.
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/neonr-0/ComfyUI-PixelConstrainedScaler.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-ConditioningNoiseInjection.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-ConditioningTimestepSwitch.git
@@ -110,7 +155,16 @@ RUN set -eux; \
       '/*' '!/gallery/' '!/media/' '!/workflows/'; \
     git -C ComfyUI-outputlists-combiner -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/RamonGuthrie/ComfyUI-RBG-SmartSeedVariance.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/lrzjason/Comfyui-QwenEditUtils.git
+# Skip README demos and the four bundled example workflows.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/lrzjason/Comfyui-QwenEditUtils.git; \
+    git -C Comfyui-QwenEditUtils -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/Demo.mp4' '!/result.png' '!/mask_vs_no_mask.png' '!/mask_example.png' '!/example.png' '!/qe2511 consis lora comparer.json' '!/qwen edit custom mask.json' '!/qwen edit custom.json' '!/qe2511 edit face ref.json'; \
+    git -C Comfyui-QwenEditUtils -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/LAOGOU-666/ComfyUI-LG_SamplingUtils.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/princepainter/ComfyUI-PainterQwenImageEdit.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/capitan01R/ComfyUI-Flux2Klein-Enhancer.git
@@ -130,7 +184,16 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jtydhr88/ComfyUI-qwenmultiangle.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/NickPittas/ComfyUI_CameraAngleSelector.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git
+# Skip promotional assets and sample workflows; keep research docs used by scripts.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/ethanfel/ComfyUI-LoRA-Optimizer.git; \
+    git -C ComfyUI-LoRA-Optimizer -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/assets/' '!/example_workflows/'; \
+    git -C ComfyUI-LoRA-Optimizer -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/facok/ComfyUI-DiversityBoost.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/IAMCCS/IAMCCS-nodes.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/xmarre/ComfyUI-Flux2Klein-Conditioning-Toolkit.git
@@ -140,7 +203,16 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/shootthesound/comfyui-ReferenceLatentPlus.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/KursatAs/ComfyUI-Flux2KontextConditioner.git
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git
+# Skip demo images and sample workflows; keep model implementations.
+RUN set -eux; \
+    export GIT_TERMINAL_PROMPT=0; \
+    git -c http.version="$GIT_HTTP_VERSION" clone \
+      --depth=1 --filter=blob:none --no-checkout \
+      https://github.com/BigStationW/ComfyUi-Untwisting-RoPE.git; \
+    git -C ComfyUi-Untwisting-RoPE -c http.version="$GIT_HTTP_VERSION" \
+      sparse-checkout set --no-cone \
+      '/*' '!/Examples/' '!/workflows/'; \
+    git -C ComfyUi-Untwisting-RoPE -c http.version="$GIT_HTTP_VERSION" checkout
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/BigStationW/ComfyUi-TextEncodeEditAdvanced.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/Gavr728/ComfyUI_KleinTiledUpscaler.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/fpgaminer/joycaption_comfyui.git
@@ -149,6 +221,7 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/yanokusnir-ai/one-node-flux-2-klein.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jalberty2018/comfyui-model-linker.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/chanon/comfyui-obvpm.git
+RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jalberty2018/ComfyUI-QwenImageRefPack.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -164,9 +237,7 @@ RUN set -eux; \
     /ComfyUI/custom_nodes || true
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-SAM3
-# Working version for SAM3 (comfy-env problems)
-# Commit date: 2026-03-16
-RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" fetch --depth=1 origin 5c0474e292e3658645f46e46378d58935a82692f && git checkout --detach 5c0474e292e3658645f46e46378d58935a82692f
+# SAM3 was already checked out at the pinned revision above.
 # Pixi problem SAM3
 RUN sed -i '/^comfy-env/d' requirements.txt
 RUN sed -i '/^comfy-test/d' requirements.txt

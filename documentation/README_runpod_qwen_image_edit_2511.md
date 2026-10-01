@@ -13,7 +13,6 @@ Only Qwen Image Edit components are downloaded, not the Qwen Image 2512 generato
 | **Qwen Image Edit 2511 — this template** | Image editing, continuation loops and multiple angles |
 | [Qwen Image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o) | New text-to-image and ControlNet generation |
 | [Z-Image](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o) | Base/Turbo generation, uncensored Qwen and ControlNet |
-| [ERNIE-Image](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o) | Base/Turbo generation with built-in prompt enhancer |
 | [FLUX.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o) | High-quality generation, references and camera angles |
 | [FLUX.2 Klein 9B](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o) | Smaller FLUX editing/generation; non-commercial |
 
@@ -42,7 +41,7 @@ Only Qwen Image Edit components are downloaded, not the Qwen Image 2512 generato
 
 | Profile | Tested GPU | Min VRAM | Pod RAM | Volume |
 |---|---|---:|---:|---:|
-| BF16 | RTX A5000 | 24 GB | 65 GB | 70 GB minimum |
+| BF16 | RTX A6000 | 42 GB | 65 GB | 70 GB minimum |
 | FP8 | RTX A5000 / RTX 3090 | 24 GB | 45 GB | 70 GB minimum |
 
 Container disk: **15 GB**. The template currently reserves **75 GB volume**. Requirements increase with resolution, input count and loop length.
