@@ -222,6 +222,7 @@ RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clon
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jalberty2018/comfyui-model-linker.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/chanon/comfyui-obvpm.git
 RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jalberty2018/ComfyUI-QwenImageRefPack.git
+RUN set -eux; GIT_TERMINAL_PROMPT=0 git -c http.version="$GIT_HTTP_VERSION" clone --depth=1 https://github.com/jalberty2018/ComfyUI-Omnichar.git
 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-RMBG
 # Rewrite any top-level CPU ORT refs to GPU ORT
@@ -275,7 +276,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     -r ComfyUI-SAM3/requirements.txt \
     -r ComfyUI-Easy-Use/requirements.txt \
     -r joycaption_comfyui/requirements.txt \
-    -r comfyui-model-linker/requirements.txt
+    -r ComfyUI-Omnichar/requirements.txt \
+    -r comfyui-model-linker/requirements.txt 
 
 # Add settings for lora manager 
 WORKDIR /ComfyUI/custom_nodes/ComfyUI-Lora-Manager
