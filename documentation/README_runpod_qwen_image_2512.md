@@ -6,26 +6,13 @@ Generate images with Qwen Image 2512 in ComfyUI. The selected BF16 or FP8 model 
 
 Only Qwen Image 2512 generation components are downloaded, not Qwen Image Edit or unrelated model families. The pod selects the model and workflows for the available VRAM.
 
-## Choose an image template
-
-| Template | Best for |
-|---|---|
-| **Qwen Image 2512 — this template** | Text-to-image and ControlNet-guided generation |
-| [Qwen Image Edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o) | Editing existing images, loops and multiple angles |
-| [Z-Image](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o) | Base/Turbo generation, uncensored Qwen and ControlNet |
-| [ERNIE-Image](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o) | Base/Turbo generation with built-in prompt enhancer |
-| [FLUX.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o) | High-quality generation, references and camera angles |
-| [FLUX.2 Klein 9B](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o) | Smaller FLUX editing/generation; non-commercial |
-
 ## Start here
 
-1. [Deploy Qwen Image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o).
-2. Choose BF16 for 44+ GB VRAM or FP8 for a 24 GB GPU.
-3. Allocate the matching Pod RAM and at least 70 GB persistent storage.
-4. Set `PASSWORD` and any required download tokens.
-5. Deploy and follow the container logs.
-6. Wait for `Provisioning done, ready to create AI content`.
-7. Open ComfyUI and load the matching high- or low-VRAM workflow.
+1. Choose an available **GPU**, preferably one marked with an asterisk (*).
+2. Choose the **Volume Disk (Legacy)** mounted at `/workspace`, keep or increase the size if needed.
+3. Enable volume encryption if desired.
+4. Click **Deploy Pod**.
+5. Wait for provisioning to finish, then open ComfyUI.
 
 ## Included workflows and components
 
@@ -38,6 +25,11 @@ Only Qwen Image 2512 generation components are downloaded, not Qwen Image Edit o
 - 4x upscaler, CUDA 12.8 and compiled acceleration.
 - ComfyUI, Code Server, LoRA Manager and SSH.
 - Persistent `/workspace` storage.
+
+## Step by step deployment/usage with screenshots and troubleshooting
+
+- [Deployment guide](https://comfyui.rozenlaan.site/ComfyUI_image_deployment/)
+- [Start with ComfyUI](https://comfyui.rozenlaan.site/ComfyUI_tutorial/)
 
 ## Hardware and storage
 
@@ -55,4 +47,3 @@ Container disk: **15 GB**. The template currently reserves **90 GB volume**. Req
 - [Image overview](https://comfyui.rozenlaan.site/ComfyUI_image/)
 - [ComfyUI tutorial](https://comfyui.rozenlaan.site/ComfyUI_tutorial/)
 - [Hardware guide](https://comfyui.rozenlaan.site/ComfyUI_image_hardware/)
-- [RunPod deployment guide](https://comfyui.rozenlaan.site/Runpod_pod_deployment/)

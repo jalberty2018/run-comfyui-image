@@ -6,25 +6,18 @@ Generate and transform images with FLUX.2 Dev in ComfyUI. The selected BF16 or F
 
 Only FLUX.2 Dev components are downloaded. The pod automatically selects the high- or low-VRAM workflow, avoiding an unusable model profile and downloads for unrelated image families.
 
-## Choose an image template
-
-| Template | Best for |
-|---|---|
-| **FLUX.2 Dev — this template** | High-quality generation, reference images and camera angles |
-| [FLUX.2 Klein 9B](https://console.runpod.io/deploy?template=n1wa3lb44l&ref=se4tkc5o) | Smaller FLUX editing and generation; non-commercial |
-| [Z-Image](https://console.runpod.io/deploy?template=ia5t70hfak&ref=se4tkc5o) | Base/Turbo generation, uncensored Qwen and ControlNet |
-| [ERNIE-Image](https://console.runpod.io/deploy?template=g8ow1s1s0a&ref=se4tkc5o) | Base/Turbo generation with built-in prompt enhancer |
-| [Qwen Image 2512](https://console.runpod.io/deploy?template=3fri17sxaa&ref=se4tkc5o) | Text-to-image and ControlNet generation |
-| [Qwen Image Edit 2511](https://console.runpod.io/deploy?template=mxvvx0hcmp&ref=se4tkc5o) | Image editing, loops and multiple angles |
-
 ## Start here
 
-1. [Deploy FLUX.2 Dev](https://console.runpod.io/deploy?template=8nl523gts5&ref=se4tkc5o).
-2. Choose BF16 for 44+ GB VRAM or FP8 mixed for a 24 GB GPU.
-3. Allocate the matching Pod RAM and persistent volume storage.
-4. Deploy and follow the container logs.
-5. Wait for `Provisioning done, ready to create AI content`.
-6. Open ComfyUI and load the supplied high- or low-VRAM workflow.
+1. Choose an available **GPU**, preferably one marked with an asterisk (*).
+2. Choose the **Volume Disk (Legacy)** mounted at `/workspace`, keep or increase the size if needed.
+3. Enable volume encryption if desired.
+4. Click **Deploy Pod**.
+5. Wait for provisioning to finish, then open ComfyUI.
+
+## Step by step deployment/usage with screenshots and troubleshooting
+
+- [Deployment guide](https://comfyui.rozenlaan.site/ComfyUI_image_deployment/)
+- [Start with ComfyUI](https://comfyui.rozenlaan.site/ComfyUI_tutorial/)
 
 ## Included workflows and components
 
@@ -52,4 +45,3 @@ Container disk: **15 GB**. The template currently reserves **95 GB volume**. Req
 - [Image overview](https://comfyui.rozenlaan.site/ComfyUI_image/)
 - [ComfyUI tutorial](https://comfyui.rozenlaan.site/ComfyUI_tutorial/)
 - [Hardware guide](https://comfyui.rozenlaan.site/ComfyUI_image_hardware/)
-- [RunPod deployment guide](https://comfyui.rozenlaan.site/Runpod_pod_deployment/)
