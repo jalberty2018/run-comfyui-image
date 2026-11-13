@@ -110,8 +110,7 @@ if [[ "$HAS_GPU" -eq 1 || "$HAS_GPU_RUNPOD" -eq 1 ]]; then
 else
     echo "⚠️ WARNING: No GPU available, Code Server not started to limit memory use"
 fi
-	
-sleep 2
+
 
 # Python, Torch CUDA check
 HAS_CUDA=0
@@ -473,7 +472,6 @@ download_model_HF() {
     # ----------- SUCCESS ----------
     if [[ $rc -eq 0 ]]; then
         echo "✅ HF download completed"
-        sleep 1
         return 0
     fi
 
@@ -539,7 +537,6 @@ download_generic_HF() {
     # ----------- SUCCESS ----------
     if [[ $rc -eq 0 ]]; then
         echo "✅ HF download completed"
-        sleep 1
         return 0
     fi
 
@@ -644,7 +641,6 @@ download_workflow() {
     local filepath="${dest_dir}${filename}"
 
     if [[ -f "$filepath" ]]; then
-        echo "⏭️  [SKIP] $filename already exists"
         return 0
     fi
 
@@ -654,8 +650,6 @@ download_workflow() {
         echo "⚠️ Download model workflow failed: $url"
         return 0
     fi
-
-    echo "[DONE] Downloaded $filename"
 
     case "$filename" in
         *.zip)
@@ -684,11 +678,9 @@ download_workflow() {
                 echo "⚠️  Failed to extract $filename"
             ;;
         *)
-            echo "[INFO] No extraction needed for $filename"
             ;;
     esac
 
-    sleep 1
     return 0
 }
 
